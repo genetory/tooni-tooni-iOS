@@ -12,6 +12,6 @@ extension AppDelegate {
 
   func setup(application: UIApplication,
              launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-    Application.shared.globalConfigure()
+    GeneralHelper.sharedInstance.setup()
   }
 }

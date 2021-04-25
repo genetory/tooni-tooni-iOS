@@ -7,25 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B5065DD2624992E0032ABD3 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5065DC2624992E0032ABD3 /* Application.swift */; };
+		26D828DF8CF9F47E47153B0D /* Pods_toonitooni_toonitooniUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F481430A31FCC422866DEB /* Pods_toonitooni_toonitooniUITests.framework */; };
+		5C27FB9F1DDC46DD0A7602D0 /* Pods_toonitooni.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F65C350A6D3754F0372C673 /* Pods_toonitooni.framework */; };
+		6B39CB9A2635B363009CE71C /* GeneralNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CB992635B363009CE71C /* GeneralNavigationView.swift */; };
+		6B39CBA22635B36F009CE71C /* GeneralNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B39CBA12635B36F009CE71C /* GeneralNavigationView.xib */; };
+		6B39CBAB2635B967009CE71C /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39CBAA2635B967009CE71C /* Base.storyboard */; };
+		6B39CBB02635B9BF009CE71C /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBAF2635B9BF009CE71C /* BaseTabBarViewController.swift */; };
+		6B39CBB62635BAFC009CE71C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBB52635BAFC009CE71C /* UIImage+Extension.swift */; };
+		6B39CBBF2635BDF5009CE71C /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBBE2635BDF5009CE71C /* GeneralHelper.swift */; };
+		6B39CBD32635BE9B009CE71C /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBD22635BE9B009CE71C /* TabItem.swift */; };
+		6B39CBDB2635BF03009CE71C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBDA2635BF03009CE71C /* BaseViewController.swift */; };
+		6B39CBE02635BF1C009CE71C /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBDF2635BF1C009CE71C /* BaseCustomView.swift */; };
+		6B39CBEA2635C36B009CE71C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBE92635C36B009CE71C /* SplashViewController.swift */; };
+		6B39CBF22635C48B009CE71C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CBF12635C48B009CE71C /* Constants.swift */; };
+		6B39CBFA2635C4C6009CE71C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39CBF92635C4C6009CE71C /* Splash.storyboard */; };
+		6B39CC0C2635C610009CE71C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CC0B2635C610009CE71C /* HomeViewController.swift */; };
+		6B39CC112635C61C009CE71C /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CC102635C61C009CE71C /* WeekViewController.swift */; };
+		6B39CC162635C626009CE71C /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CC152635C626009CE71C /* FavoriteViewController.swift */; };
+		6B39CC1B2635C631009CE71C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39CC1A2635C631009CE71C /* SettingsViewController.swift */; };
+		6B39CC202635C63B009CE71C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39CC1F2635C63B009CE71C /* Home.storyboard */; };
+		6B39CC282635C71B009CE71C /* Week.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39CC272635C71B009CE71C /* Week.storyboard */; };
+		6B39CC2D2635C724009CE71C /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39CC2C2635C724009CE71C /* Favorite.storyboard */; };
+		6B39CC322635C72F009CE71C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39CC312635C72F009CE71C /* Settings.storyboard */; };
 		6B95B175262485A30069EBB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B174262485A30069EBB0 /* AppDelegate.swift */; };
 		6B95B177262485A30069EBB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B176262485A30069EBB0 /* SceneDelegate.swift */; };
-		6B95B17C262485A30069EBB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B17A262485A30069EBB0 /* Main.storyboard */; };
 		6B95B17E262485A40069EBB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B17D262485A40069EBB0 /* Assets.xcassets */; };
 		6B95B181262485A40069EBB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B17F262485A40069EBB0 /* LaunchScreen.storyboard */; };
 		6B95B18C262485A50069EBB0 /* toonitooniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B18B262485A50069EBB0 /* toonitooniTests.swift */; };
 		6B95B197262485A50069EBB0 /* toonitooniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B196262485A50069EBB0 /* toonitooniUITests.swift */; };
-		6B95B1BE262487AC0069EBB0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B1BD262487AC0069EBB0 /* BaseViewController.swift */; };
-		6B95B1C6262488DB0069EBB0 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B1C5262488DB0069EBB0 /* BaseTabBarController.swift */; };
-		6B95B1D0262489C10069EBB0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B1CF262489C10069EBB0 /* HomeViewController.swift */; };
-		6B95B1D8262489E20069EBB0 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B1D7262489E20069EBB0 /* FavoriteViewController.swift */; };
-		6B95B1DD262489EE0069EBB0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B1DC262489EE0069EBB0 /* SettingViewController.swift */; };
-		6B95B1E226248A620069EBB0 /* WebToonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B1E126248A620069EBB0 /* WebToonListViewController.swift */; };
-		6B95B1EA26248D100069EBB0 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B1E926248D100069EBB0 /* Home.storyboard */; };
-		6B95B1F226248DEE0069EBB0 /* WebToonList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B1F126248DEE0069EBB0 /* WebToonList.storyboard */; };
-		6B95B1F726248DF70069EBB0 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B1F626248DF70069EBB0 /* Favorite.storyboard */; };
-		6B95B1FC26248E040069EBB0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B1FB26248E040069EBB0 /* Setting.storyboard */; };
 		6B95B2042624981A0069EBB0 /* AppDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B2032624981A0069EBB0 /* AppDelegate+Setup.swift */; };
+		9D9DA83D37EAF37559AC0A52 /* Pods_toonitooniTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB03A84F6AF51C62EA7FA49 /* Pods_toonitooniTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,11 +57,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B5065DC2624992E0032ABD3 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		0788CE0EFA6CD264F00DD117 /* Pods-toonitooni.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toonitooni.debug.xcconfig"; path = "Target Support Files/Pods-toonitooni/Pods-toonitooni.debug.xcconfig"; sourceTree = "<group>"; };
+		31C5D72E0A577F83B6F31F17 /* Pods-toonitooniTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toonitooniTests.release.xcconfig"; path = "Target Support Files/Pods-toonitooniTests/Pods-toonitooniTests.release.xcconfig"; sourceTree = "<group>"; };
+		36F481430A31FCC422866DEB /* Pods_toonitooni_toonitooniUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toonitooni_toonitooniUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F65C350A6D3754F0372C673 /* Pods_toonitooni.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toonitooni.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50CCF8DAC5BAD994B3DBA505 /* Pods-toonitooni-toonitooniUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toonitooni-toonitooniUITests.debug.xcconfig"; path = "Target Support Files/Pods-toonitooni-toonitooniUITests/Pods-toonitooni-toonitooniUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5F235FAE4F55C2638EEA3FAF /* Pods-toonitooniTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toonitooniTests.debug.xcconfig"; path = "Target Support Files/Pods-toonitooniTests/Pods-toonitooniTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5FB993B93002662F89CA77E8 /* Pods-toonitooni-toonitooniUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toonitooni-toonitooniUITests.release.xcconfig"; path = "Target Support Files/Pods-toonitooni-toonitooniUITests/Pods-toonitooni-toonitooniUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6B39CB992635B363009CE71C /* GeneralNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralNavigationView.swift; sourceTree = "<group>"; };
+		6B39CBA12635B36F009CE71C /* GeneralNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralNavigationView.xib; sourceTree = "<group>"; };
+		6B39CBAA2635B967009CE71C /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
+		6B39CBAF2635B9BF009CE71C /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
+		6B39CBB52635BAFC009CE71C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		6B39CBBE2635BDF5009CE71C /* GeneralHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
+		6B39CBD22635BE9B009CE71C /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		6B39CBDA2635BF03009CE71C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		6B39CBDF2635BF1C009CE71C /* BaseCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCustomView.swift; sourceTree = "<group>"; };
+		6B39CBE92635C36B009CE71C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		6B39CBF12635C48B009CE71C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6B39CBF92635C4C6009CE71C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		6B39CC0B2635C610009CE71C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6B39CC102635C61C009CE71C /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		6B39CC152635C626009CE71C /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		6B39CC1A2635C631009CE71C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6B39CC1F2635C63B009CE71C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		6B39CC272635C71B009CE71C /* Week.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Week.storyboard; sourceTree = "<group>"; };
+		6B39CC2C2635C724009CE71C /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		6B39CC312635C72F009CE71C /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		6B95B171262485A30069EBB0 /* toonitooni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toonitooni.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B95B174262485A30069EBB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B95B176262485A30069EBB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6B95B17B262485A30069EBB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B95B17D262485A40069EBB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B95B180262485A40069EBB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B95B182262485A40069EBB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,17 +96,9 @@
 		6B95B192262485A50069EBB0 /* toonitooniUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = toonitooniUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B95B196262485A50069EBB0 /* toonitooniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toonitooniUITests.swift; sourceTree = "<group>"; };
 		6B95B198262485A50069EBB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B95B1BD262487AC0069EBB0 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		6B95B1C5262488DB0069EBB0 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
-		6B95B1CF262489C10069EBB0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		6B95B1D7262489E20069EBB0 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		6B95B1DC262489EE0069EBB0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		6B95B1E126248A620069EBB0 /* WebToonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebToonListViewController.swift; sourceTree = "<group>"; };
-		6B95B1E926248D100069EBB0 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		6B95B1F126248DEE0069EBB0 /* WebToonList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebToonList.storyboard; sourceTree = "<group>"; };
-		6B95B1F626248DF70069EBB0 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
-		6B95B1FB26248E040069EBB0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		6B95B2032624981A0069EBB0 /* AppDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Setup.swift"; sourceTree = "<group>"; };
+		AB4B75019FA6F9C3E57E699F /* Pods-toonitooni.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toonitooni.release.xcconfig"; path = "Target Support Files/Pods-toonitooni/Pods-toonitooni.release.xcconfig"; sourceTree = "<group>"; };
+		CEB03A84F6AF51C62EA7FA49 /* Pods_toonitooniTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_toonitooniTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C27FB9F1DDC46DD0A7602D0 /* Pods_toonitooni.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D9DA83D37EAF37559AC0A52 /* Pods_toonitooniTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,18 +122,122 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D828DF8CF9F47E47153B0D /* Pods_toonitooni_toonitooniUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6B5065DB262499230032ABD3 /* Application */ = {
+		6B39CB982635B331009CE71C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6B5065DC2624992E0032ABD3 /* Application.swift */,
+				6B39CB992635B363009CE71C /* GeneralNavigationView.swift */,
+				6B39CBA12635B36F009CE71C /* GeneralNavigationView.xib */,
 			);
-			path = Application;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6B39CBA62635B891009CE71C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CBAA2635B967009CE71C /* Base.storyboard */,
+				6B39CBAF2635B9BF009CE71C /* BaseTabBarViewController.swift */,
+				6B39CBDA2635BF03009CE71C /* BaseViewController.swift */,
+				6B39CBDF2635BF1C009CE71C /* BaseCustomView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		6B39CBB42635BAD5009CE71C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CBB52635BAFC009CE71C /* UIImage+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6B39CBC62635BE21009CE71C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CBBE2635BDF5009CE71C /* GeneralHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		6B39CBD02635BE62009CE71C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CBF12635C48B009CE71C /* Constants.swift */,
+				6B39CBA62635B891009CE71C /* Base */,
+				6B39CB982635B331009CE71C /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		6B39CBD12635BE84009CE71C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CBD22635BE9B009CE71C /* TabItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B39CBE72635C347009CE71C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CBE82635C357009CE71C /* Splash */,
+				6B39CC072635C5E1009CE71C /* Home */,
+				6B39CC082635C5E8009CE71C /* Week */,
+				6B39CC092635C5ED009CE71C /* Favorite */,
+				6B39CC0A2635C5F3009CE71C /* Settings */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		6B39CBE82635C357009CE71C /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CBF92635C4C6009CE71C /* Splash.storyboard */,
+				6B39CBE92635C36B009CE71C /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		6B39CC072635C5E1009CE71C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CC1F2635C63B009CE71C /* Home.storyboard */,
+				6B39CC0B2635C610009CE71C /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6B39CC082635C5E8009CE71C /* Week */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CC272635C71B009CE71C /* Week.storyboard */,
+				6B39CC102635C61C009CE71C /* WeekViewController.swift */,
+			);
+			path = Week;
+			sourceTree = "<group>";
+		};
+		6B39CC092635C5ED009CE71C /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CC2C2635C724009CE71C /* Favorite.storyboard */,
+				6B39CC152635C626009CE71C /* FavoriteViewController.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		6B39CC0A2635C5F3009CE71C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6B39CC312635C72F009CE71C /* Settings.storyboard */,
+				6B39CC1A2635C631009CE71C /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		6B95B168262485A30069EBB0 = {
@@ -113,6 +247,8 @@
 				6B95B18A262485A50069EBB0 /* toonitooniTests */,
 				6B95B195262485A50069EBB0 /* toonitooniUITests */,
 				6B95B172262485A30069EBB0 /* Products */,
+				87A812CEE5D9CCEB058DD2CC /* Pods */,
+				F449AEA6F6BD5D6D9EA757F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,8 +266,10 @@
 			isa = PBXGroup;
 			children = (
 				6B95B1AC262485FB0069EBB0 /* Core */,
-				6B95B1AD2624860C0069EBB0 /* Modules */,
-				6B95B1AB262485E30069EBB0 /* Storyboards */,
+				6B39CBE72635C347009CE71C /* Scenes */,
+				6B39CBD12635BE84009CE71C /* Models */,
+				6B39CBD02635BE62009CE71C /* Common */,
+				6B39CBB42635BAD5009CE71C /* Extensions */,
 				6B95B1AE2624861F0069EBB0 /* Resources */,
 			);
 			path = toonitooni;
@@ -155,39 +293,15 @@
 			path = toonitooniUITests;
 			sourceTree = "<group>";
 		};
-		6B95B1AB262485E30069EBB0 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				6B95B17A262485A30069EBB0 /* Main.storyboard */,
-				6B95B1E926248D100069EBB0 /* Home.storyboard */,
-				6B95B1F126248DEE0069EBB0 /* WebToonList.storyboard */,
-				6B95B1F626248DF70069EBB0 /* Favorite.storyboard */,
-				6B95B1FB26248E040069EBB0 /* Setting.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
 		6B95B1AC262485FB0069EBB0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				6B95B174262485A30069EBB0 /* AppDelegate.swift */,
 				6B95B2032624981A0069EBB0 /* AppDelegate+Setup.swift */,
 				6B95B176262485A30069EBB0 /* SceneDelegate.swift */,
-				6B5065DB262499230032ABD3 /* Application */,
+				6B39CBC62635BE21009CE71C /* Helpers */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		6B95B1AD2624860C0069EBB0 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				6B95B1BB2624874A0069EBB0 /* Base */,
-				6B95B1CB2624894E0069EBB0 /* Home */,
-				6B95B1CC262489550069EBB0 /* Webtoon List */,
-				6B95B1CD2624896A0069EBB0 /* Favorite */,
-				6B95B1CE262489B10069EBB0 /* Setting */,
-			);
-			path = Modules;
 			sourceTree = "<group>";
 		};
 		6B95B1AE2624861F0069EBB0 /* Resources */ = {
@@ -200,45 +314,28 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		6B95B1BB2624874A0069EBB0 /* Base */ = {
+		87A812CEE5D9CCEB058DD2CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6B95B1BD262487AC0069EBB0 /* BaseViewController.swift */,
-				6B95B1C5262488DB0069EBB0 /* BaseTabBarController.swift */,
+				0788CE0EFA6CD264F00DD117 /* Pods-toonitooni.debug.xcconfig */,
+				AB4B75019FA6F9C3E57E699F /* Pods-toonitooni.release.xcconfig */,
+				50CCF8DAC5BAD994B3DBA505 /* Pods-toonitooni-toonitooniUITests.debug.xcconfig */,
+				5FB993B93002662F89CA77E8 /* Pods-toonitooni-toonitooniUITests.release.xcconfig */,
+				5F235FAE4F55C2638EEA3FAF /* Pods-toonitooniTests.debug.xcconfig */,
+				31C5D72E0A577F83B6F31F17 /* Pods-toonitooniTests.release.xcconfig */,
 			);
-			path = Base;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
-		6B95B1CB2624894E0069EBB0 /* Home */ = {
+		F449AEA6F6BD5D6D9EA757F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B95B1CF262489C10069EBB0 /* HomeViewController.swift */,
+				4F65C350A6D3754F0372C673 /* Pods_toonitooni.framework */,
+				36F481430A31FCC422866DEB /* Pods_toonitooni_toonitooniUITests.framework */,
+				CEB03A84F6AF51C62EA7FA49 /* Pods_toonitooniTests.framework */,
 			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		6B95B1CC262489550069EBB0 /* Webtoon List */ = {
-			isa = PBXGroup;
-			children = (
-				6B95B1E126248A620069EBB0 /* WebToonListViewController.swift */,
-			);
-			path = "Webtoon List";
-			sourceTree = "<group>";
-		};
-		6B95B1CD2624896A0069EBB0 /* Favorite */ = {
-			isa = PBXGroup;
-			children = (
-				6B95B1D7262489E20069EBB0 /* FavoriteViewController.swift */,
-			);
-			path = Favorite;
-			sourceTree = "<group>";
-		};
-		6B95B1CE262489B10069EBB0 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				6B95B1DC262489EE0069EBB0 /* SettingViewController.swift */,
-			);
-			path = Setting;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +345,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B95B19B262485A50069EBB0 /* Build configuration list for PBXNativeTarget "toonitooni" */;
 			buildPhases = (
+				124FE1C471283EB829B9FF4F /* [CP] Check Pods Manifest.lock */,
 				6B95B16D262485A30069EBB0 /* Sources */,
 				6B95B16E262485A30069EBB0 /* Frameworks */,
 				6B95B16F262485A30069EBB0 /* Resources */,
@@ -265,6 +363,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B95B19E262485A50069EBB0 /* Build configuration list for PBXNativeTarget "toonitooniTests" */;
 			buildPhases = (
+				EE2B7B8E6F61235BD987E5BC /* [CP] Check Pods Manifest.lock */,
 				6B95B183262485A50069EBB0 /* Sources */,
 				6B95B184262485A50069EBB0 /* Frameworks */,
 				6B95B185262485A50069EBB0 /* Resources */,
@@ -283,6 +382,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B95B1A1262485A50069EBB0 /* Build configuration list for PBXNativeTarget "toonitooniUITests" */;
 			buildPhases = (
+				C3E554CBA1F8D6220AAFDF85 /* [CP] Check Pods Manifest.lock */,
 				6B95B18E262485A50069EBB0 /* Sources */,
 				6B95B18F262485A50069EBB0 /* Frameworks */,
 				6B95B190262485A50069EBB0 /* Resources */,
@@ -345,12 +445,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B95B181262485A40069EBB0 /* LaunchScreen.storyboard in Resources */,
+				6B39CBAB2635B967009CE71C /* Base.storyboard in Resources */,
+				6B39CC2D2635C724009CE71C /* Favorite.storyboard in Resources */,
 				6B95B17E262485A40069EBB0 /* Assets.xcassets in Resources */,
-				6B95B1FC26248E040069EBB0 /* Setting.storyboard in Resources */,
-				6B95B1F726248DF70069EBB0 /* Favorite.storyboard in Resources */,
-				6B95B17C262485A30069EBB0 /* Main.storyboard in Resources */,
-				6B95B1F226248DEE0069EBB0 /* WebToonList.storyboard in Resources */,
-				6B95B1EA26248D100069EBB0 /* Home.storyboard in Resources */,
+				6B39CC202635C63B009CE71C /* Home.storyboard in Resources */,
+				6B39CBFA2635C4C6009CE71C /* Splash.storyboard in Resources */,
+				6B39CC322635C72F009CE71C /* Settings.storyboard in Resources */,
+				6B39CC282635C71B009CE71C /* Week.storyboard in Resources */,
+				6B39CBA22635B36F009CE71C /* GeneralNavigationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,21 +472,96 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		124FE1C471283EB829B9FF4F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-toonitooni-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3E554CBA1F8D6220AAFDF85 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-toonitooni-toonitooniUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE2B7B8E6F61235BD987E5BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-toonitooniTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6B95B16D262485A30069EBB0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B5065DD2624992E0032ABD3 /* Application.swift in Sources */,
-				6B95B1BE262487AC0069EBB0 /* BaseViewController.swift in Sources */,
-				6B95B1E226248A620069EBB0 /* WebToonListViewController.swift in Sources */,
-				6B95B1C6262488DB0069EBB0 /* BaseTabBarController.swift in Sources */,
-				6B95B1DD262489EE0069EBB0 /* SettingViewController.swift in Sources */,
-				6B95B1D8262489E20069EBB0 /* FavoriteViewController.swift in Sources */,
+				6B39CC112635C61C009CE71C /* WeekViewController.swift in Sources */,
+				6B39CBB62635BAFC009CE71C /* UIImage+Extension.swift in Sources */,
+				6B39CB9A2635B363009CE71C /* GeneralNavigationView.swift in Sources */,
+				6B39CBE02635BF1C009CE71C /* BaseCustomView.swift in Sources */,
+				6B39CC162635C626009CE71C /* FavoriteViewController.swift in Sources */,
 				6B95B2042624981A0069EBB0 /* AppDelegate+Setup.swift in Sources */,
 				6B95B175262485A30069EBB0 /* AppDelegate.swift in Sources */,
+				6B39CC1B2635C631009CE71C /* SettingsViewController.swift in Sources */,
+				6B39CBBF2635BDF5009CE71C /* GeneralHelper.swift in Sources */,
+				6B39CBDB2635BF03009CE71C /* BaseViewController.swift in Sources */,
 				6B95B177262485A30069EBB0 /* SceneDelegate.swift in Sources */,
-				6B95B1D0262489C10069EBB0 /* HomeViewController.swift in Sources */,
+				6B39CBD32635BE9B009CE71C /* TabItem.swift in Sources */,
+				6B39CBB02635B9BF009CE71C /* BaseTabBarViewController.swift in Sources */,
+				6B39CBEA2635C36B009CE71C /* SplashViewController.swift in Sources */,
+				6B39CC0C2635C610009CE71C /* HomeViewController.swift in Sources */,
+				6B39CBF22635C48B009CE71C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,14 +597,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6B95B17A262485A30069EBB0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6B95B17B262485A30069EBB0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6B95B17F262485A40069EBB0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -557,6 +726,7 @@
 		};
 		6B95B19C262485A50069EBB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0788CE0EFA6CD264F00DD117 /* Pods-toonitooni.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -578,6 +748,7 @@
 		};
 		6B95B19D262485A50069EBB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB4B75019FA6F9C3E57E699F /* Pods-toonitooni.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -599,6 +770,7 @@
 		};
 		6B95B19F262485A50069EBB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F235FAE4F55C2638EEA3FAF /* Pods-toonitooniTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -621,6 +793,7 @@
 		};
 		6B95B1A0262485A50069EBB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31C5D72E0A577F83B6F31F17 /* Pods-toonitooniTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -643,6 +816,7 @@
 		};
 		6B95B1A2262485A50069EBB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50CCF8DAC5BAD994B3DBA505 /* Pods-toonitooni-toonitooniUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -663,6 +837,7 @@
 		};
 		6B95B1A3262485A50069EBB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FB993B93002662F89CA77E8 /* Pods-toonitooni-toonitooniUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
