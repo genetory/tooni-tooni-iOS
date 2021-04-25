@@ -25,3 +25,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   func sceneDidEnterBackground(_ scene: UIScene) { }
 }
+
+extension SceneDelegate {
+
+  func createTabVC() {
+    self.dismissVC()
+
+    if let vc = GeneralHelper.sharedInstance.makeTabBarViewController("Base", "BaseTabBarViewController") as? BaseTabBarViewController {
+      window?.rootViewController = vc
+      window?.makeKeyAndVisible()
+    }
+  }
+
+  func dismissVC() {
+    if window?.rootViewController?.presentedViewController != nil {
+      window?.rootViewController?.dismiss(animated: false, completion: nil)
+    }
+  }
+}
