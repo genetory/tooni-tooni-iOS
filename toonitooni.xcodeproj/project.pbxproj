@@ -36,7 +36,6 @@
 		6B95B18C262485A50069EBB0 /* toonitooniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B18B262485A50069EBB0 /* toonitooniTests.swift */; };
 		6B95B197262485A50069EBB0 /* toonitooniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B196262485A50069EBB0 /* toonitooniUITests.swift */; };
 		6B95B2042624981A0069EBB0 /* AppDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B2032624981A0069EBB0 /* AppDelegate+Setup.swift */; };
-		6BB576E32638FEBA00A64D16 /* WeekListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB576E22638FEBA00A64D16 /* WeekListViewController.swift */; };
 		6BB576EB2639034100A64D16 /* WeekMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB576EA2639034100A64D16 /* WeekMenuBarView.swift */; };
 		6BB576ED2639034700A64D16 /* WeekMenuBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BB576EC2639034700A64D16 /* WeekMenuBarView.xib */; };
 		6BB576F02639046600A64D16 /* WeekMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB576EF2639046600A64D16 /* WeekMenuBarItem.swift */; };
@@ -113,7 +112,6 @@
 		6B95B196262485A50069EBB0 /* toonitooniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toonitooniUITests.swift; sourceTree = "<group>"; };
 		6B95B198262485A50069EBB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B95B2032624981A0069EBB0 /* AppDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Setup.swift"; sourceTree = "<group>"; };
-		6BB576E22638FEBA00A64D16 /* WeekListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekListViewController.swift; sourceTree = "<group>"; };
 		6BB576EA2639034100A64D16 /* WeekMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekMenuBarView.swift; sourceTree = "<group>"; };
 		6BB576EC2639034700A64D16 /* WeekMenuBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekMenuBarView.xib; sourceTree = "<group>"; };
 		6BB576EF2639046600A64D16 /* WeekMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekMenuBarItem.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 				6B39CC272635C71B009CE71C /* Week.storyboard */,
 				6BB576EF2639046600A64D16 /* WeekMenuBarItem.swift */,
 				6B39CC102635C61C009CE71C /* WeekViewController.swift */,
-				6BB576E22638FEBA00A64D16 /* WeekListViewController.swift */,
 			);
 			path = Week;
 			sourceTree = "<group>";
@@ -624,7 +621,6 @@
 				6B39CB9A2635B363009CE71C /* GeneralNavigationView.swift in Sources */,
 				6B39CBE02635BF1C009CE71C /* BaseCustomView.swift in Sources */,
 				6BB577152639499100A64D16 /* WeekWebToonListCell.swift in Sources */,
-				6BB576E32638FEBA00A64D16 /* WeekListViewController.swift in Sources */,
 				6BB5771C263950F600A64D16 /* WebToon.swift in Sources */,
 				6B39CC162635C626009CE71C /* FavoriteViewController.swift in Sources */,
 				6B95B2042624981A0069EBB0 /* AppDelegate+Setup.swift in Sources */,

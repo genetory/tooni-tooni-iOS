@@ -12,6 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeekMenuBarView" customModule="toonitooni" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="ioD-bW-ner" id="thQ-6L-D9V"/>
+                <outlet property="menuUnderLineView" destination="gYC-Bo-6Cn" id="UZ0-wf-bGd"/>
+                <outlet property="menuUnderLineViewLeadingConstraint" destination="auj-Jg-jCv" id="70h-rR-xrZ"/>
+                <outlet property="menuUnderLineViewWidthConstraint" destination="cZc-le-E5Z" id="9s0-n6-C2d"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -30,10 +33,11 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYC-Bo-6Cn">
-                    <rect key="frame" x="16" y="49" width="410" height="1"/>
+                    <rect key="frame" x="16" y="48" width="50" height="2"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="nTK-Tw-ixC"/>
+                        <constraint firstAttribute="width" constant="50" id="cZc-le-E5Z"/>
+                        <constraint firstAttribute="height" constant="2" id="nTK-Tw-ixC"/>
                     </constraints>
                 </view>
             </subviews>
@@ -41,7 +45,6 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="gYC-Bo-6Cn" secondAttribute="bottom" id="T2i-VB-Wm9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gYC-Bo-6Cn" secondAttribute="trailing" constant="16" id="YfY-uv-cLm"/>
                 <constraint firstItem="gYC-Bo-6Cn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="auj-Jg-jCv"/>
                 <constraint firstAttribute="bottom" secondItem="ioD-bW-ner" secondAttribute="bottom" id="b7T-1N-seC"/>
                 <constraint firstItem="ioD-bW-ner" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eVh-Fj-qq6"/>

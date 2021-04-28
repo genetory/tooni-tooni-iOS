@@ -11,7 +11,7 @@ class WeekViewController: BaseViewController {
 
   // MARK: - UI Properties
 
-  @IBOutlet var navigationView: GeneralNavigationView!
+  @IBOutlet weak var navigationView: GeneralNavigationView!
   @IBOutlet weak var weekMenuBarView: WeekMenuBarView!
   @IBOutlet weak var weekCategoryView: WeekCategoryView!
   @IBOutlet weak var contentCollectionView: UICollectionView!
@@ -25,6 +25,12 @@ class WeekViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
+    didSelectWeekMenuBarItem()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    selectCurrentWeekDay()
   }
 
   // MARK: - Setup
@@ -63,6 +69,27 @@ class WeekViewController: BaseViewController {
   }
 }
 
+// MARK: - Handler
+
+extension WeekViewController {
+
+  private func didSelectWeekMenuBarItem() {
+    weekMenuBarView.didSelectWeekMenuBarItem = { [weak self] menuBar, indexPath in
+      self?.contentCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+  }
+}
+
+// MARK: - Helper methods
+
+extension WeekViewController {
+
+  private func selectCurrentWeekDay() {
+    let indexPath = IndexPath(item: WeekMenuBarItem.currentWeekDay, section: 0)
+    contentCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+  }
+}
+
 // MARK: - CollectionView datasource
 
 extension WeekViewController: UICollectionViewDataSource {
@@ -91,7 +118,13 @@ extension WeekViewController: UICollectionViewDataSource {
 extension WeekViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
     return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+  }
+
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    let position = Int(scrollView.contentOffset.x / view.frame.width)
+    let indexPath = IndexPath(item: position, section: 0)
+
+    weekMenuBarView.selectMenuBarItem(at: indexPath)
   }
 }

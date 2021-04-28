@@ -13,6 +13,14 @@ class WeekMenuBarItemCell: UICollectionViewCell {
 
   @IBOutlet weak var titleLabel: UILabel!
 
+  // MARK: - Properties
+
+  override var isSelected: Bool {
+    didSet {
+      titleLabel.textColor = isSelected ? .black : .lightGray
+    }
+  }
+
   // MARK: - Life cycle
 
   override func awakeFromNib() {
@@ -26,7 +34,7 @@ class WeekMenuBarItemCell: UICollectionViewCell {
     // titleLabel
     titleLabel.text = nil
     titleLabel.textAlignment = .center
-    titleLabel.textColor = .black
+    titleLabel.textColor = .lightGray
   }
 }
 

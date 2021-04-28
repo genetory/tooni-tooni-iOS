@@ -19,7 +19,15 @@ class WeekMenuBarView: BaseCustomView {
 
   // MARK: - UI Properties
 
-  @IBOutlet var collectionView: UICollectionView!
+  @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet weak var menuUnderLineView: UIView!
+  @IBOutlet weak var menuUnderLineViewWidthConstraint: NSLayoutConstraint!
+  @IBOutlet weak var menuUnderLineViewLeadingConstraint: NSLayoutConstraint!
+
+  // MARK: - Properties
+
+  var selectedIndexPath = IndexPath(item: WeekMenuBarItem.currentWeekDay, section: 0)
+  var didSelectWeekMenuBarItem: ((WeekMenuBarView, IndexPath) -> Void)?
 
   // MARK: - Life cycle
 
@@ -33,10 +41,11 @@ class WeekMenuBarView: BaseCustomView {
   private func setupUI() {
     backgroundColor = .white
     setupCollectionView()
+    setupMenuUnderLineView()
   }
 
   private func setupCollectionView() {
-    
+
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
     flowLayout.minimumLineSpacing = .zero
@@ -57,7 +66,36 @@ class WeekMenuBarView: BaseCustomView {
       forCellWithReuseIdentifier: WeekMenuBarItemCell.reuseIdentifier
     )
   }
+
+  private func setupMenuUnderLineView() {
+    menuUnderLineView.backgroundColor = .lightGray
+    menuUnderLineViewWidthConstraint.constant = Metric.menuBarWidth
+    menuUnderLineViewLeadingConstraint.constant = Metric.menuBarInset
+
+    selectMenuBarItem(at: selectedIndexPath)
+  }
 }
+
+// MARK: - Helper methods
+
+extension WeekMenuBarView {
+
+  private func menuUnderLineViewMove(at indexPath: IndexPath) {
+    selectedIndexPath = indexPath
+    menuUnderLineViewLeadingConstraint.constant = (Metric.menuBarWidth * CGFloat(indexPath.item)) + Metric.menuBarInset
+
+    UIView.animate(withDuration: 0.33) {
+      self.layoutIfNeeded()
+    }
+  }
+
+  func selectMenuBarItem(at indexPath: IndexPath) {
+    menuUnderLineViewMove(at: indexPath)
+    collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+  }
+}
+
+// MARK: - CollectionView datasource
 
 extension WeekMenuBarView: UICollectionViewDataSource {
 
@@ -81,9 +119,12 @@ extension WeekMenuBarView: UICollectionViewDataSource {
   }
 }
 
+// MARK: - CollectionView delegate
+
 extension WeekMenuBarView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+    menuUnderLineViewMove(at: indexPath)
+    didSelectWeekMenuBarItem?(self, indexPath)
   }
 }
