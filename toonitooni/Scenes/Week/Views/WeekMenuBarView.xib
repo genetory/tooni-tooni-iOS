@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeekMenuBarView" customModule="toonitooni" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="ioD-bW-ner" id="thQ-6L-D9V"/>
+                <outlet property="menuUnderLineView" destination="gYC-Bo-6Cn" id="UZ0-wf-bGd"/>
+                <outlet property="menuUnderLineViewLeadingConstraint" destination="auj-Jg-jCv" id="70h-rR-xrZ"/>
+                <outlet property="menuUnderLineViewWidthConstraint" destination="cZc-le-E5Z" id="9s0-n6-C2d"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="442" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ioD-bW-ner">
+                    <rect key="frame" x="0.0" y="0.0" width="442" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="krE-Z5-ouV">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYC-Bo-6Cn">
+                    <rect key="frame" x="16" y="48" width="50" height="2"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="cZc-le-E5Z"/>
+                        <constraint firstAttribute="height" constant="2" id="nTK-Tw-ixC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gYC-Bo-6Cn" secondAttribute="bottom" id="T2i-VB-Wm9"/>
+                <constraint firstItem="gYC-Bo-6Cn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="auj-Jg-jCv"/>
+                <constraint firstAttribute="bottom" secondItem="ioD-bW-ner" secondAttribute="bottom" id="b7T-1N-seC"/>
+                <constraint firstItem="ioD-bW-ner" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eVh-Fj-qq6"/>
+                <constraint firstItem="ioD-bW-ner" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="s05-Db-B9A"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ioD-bW-ner" secondAttribute="trailing" id="xvH-OZ-k3O"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="91.304347826086968" y="-129.91071428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
