@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,28 +18,81 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3YX-cB-L1t" customClass="GeneralNavigationView" customModule="toonitooni" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VR8-sQ-4rx"/>
+                                    <constraint firstAttribute="height" constant="44" id="VR8-sQ-4rx"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMU-aL-3j5" customClass="WeekMenuBarView" customModule="toonitooni" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="46"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="50K-zM-soS"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRu-0d-9XH" customClass="WeekCategoryView" customModule="toonitooni" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="134" width="414" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="U57-ua-z24"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EIq-5w-nm5">
+                                <rect key="frame" x="0.0" y="214" width="414" height="648"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mo6-yF-0EA">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CKP-oP-GmH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="DMU-aL-3j5" firstAttribute="leading" secondItem="CKP-oP-GmH" secondAttribute="leading" id="4ZE-Mw-Wvu"/>
+                            <constraint firstItem="CKP-oP-GmH" firstAttribute="bottom" secondItem="EIq-5w-nm5" secondAttribute="bottom" id="6do-60-34k"/>
+                            <constraint firstItem="KRu-0d-9XH" firstAttribute="leading" secondItem="CKP-oP-GmH" secondAttribute="leading" id="Qab-Mb-KN7"/>
+                            <constraint firstItem="CKP-oP-GmH" firstAttribute="trailing" secondItem="DMU-aL-3j5" secondAttribute="trailing" id="W0A-aB-mFI"/>
+                            <constraint firstItem="EIq-5w-nm5" firstAttribute="top" secondItem="KRu-0d-9XH" secondAttribute="bottom" id="cth-Qa-E1G"/>
                             <constraint firstItem="3YX-cB-L1t" firstAttribute="top" secondItem="CKP-oP-GmH" secondAttribute="top" id="gDF-fY-nut"/>
                             <constraint firstItem="CKP-oP-GmH" firstAttribute="trailing" secondItem="3YX-cB-L1t" secondAttribute="trailing" id="gxz-XV-y4G"/>
+                            <constraint firstItem="CKP-oP-GmH" firstAttribute="trailing" secondItem="EIq-5w-nm5" secondAttribute="trailing" id="inD-59-7Vg"/>
+                            <constraint firstItem="KRu-0d-9XH" firstAttribute="top" secondItem="DMU-aL-3j5" secondAttribute="bottom" id="jzS-iX-9GA"/>
+                            <constraint firstItem="EIq-5w-nm5" firstAttribute="leading" secondItem="CKP-oP-GmH" secondAttribute="leading" id="l8d-fa-g1D"/>
+                            <constraint firstItem="CKP-oP-GmH" firstAttribute="trailing" secondItem="KRu-0d-9XH" secondAttribute="trailing" id="mMp-Fg-AZB"/>
+                            <constraint firstItem="DMU-aL-3j5" firstAttribute="top" secondItem="3YX-cB-L1t" secondAttribute="bottom" id="xeX-En-4gE"/>
                             <constraint firstItem="3YX-cB-L1t" firstAttribute="leading" secondItem="CKP-oP-GmH" secondAttribute="leading" id="ytl-oG-f3c"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentCollectionView" destination="EIq-5w-nm5" id="gNm-xp-NnQ"/>
                         <outlet property="navigationView" destination="3YX-cB-L1t" id="fSL-UX-Yy7"/>
+                        <outlet property="weekCategoryView" destination="KRu-0d-9XH" id="N89-BT-90V"/>
+                        <outlet property="weekMenuBarView" destination="DMU-aL-3j5" id="9LF-NA-hvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hN8-MX-jZ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="5"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="4.6875"/>
+        </scene>
+        <!--Week List View Controller-->
+        <scene sceneID="J42-Jg-eqL">
+            <objects>
+                <viewController storyboardIdentifier="WeekListViewController" id="Apl-cH-oUg" customClass="WeekListViewController" customModule="toonitooni" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kwL-Wt-tVX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="XFg-Cn-9hG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xad-pu-E8v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561" y="5"/>
         </scene>
     </scenes>
     <resources>
