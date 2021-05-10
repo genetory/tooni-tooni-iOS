@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Moya
 
 class WeekViewController: BaseViewController {
 
@@ -18,6 +19,7 @@ class WeekViewController: BaseViewController {
 
   // MARK: - Properties
 
+  let networkService = TooniNetworkService()
   let webToons: [WebToon] = webToonDatas
 
   // MARK: - Life Cycle
@@ -26,6 +28,13 @@ class WeekViewController: BaseViewController {
     super.viewDidLoad()
     setupUI()
     didSelectWeekMenuBarItem()
+
+//    networkService.request(to: .esports, decoder: TestModel.self) { response in
+//      switch response.result {
+//      case .success:
+//      case .failure:
+//      }
+//    }
   }
 
   override func viewDidAppear(_ animated: Bool) {
