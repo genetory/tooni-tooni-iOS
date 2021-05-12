@@ -19,8 +19,9 @@ class WeekViewController: BaseViewController {
 
   // MARK: - Properties
 
-  let networkService = TooniNetworkService()
-  let webToons: [WebToon] = webToonDatas
+  var weekWebtoon = WeekWebtoon() {
+    didSet { reloadData() }
+  }
 
   // MARK: - Life Cycle
 
@@ -28,13 +29,6 @@ class WeekViewController: BaseViewController {
     super.viewDidLoad()
     setupUI()
     didSelectWeekMenuBarItem()
-
-//    networkService.request(to: .esports, decoder: TestModel.self) { response in
-//      switch response.result {
-//      case .success:
-//      case .failure:
-//      }
-//    }
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -85,6 +79,7 @@ extension WeekViewController {
   private func didSelectWeekMenuBarItem() {
     weekMenuBarView.didSelectWeekMenuBarItem = { [weak self] menuBar, indexPath in
       self?.contentCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+      self?.fetchWeekWebtoon(at: indexPath.row)
     }
   }
 }
@@ -96,6 +91,28 @@ extension WeekViewController {
   private func selectCurrentWeekDay() {
     let indexPath = IndexPath(item: WeekMenuBarItem.currentWeekDay, section: 0)
     contentCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+    fetchWeekWebtoon(at: indexPath.row)
+  }
+
+  private func fetchWeekWebtoon(at index: Int) {
+    TooniNetworkService.shared.request(
+      to: .weekWebtoon(WeekMenuBarItem.transformShort(by: index)),
+      decoder: WeekWebtoon.self
+    ) { [weak self] response in
+      switch response.result {
+      case .success:
+        guard let weekWebtoon = response.json as? WeekWebtoon else { return }
+        self?.weekWebtoon = weekWebtoon
+      case .failure:
+        print(response)
+      }
+    }
+  }
+
+  private func reloadData() {
+    DispatchQueue.main.async {
+      self.contentCollectionView.reloadData()
+    }
   }
 }
 
@@ -116,7 +133,7 @@ extension WeekViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
 
-    cell.bind(webToons)
+    cell.bind(weekWebtoon.webtoons)
 
     return cell
   }
