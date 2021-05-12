@@ -10,24 +10,24 @@ import Moya
 import Alamofire
 
 enum TooniRouter {
-  case esports
+  case weekWebtoon(String)
 }
 
 extension TooniRouter: TargetType {
   var baseURL: URL {
-    return URL(string: "http://imgenetory.com")!
+    return URL(string: "https://webtoon.chandol.net")!
   }
 
   var path: String {
     switch self {
-    case .esports:
-      return "/esports/leagues.json"
+    case let .weekWebtoon(day):
+      return "/api/v1/webtoons/\(day)"
     }
   }
 
   var method: Alamofire.HTTPMethod {
     switch self {
-    case .esports:
+    case .weekWebtoon:
       return .get
     }
   }
@@ -38,8 +38,7 @@ extension TooniRouter: TargetType {
 
   var task: Task {
     switch self {
-    case .esports:
-//      return .requestParameters(parameters: <#T##[String : Any]#>, encoding: <#T##ParameterEncoding#>)
+    case .weekWebtoon:
       return .requestPlain
     }
   }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class WeekWebToonCell: UICollectionViewCell {
 
@@ -38,6 +39,7 @@ extension WeekWebToonCell {
   func bind(_ item: WebToon) {
     thumbnailImageView.backgroundColor = .lightGray
     titleLabel.text = item.title
-    authorLabel.text = item.author
+    authorLabel.text = item.author.map { $0.name }.joined(separator: " / ")
+    thumbnailImageView.kf.setImage(with: URL(string: item.thumbnail))
   }
 }

@@ -13,7 +13,7 @@ enum NetworkResult {
 }
 
 struct NetworkDataResponse {
-  let json: Decodable?
+  let json: Codable?
   let result: NetworkResult
   let error: NetworkError?
 }

@@ -26,9 +26,7 @@ class WeekWebToonListCell: UICollectionViewCell {
   // MARK: - Properties
 
   var webToons: [WebToon] = [] {
-    didSet {
-      listCollectionView.reloadData()
-    }
+    didSet { reloadData() }
   }
 
   // MARK: - Life cycle
@@ -71,6 +69,12 @@ extension WeekWebToonListCell {
 
   func bind(_ items: [WebToon]) {
     webToons = items
+  }
+
+  private func reloadData() {
+    DispatchQueue.main.async {
+      self.listCollectionView.reloadData()
+    }
   }
 }
 
