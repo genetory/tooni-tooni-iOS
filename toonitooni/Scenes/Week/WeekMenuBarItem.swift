@@ -46,4 +46,19 @@ enum WeekMenuBarItem: Int {
     default: return 0
     }
   }
+
+  static func transformShort(by index: Int) -> String {
+    let item = WeekMenuBarItem(rawValue: index)
+    switch item {
+    case .monday: return "MON"
+    case .tuesday: return "TUE"
+    case .wednesday: return "WED"
+    case .thursday: return "THU"
+    case .friday: return "FRI"
+    case .saturday: return "SAT"
+    case .sunday: return "SUN"
+    case .completed: return ""
+    default: return ""
+    }
+  }
 }
