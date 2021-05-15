@@ -44,6 +44,9 @@
 		6B4525CE264990CC0073C418 /* WeekWebtoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4525CD264990CC0073C418 /* WeekWebtoon.swift */; };
 		6B4525D1264BA5FE0073C418 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6B4525D0264BA5FE0073C418 /* Kingfisher */; };
 		6B4525D4264BA9620073C418 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4525D3264BA9620073C418 /* Logger.swift */; };
+		6B8F2026264F7E1F0046F606 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F2025264F7E1F0046F606 /* GoogleService-Info.plist */; };
+		6B8F202A264F7FB40046F606 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F2029264F7FB40046F606 /* FirebaseService.swift */; };
+		6B8F202C264F80170046F606 /* FirebaseService+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F202B264F80170046F606 /* FirebaseService+Auth.swift */; };
 		6B95B175262485A30069EBB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B174262485A30069EBB0 /* AppDelegate.swift */; };
 		6B95B177262485A30069EBB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B176262485A30069EBB0 /* SceneDelegate.swift */; };
 		6B95B17E262485A40069EBB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B17D262485A40069EBB0 /* Assets.xcassets */; };
@@ -125,6 +128,9 @@
 		6B4525CA264990490073C418 /* CommonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResponse.swift; sourceTree = "<group>"; };
 		6B4525CD264990CC0073C418 /* WeekWebtoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWebtoon.swift; sourceTree = "<group>"; };
 		6B4525D3264BA9620073C418 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		6B8F2025264F7E1F0046F606 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6B8F2029264F7FB40046F606 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		6B8F202B264F80170046F606 /* FirebaseService+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseService+Auth.swift"; sourceTree = "<group>"; };
 		6B95B171262485A30069EBB0 /* toonitooni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toonitooni.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B95B174262485A30069EBB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B95B176262485A30069EBB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -345,6 +351,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		6B8F2028264F7FA50046F606 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6B8F2029264F7FB40046F606 /* FirebaseService.swift */,
+				6B8F202B264F80170046F606 /* FirebaseService+Auth.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		6B95B168262485A30069EBB0 = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +422,7 @@
 				6B95B176262485A30069EBB0 /* SceneDelegate.swift */,
 				6B39CBC62635BE21009CE71C /* Helpers */,
 				6B4525B2264941540073C418 /* Networking */,
+				6B8F2028264F7FA50046F606 /* Services */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -414,6 +430,7 @@
 		6B95B1AE2624861F0069EBB0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B8F2025264F7E1F0046F606 /* GoogleService-Info.plist */,
 				6B95B182262485A40069EBB0 /* Info.plist */,
 				6B95B17D262485A40069EBB0 /* Assets.xcassets */,
 				6B95B17F262485A40069EBB0 /* LaunchScreen.storyboard */,
@@ -482,6 +499,7 @@
 				6B95B16D262485A30069EBB0 /* Sources */,
 				6B95B16E262485A30069EBB0 /* Frameworks */,
 				6B95B16F262485A30069EBB0 /* Resources */,
+				58C07EACC2607C142AA913FD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -525,6 +543,7 @@
 				6B95B18E262485A50069EBB0 /* Sources */,
 				6B95B18F262485A50069EBB0 /* Frameworks */,
 				6B95B190262485A50069EBB0 /* Resources */,
+				97156CED4806C0C496C12CEE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -596,6 +615,7 @@
 				6B95B17E262485A40069EBB0 /* Assets.xcassets in Resources */,
 				6B39CC202635C63B009CE71C /* Home.storyboard in Resources */,
 				6BB576FC26391D9000A64D16 /* WeekMenuBarItemCell.xib in Resources */,
+				6B8F2026264F7E1F0046F606 /* GoogleService-Info.plist in Resources */,
 				6B39CBFA2635C4C6009CE71C /* Splash.storyboard in Resources */,
 				6B39CC322635C72F009CE71C /* Settings.storyboard in Resources */,
 				6B39CC282635C71B009CE71C /* Week.storyboard in Resources */,
@@ -642,6 +662,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58C07EACC2607C142AA913FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-toonitooni/Pods-toonitooni-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-toonitooni/Pods-toonitooni-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-toonitooni/Pods-toonitooni-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97156CED4806C0C496C12CEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-toonitooni-toonitooniUITests/Pods-toonitooni-toonitooniUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-toonitooni-toonitooniUITests/Pods-toonitooni-toonitooniUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-toonitooni-toonitooniUITests/Pods-toonitooni-toonitooniUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C3E554CBA1F8D6220AAFDF85 /* [CP] Check Pods Manifest.lock */ = {
@@ -701,6 +755,7 @@
 				6BB577042639234400A64D16 /* WeekCategoryItemCell.swift in Sources */,
 				6B4525C526498A460073C418 /* NetworkStatusCode.swift in Sources */,
 				6BB576F02639046600A64D16 /* WeekMenuBarItem.swift in Sources */,
+				6B8F202C264F80170046F606 /* FirebaseService+Auth.swift in Sources */,
 				6B39CC112635C61C009CE71C /* WeekViewController.swift in Sources */,
 				6B39CBB62635BAFC009CE71C /* UIImage+Extension.swift in Sources */,
 				6B4525B826494A170073C418 /* AlamofireSession.swift in Sources */,
@@ -726,6 +781,7 @@
 				6B39CBB02635B9BF009CE71C /* BaseTabBarViewController.swift in Sources */,
 				6BB576FB26391D9000A64D16 /* WeekMenuBarItemCell.swift in Sources */,
 				6B39CBEA2635C36B009CE71C /* SplashViewController.swift in Sources */,
+				6B8F202A264F7FB40046F606 /* FirebaseService.swift in Sources */,
 				6B4525D4264BA9620073C418 /* Logger.swift in Sources */,
 				6B39CC0C2635C610009CE71C /* HomeViewController.swift in Sources */,
 				6BB576F2263909F200A64D16 /* UIView+Extension.swift in Sources */,

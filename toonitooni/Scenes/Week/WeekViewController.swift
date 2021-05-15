@@ -29,6 +29,10 @@ class WeekViewController: BaseViewController {
     super.viewDidLoad()
     setupUI()
     didSelectWeekMenuBarItem()
+
+    FirebaseService.shared.signInAnonymously { user in
+      print(user.uid)
+    }
   }
 
   override func viewDidAppear(_ animated: Bool) {
