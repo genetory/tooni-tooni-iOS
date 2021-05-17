@@ -39,7 +39,7 @@ extension WeekWebToonCell {
   func bind(_ item: WebToon) {
     thumbnailImageView.backgroundColor = .lightGray
     titleLabel.text = item.title
-    authorLabel.text = item.author.map { $0.name }.joined(separator: " / ")
+    authorLabel.text = item.author.map { $0 }.joined(separator: " / ")
     thumbnailImageView.kf.setImage(with: URL(string: item.thumbnail))
   }
 }
