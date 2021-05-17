@@ -21,14 +21,11 @@ struct WebToon: Codable {
   let id: Int
   let site: String
   let title: String
-  let author: [Author]
+  let author: [String]
   let popularity: Int
   let thumbnail: String
 }
-
-struct Author: Codable {
-  let id: Int
-  let name: String
-  let createdAt: String
-  let modifiedAt: String
-}
+//
+//struct Author: Codable {
+//
+//}

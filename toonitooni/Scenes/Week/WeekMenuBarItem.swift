@@ -50,13 +50,13 @@ enum WeekMenuBarItem: Int {
   static func transformShort(by index: Int) -> String {
     let item = WeekMenuBarItem(rawValue: index)
     switch item {
-    case .monday: return "MON"
-    case .tuesday: return "TUE"
-    case .wednesday: return "WED"
-    case .thursday: return "THU"
-    case .friday: return "FRI"
-    case .saturday: return "SAT"
-    case .sunday: return "SUN"
+    case .monday: return "mon"
+    case .tuesday: return "tue"
+    case .wednesday: return "wed"
+    case .thursday: return "thu"
+    case .friday: return "fri"
+    case .saturday: return "sat"
+    case .sunday: return "sun"
     case .completed: return ""
     default: return ""
     }

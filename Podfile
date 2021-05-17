@@ -7,6 +7,10 @@ target 'toonitooni' do
 
   # Pods for toonitooni
 
+  # Firebase
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+
   target 'toonitooniTests' do
     inherit! :search_paths
     # Pods for testing
