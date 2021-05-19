@@ -32,7 +32,7 @@ class TooniNetworkService: Networkable {
       stubClosure: MoyaProvider.neverStub,
       callbackQueue: nil,
       session: AlamofireSession.configuration,
-      plugins: [],
+      plugins: [NetworkLoggerPlugin()],
       trackInflights: false
     )
   }
