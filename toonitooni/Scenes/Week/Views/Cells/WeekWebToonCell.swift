@@ -29,6 +29,7 @@ class WeekWebToonCell: UICollectionViewCell {
   private func setupUI() {
     titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     authorLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+    thumbnailImageView.contentMode = .scaleAspectFill
   }
 }
 
@@ -39,7 +40,7 @@ extension WeekWebToonCell {
   func bind(_ item: WebToon) {
     thumbnailImageView.backgroundColor = .lightGray
     titleLabel.text = item.title
-    authorLabel.text = item.author.map { $0 }.joined(separator: " / ")
+    authorLabel.text = item.authors.map { $0.name }.joined(separator: " / ")
     thumbnailImageView.kf.setImage(with: URL(string: item.thumbnail))
   }
 }

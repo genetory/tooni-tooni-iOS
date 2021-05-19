@@ -30,8 +30,11 @@ class WeekViewController: BaseViewController {
     setupUI()
     didSelectWeekMenuBarItem()
 
-    FirebaseService.shared.signInAnonymously { user in
-      print(user.uid)
+    for familyName in UIFont.familyNames {
+        print("\n-- \(familyName) \n")
+        for fontName in UIFont.fontNames(forFamilyName: familyName) {
+            print(fontName)
+        }
     }
   }
 

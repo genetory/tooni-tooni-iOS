@@ -47,6 +47,15 @@
 		6B8F2026264F7E1F0046F606 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F2025264F7E1F0046F606 /* GoogleService-Info.plist */; };
 		6B8F202A264F7FB40046F606 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F2029264F7FB40046F606 /* FirebaseService.swift */; };
 		6B8F202C264F80170046F606 /* FirebaseService+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F202B264F80170046F606 /* FirebaseService+Auth.swift */; };
+		6B8F209926554D150046F606 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F209826554D150046F606 /* NetworkLoggerPlugin.swift */; };
+		6B8F209E265552160046F606 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F209C265551EF0046F606 /* NotoSansKR-Bold.otf */; };
+		6B8F209F265552190046F606 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F209D265551F00046F606 /* NotoSansKR-Medium.otf */; };
+		6B8F20A02655521B0046F606 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8F209B265551EF0046F606 /* NotoSansKR-Regular.otf */; };
+		6B8F20A3265553200046F606 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F20A2265553200046F606 /* ThemeColor.swift */; };
+		6B8F20A5265553280046F606 /* ThemeFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F20A4265553280046F606 /* ThemeFont.swift */; };
+		6B8F20A72655534B0046F606 /* ThemeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F20A62655534B0046F606 /* ThemeImage.swift */; };
+		6B8F20A9265553570046F606 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F20A8265553560046F606 /* Theme.swift */; };
+		6B8F20AC2655599D0046F606 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8F20AB2655599D0046F606 /* UIColor+Extension.swift */; };
 		6B95B175262485A30069EBB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B174262485A30069EBB0 /* AppDelegate.swift */; };
 		6B95B177262485A30069EBB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95B176262485A30069EBB0 /* SceneDelegate.swift */; };
 		6B95B17E262485A40069EBB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B95B17D262485A40069EBB0 /* Assets.xcassets */; };
@@ -131,6 +140,15 @@
 		6B8F2025264F7E1F0046F606 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B8F2029264F7FB40046F606 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		6B8F202B264F80170046F606 /* FirebaseService+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseService+Auth.swift"; sourceTree = "<group>"; };
+		6B8F209826554D150046F606 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		6B8F209B265551EF0046F606 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		6B8F209C265551EF0046F606 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		6B8F209D265551F00046F606 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		6B8F20A2265553200046F606 /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
+		6B8F20A4265553280046F606 /* ThemeFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFont.swift; sourceTree = "<group>"; };
+		6B8F20A62655534B0046F606 /* ThemeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImage.swift; sourceTree = "<group>"; };
+		6B8F20A8265553560046F606 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		6B8F20AB2655599D0046F606 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		6B95B171262485A30069EBB0 /* toonitooni.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = toonitooni.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B95B174262485A30069EBB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B95B176262485A30069EBB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +239,7 @@
 				6B39CBB52635BAFC009CE71C /* UIImage+Extension.swift */,
 				6BB576F1263909F200A64D16 /* UIView+Extension.swift */,
 				6B4525BD26494F190073C418 /* Data+Decode.swift */,
+				6B8F20AB2655599D0046F606 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +341,7 @@
 				6B4525BB26494DF10073C418 /* NetworkError.swift */,
 				6B4525B926494DD00073C418 /* NetworkDataResponse.swift */,
 				6B4525C426498A460073C418 /* NetworkStatusCode.swift */,
+				6B8F209826554D150046F606 /* NetworkLoggerPlugin.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -346,6 +366,7 @@
 		6B4525D2264BA94E0073C418 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6B8F20A12655530F0046F606 /* Theme */,
 				6B4525D3264BA9620073C418 /* Logger.swift */,
 			);
 			path = Utilities;
@@ -358,6 +379,27 @@
 				6B8F202B264F80170046F606 /* FirebaseService+Auth.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		6B8F209A265550DD0046F606 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6B8F209C265551EF0046F606 /* NotoSansKR-Bold.otf */,
+				6B8F209D265551F00046F606 /* NotoSansKR-Medium.otf */,
+				6B8F209B265551EF0046F606 /* NotoSansKR-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6B8F20A12655530F0046F606 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				6B8F20A8265553560046F606 /* Theme.swift */,
+				6B8F20A4265553280046F606 /* ThemeFont.swift */,
+				6B8F20A2265553200046F606 /* ThemeColor.swift */,
+				6B8F20A62655534B0046F606 /* ThemeImage.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		6B95B168262485A30069EBB0 = {
@@ -430,6 +472,7 @@
 		6B95B1AE2624861F0069EBB0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B8F209A265550DD0046F606 /* Fonts */,
 				6B8F2025264F7E1F0046F606 /* GoogleService-Info.plist */,
 				6B95B182262485A40069EBB0 /* Info.plist */,
 				6B95B17D262485A40069EBB0 /* Assets.xcassets */,
@@ -606,6 +649,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B8F20A02655521B0046F606 /* NotoSansKR-Regular.otf in Resources */,
 				6BB5771A26394B2900A64D16 /* WeekWebToonCell.xib in Resources */,
 				6BB576ED2639034700A64D16 /* WeekMenuBarView.xib in Resources */,
 				6B95B181262485A40069EBB0 /* LaunchScreen.storyboard in Resources */,
@@ -618,9 +662,11 @@
 				6B8F2026264F7E1F0046F606 /* GoogleService-Info.plist in Resources */,
 				6B39CBFA2635C4C6009CE71C /* Splash.storyboard in Resources */,
 				6B39CC322635C72F009CE71C /* Settings.storyboard in Resources */,
+				6B8F209F265552190046F606 /* NotoSansKR-Medium.otf in Resources */,
 				6B39CC282635C71B009CE71C /* Week.storyboard in Resources */,
 				6BB57701263922E600A64D16 /* WeekCategoryView.xib in Resources */,
 				6BB577052639234400A64D16 /* WeekCategoryItemCell.xib in Resources */,
+				6B8F209E265552160046F606 /* NotoSansKR-Bold.otf in Resources */,
 				6B39CBA22635B36F009CE71C /* GeneralNavigationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,7 +796,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B4525C926498CBB0073C418 /* ErrorModel.swift in Sources */,
+				6B8F209926554D150046F606 /* NetworkLoggerPlugin.swift in Sources */,
 				6BB576FF263922DD00A64D16 /* WeekCategoryView.swift in Sources */,
+				6B8F20AC2655599D0046F606 /* UIColor+Extension.swift in Sources */,
 				6B4525CB264990490073C418 /* CommonResponse.swift in Sources */,
 				6BB577042639234400A64D16 /* WeekCategoryItemCell.swift in Sources */,
 				6B4525C526498A460073C418 /* NetworkStatusCode.swift in Sources */,
@@ -777,14 +825,18 @@
 				6B95B177262485A30069EBB0 /* SceneDelegate.swift in Sources */,
 				6B39CBD32635BE9B009CE71C /* TabItem.swift in Sources */,
 				6B4525B6264941810073C418 /* TooniRouter.swift in Sources */,
+				6B8F20A3265553200046F606 /* ThemeColor.swift in Sources */,
+				6B8F20A9265553570046F606 /* Theme.swift in Sources */,
 				6B4525BA26494DD00073C418 /* NetworkDataResponse.swift in Sources */,
 				6B39CBB02635B9BF009CE71C /* BaseTabBarViewController.swift in Sources */,
 				6BB576FB26391D9000A64D16 /* WeekMenuBarItemCell.swift in Sources */,
 				6B39CBEA2635C36B009CE71C /* SplashViewController.swift in Sources */,
 				6B8F202A264F7FB40046F606 /* FirebaseService.swift in Sources */,
 				6B4525D4264BA9620073C418 /* Logger.swift in Sources */,
+				6B8F20A5265553280046F606 /* ThemeFont.swift in Sources */,
 				6B39CC0C2635C610009CE71C /* HomeViewController.swift in Sources */,
 				6BB576F2263909F200A64D16 /* UIView+Extension.swift in Sources */,
+				6B8F20A72655534B0046F606 /* ThemeImage.swift in Sources */,
 				6B4525B4264941690073C418 /* NetworkService.swift in Sources */,
 				6B39CBF22635C48B009CE71C /* Constants.swift in Sources */,
 			);
