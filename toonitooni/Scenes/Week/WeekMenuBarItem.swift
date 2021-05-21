@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WeekMenuBarItem: Int {
+enum WeekMenuBarItem: Int, CaseIterable {
   case monday
   case tuesday
   case wednesday
@@ -16,7 +16,8 @@ enum WeekMenuBarItem: Int {
   case saturday
   case sunday
   case completed
-  case total
+
+  static let total = 8
 
   var title: String? {
     switch self {
@@ -28,7 +29,6 @@ enum WeekMenuBarItem: Int {
     case .saturday: return "토"
     case .sunday: return "일"
     case .completed: return "완결"
-    default: return nil
     }
   }
 

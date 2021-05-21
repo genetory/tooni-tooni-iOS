@@ -21,7 +21,7 @@ extension TooniRouter: TargetType {
   var path: String {
     switch self {
     case let .weekWebtoon(day):
-      return "/api/v1/webtoons/weekday/\(day)"
+      return "/weekday/\(day)"
     }
   }
 

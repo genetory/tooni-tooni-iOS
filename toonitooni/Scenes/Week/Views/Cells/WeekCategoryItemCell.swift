@@ -12,12 +12,22 @@ class WeekCategoryItemCell: UICollectionViewCell {
   // MARK: - Constant
 
   private enum Metric {
-    static let categoryButtonSize: CGFloat = 48
+    static let categorySize: CGFloat = 40
   }
 
   // MARK: - UI Properties
 
-  @IBOutlet weak var categoryButton: UIButton!
+  @IBOutlet weak var categoryLabel: UILabel!
+
+  // MARK: - Properties
+
+  override var isSelected: Bool {
+    didSet {
+      categoryLabel.backgroundColor = isSelected ? Theme.color.blue : Theme.color.white
+      categoryLabel.textColor = isSelected ? Theme.color.gray90 : Theme.color.gray50
+      categoryLabel.layer.borderWidth = isSelected ? 0 : 1
+    }
+  }
 
   // MARK: - Life cycle
 
@@ -29,12 +39,16 @@ class WeekCategoryItemCell: UICollectionViewCell {
   // MARK: - Setup
 
   private func setupUI() {
-    // category button
-    categoryButton.setTitle(nil, for: .normal)
-    categoryButton.setTitleColor(.white, for: .normal)
-    categoryButton.backgroundColor = .lightGray
-    categoryButton.layer.cornerRadius = Metric.categoryButtonSize / 2
-    categoryButton.layer.masksToBounds = true
+    // category label
+    categoryLabel.text = nil
+    categoryLabel.textColor = Theme.color.gray50
+    categoryLabel.textAlignment = .center
+    categoryLabel.font = Theme.font.body2Medium
+    categoryLabel.backgroundColor = Theme.color.white
+    categoryLabel.layer.cornerRadius = Metric.categorySize / 2
+    categoryLabel.layer.masksToBounds = true
+    categoryLabel.layer.borderWidth = 1
+    categoryLabel.layer.borderColor = Theme.color.gray50.cgColor
   }
 }
 
@@ -43,6 +57,6 @@ class WeekCategoryItemCell: UICollectionViewCell {
 extension WeekCategoryItemCell {
 
   func bind(_ item: String?) {
-    categoryButton.setTitle(item, for: .normal)
+    categoryLabel.text = item
   }
 }

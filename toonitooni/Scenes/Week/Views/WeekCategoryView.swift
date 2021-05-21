@@ -12,9 +12,9 @@ class WeekCategoryView: BaseCustomView {
   // MARK: - Constant
 
   private enum Metric {
-    static let categoryViewInset: CGFloat = 16
-    static let itemSpacing: CGFloat = 16
-    static let itemSize: CGFloat = 48
+    static let categoryViewInset: CGFloat = 20
+    static let itemSpacing: CGFloat = 8
+    static let itemSize: CGFloat = 40
   }
 
   // MARK: - UI Properties
@@ -23,7 +23,8 @@ class WeekCategoryView: BaseCustomView {
 
   // MARK: - Properties
 
-  let categoryItems: [String] = ["전체", "N", "K"]
+  let categoryItems: [String] = ["All", "N", "K"]
+  var didSelectCategoryItem: ((WeekCategoryView, IndexPath) -> Void)?
 
   // MARK: - Life cycle
 
@@ -42,7 +43,7 @@ class WeekCategoryView: BaseCustomView {
     let flowLayout = UICollectionViewFlowLayout()
     flowLayout.scrollDirection = .horizontal
     flowLayout.minimumLineSpacing = Metric.itemSpacing
-    flowLayout.minimumInteritemSpacing = .zero
+    flowLayout.minimumInteritemSpacing = Metric.itemSpacing
     flowLayout.sectionInset = UIEdgeInsets(top: 0, left: Metric.categoryViewInset, bottom: 0, right: Metric.categoryViewInset)
     flowLayout.itemSize = CGSize(width: Metric.itemSize, height: Metric.itemSize)
 
@@ -58,6 +59,15 @@ class WeekCategoryView: BaseCustomView {
       categoryItemCell,
       forCellWithReuseIdentifier: WeekCategoryItemCell.reuseIdentifier
     )
+  }
+}
+
+// MARK: - Helper methods
+
+extension WeekCategoryView {
+
+  func selectCategoryItem(at indexPath: IndexPath) {
+    collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
   }
 }
 
@@ -87,4 +97,10 @@ extension WeekCategoryView: UICollectionViewDataSource {
 
 // MARK: - CollectionView delegate
 
-extension WeekCategoryView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {}
+extension WeekCategoryView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    selectCategoryItem(at: indexPath)
+    didSelectCategoryItem?(self, indexPath)
+  }
+}
