@@ -6,21 +6,22 @@
 //
 
 import UIKit
-import Moya
 
 class WeekViewController: BaseViewController {
 
   // MARK: - UI Properties
 
-  @IBOutlet weak var navigationView: GeneralNavigationView!
-  @IBOutlet weak var weekMenuBarView: WeekMenuBarView!
-  @IBOutlet weak var weekCategoryView: WeekCategoryView!
-  @IBOutlet weak var contentCollectionView: UICollectionView!
+  @IBOutlet var navigationView: GeneralNavigationView!
+  @IBOutlet var weekMenuBarView: WeekMenuBarView!
+  @IBOutlet var weekCategoryView: WeekCategoryView!
+  @IBOutlet var contentView: UIView!
+  var pageViewController: UIPageViewController!
 
   // MARK: - Properties
 
-  var weekWebtoon = WeekWebtoon() {
-    didSet { reloadData() }
+  var currentSelectedIndex = WeekMenuBarItem.currentWeekDay
+  var weekListViewControllers = WeekMenuBarItem.allCases.map { _ in
+    GeneralHelper.sharedInstance.makeVC("Week", "WeekListViewController")
   }
 
   // MARK: - Life Cycle
@@ -28,14 +29,7 @@ class WeekViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
-    didSelectWeekMenuBarItem()
-
-    for familyName in UIFont.familyNames {
-        print("\n-- \(familyName) \n")
-        for fontName in UIFont.fontNames(forFamilyName: familyName) {
-            print(fontName)
-        }
-    }
+    bind()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -48,7 +42,7 @@ class WeekViewController: BaseViewController {
   func setupUI() {
     view.backgroundColor = .white
     setupNavigationView()
-    setupContentCollectionView()
+    setupPageViewController()
   }
 
   func setupNavigationView() {
@@ -56,37 +50,106 @@ class WeekViewController: BaseViewController {
     navigationView.bigTitle(false)
   }
 
-  func setupContentCollectionView() {
-    let flowLayout = UICollectionViewFlowLayout()
-    flowLayout.scrollDirection = .horizontal
-    flowLayout.minimumInteritemSpacing = .zero
-    flowLayout.minimumLineSpacing = .zero
-    flowLayout.itemSize = CGSize(width: view.frame.width, height: contentCollectionView.frame.height)
+  func setupPageViewController() {
+    pageViewController = GeneralHelper.sharedInstance.makePageVC("Week", "WeekPageViewController")
+    pageViewController.delegate = self
+    pageViewController.dataSource = self
 
-    contentCollectionView.collectionViewLayout = flowLayout
-    contentCollectionView.showsVerticalScrollIndicator = false
-    contentCollectionView.showsHorizontalScrollIndicator = false
-    contentCollectionView.isPagingEnabled = true
-    contentCollectionView.backgroundColor = .white
-    contentCollectionView.dataSource = self
-    contentCollectionView.delegate = self
-
-    let weekWebToonListCell = UINib(nibName: WeekWebToonListCell.reuseIdentifier, bundle: nil)
-    contentCollectionView.register(
-      weekWebToonListCell,
-      forCellWithReuseIdentifier: WeekWebToonListCell.reuseIdentifier
+    let currentViewController = weekListViewController(at: currentSelectedIndex)
+    pageViewController.setViewControllers(
+      [currentViewController], direction: .forward, animated: true, completion: nil
     )
+
+    pageViewController.view.frame = contentView.bounds
+    addChild(pageViewController)
+    contentView.addSubview(pageViewController.view)
   }
 }
 
-// MARK: - Handler
+// MARK: - PageViewController
+
+extension WeekViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+
+  func pageViewController(
+    _ pageViewController: UIPageViewController,
+    viewControllerBefore viewController: UIViewController
+  ) -> UIViewController? {
+    guard let index = weekListViewControllers.firstIndex(of: viewController as! BaseViewController) else { return nil }
+    let previousIndex = index - 1
+
+    if previousIndex < 0 {
+      return nil
+    }
+
+    return weekListViewController(at: previousIndex)
+  }
+
+  func pageViewController(
+    _ pageViewController: UIPageViewController,
+    viewControllerAfter viewController: UIViewController
+  ) -> UIViewController? {
+    guard let index = weekListViewControllers.firstIndex(of: viewController as! BaseViewController) else { return nil }
+
+    let nextIndex = index + 1
+    if nextIndex == weekListViewControllers.count {
+      return nil
+    }
+
+    return weekListViewController(at: nextIndex)
+  }
+
+  func pageViewController(
+    _ pageViewController: UIPageViewController,
+    didFinishAnimating finished: Bool,
+    previousViewControllers: [UIViewController],
+    transitionCompleted completed: Bool
+  ) {
+    if completed {
+      if let firstVC = self.pageViewController.viewControllers?.first as? BaseViewController {
+        if let index = weekListViewControllers.firstIndex(of: firstVC) {
+          currentSelectedIndex = index
+          weekMenuBarView.selectMenuBarItem(at: IndexPath(row: index, section: 0))
+          weekListViewController(at: index).fetchWeekWebtoon()
+        }
+      }
+    }
+  }
+}
+
+// MARK: - binding
 
 extension WeekViewController {
 
+  private func bind() {
+    didSelectWeekMenuBarItem()
+    didSelectCategoryItem()
+  }
+
   private func didSelectWeekMenuBarItem() {
     weekMenuBarView.didSelectWeekMenuBarItem = { [weak self] menuBar, indexPath in
-      self?.contentCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-      self?.fetchWeekWebtoon(at: indexPath.row)
+      guard let self = self else { return }
+
+      let index = indexPath.row
+      guard self.currentSelectedIndex != index else { return }
+
+      let weekListViewController = self.weekListViewController(at: index)
+
+      var direction: UIPageViewController.NavigationDirection = .forward
+      if index < self.currentSelectedIndex {
+        direction = .reverse
+      }
+
+      self.currentSelectedIndex = index
+
+      self.pageViewController.setViewControllers([weekListViewController as BaseViewController], direction: direction, animated: true, completion: nil)
+
+      weekListViewController.fetchWeekWebtoon()
+    }
+  }
+
+  private func didSelectCategoryItem() {
+    weekCategoryView.didSelectCategoryItem = { [weak self] categoryView, indexPath in
+      print(indexPath)
     }
   }
 }
@@ -97,67 +160,15 @@ extension WeekViewController {
 
   private func selectCurrentWeekDay() {
     let indexPath = IndexPath(item: WeekMenuBarItem.currentWeekDay, section: 0)
-    contentCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
-    fetchWeekWebtoon(at: indexPath.row)
+    let weekListViewController = weekListViewControllers[WeekMenuBarItem.currentWeekDay] as! WeekListViewController
+    weekListViewController.scrollToMenuItem(at: indexPath)
+    weekListViewController.fetchWeekWebtoon()
   }
 
-  private func fetchWeekWebtoon(at index: Int) {
-    TooniNetworkService.shared.request(
-      to: .weekWebtoon(WeekMenuBarItem.transformShort(by: index)),
-      decoder: WeekWebtoon.self
-    ) { [weak self] response in
-      switch response.result {
-      case .success:
-        guard let weekWebtoon = response.json as? WeekWebtoon else { return }
-        self?.weekWebtoon = weekWebtoon
-      case .failure:
-        print(response)
-      }
-    }
-  }
+  private func weekListViewController(at index: Int) -> WeekListViewController {
+    let weekListViewController = weekListViewControllers[index] as! WeekListViewController
+    weekListViewController.currentWeekDayIndex = index
 
-  private func reloadData() {
-    DispatchQueue.main.async {
-      self.contentCollectionView.reloadData()
-    }
-  }
-}
-
-// MARK: - CollectionView datasource
-
-extension WeekViewController: UICollectionViewDataSource {
-
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 1
-  }
-
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return WeekMenuBarItem.total.rawValue
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeekWebToonListCell.reuseIdentifier, for: indexPath) as? WeekWebToonListCell else {
-      return UICollectionViewCell()
-    }
-
-    cell.bind(weekWebtoon.webtoons)
-
-    return cell
-  }
-}
-
-// MARK: - CollectionView delegate
-
-extension WeekViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
-  }
-
-  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    let position = Int(scrollView.contentOffset.x / view.frame.width)
-    let indexPath = IndexPath(item: position, section: 0)
-
-    weekMenuBarView.selectMenuBarItem(at: indexPath)
+    return weekListViewController
   }
 }

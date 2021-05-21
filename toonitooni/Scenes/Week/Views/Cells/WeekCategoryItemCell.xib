@@ -17,22 +17,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgn-XD-hU1">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbk-2f-U4f">
                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                        <state key="normal" title="Button"/>
-                    </button>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="cgn-XD-hU1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HAf-ES-I0E"/>
-                <constraint firstItem="cgn-XD-hU1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TF5-hl-Wp8"/>
-                <constraint firstAttribute="bottom" secondItem="cgn-XD-hU1" secondAttribute="bottom" id="vhD-tf-eYl"/>
-                <constraint firstAttribute="trailing" secondItem="cgn-XD-hU1" secondAttribute="trailing" id="ypA-oK-rRa"/>
+                <constraint firstAttribute="trailing" secondItem="Kbk-2f-U4f" secondAttribute="trailing" id="470-RX-lwL"/>
+                <constraint firstItem="Kbk-2f-U4f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lTq-kF-9OF"/>
+                <constraint firstItem="Kbk-2f-U4f" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sub-e3-gM9"/>
+                <constraint firstAttribute="bottom" secondItem="Kbk-2f-U4f" secondAttribute="bottom" id="xKs-HQ-XPq"/>
             </constraints>
             <size key="customSize" width="48" height="48"/>
             <connections>
-                <outlet property="categoryButton" destination="cgn-XD-hU1" id="ixr-EF-IMg"/>
+                <outlet property="categoryLabel" destination="Kbk-2f-U4f" id="Ims-R0-AuM"/>
             </connections>
             <point key="canvasLocation" x="133.33333333333334" y="152.67857142857142"/>
         </collectionViewCell>

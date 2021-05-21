@@ -13,8 +13,8 @@ class WeekMenuBarView: BaseCustomView {
 
   private enum Metric {
     static let menuBarInset: CGFloat = 16
-    static let menuBarHeight: CGFloat = 46
-    static let menuBarWidth: CGFloat = (kDEVICE_WIDTH - (menuBarInset * 2)) / CGFloat(WeekMenuBarItem.total.rawValue)
+    static let menuBarHeight: CGFloat = 48
+    static let menuBarWidth: CGFloat = (kDEVICE_WIDTH - (menuBarInset * 2)) / CGFloat(WeekMenuBarItem.total)
   }
 
   // MARK: - UI Properties
@@ -68,7 +68,8 @@ class WeekMenuBarView: BaseCustomView {
   }
 
   private func setupMenuUnderLineView() {
-    menuUnderLineView.backgroundColor = .lightGray
+    menuUnderLineView.backgroundColor = Theme.color.blue
+    menuUnderLineView.alpha = 0.8
     menuUnderLineViewWidthConstraint.constant = Metric.menuBarWidth
     menuUnderLineViewLeadingConstraint.constant = Metric.menuBarInset
 
@@ -104,7 +105,7 @@ extension WeekMenuBarView: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return WeekMenuBarItem.total.rawValue
+    return WeekMenuBarItem.total
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

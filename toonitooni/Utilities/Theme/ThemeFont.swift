@@ -84,13 +84,18 @@ struct ThemeFont {
     return UIFont(name: CustomFont.notoSansKRRegular.name, size: 12) ?? UIFont.systemFont(ofSize: 12, weight: .regular)
   }
 
-  /// caption1 ( Weight: Regular, Size: 10)
+  /// caption2 ( Weight: Regular, Size: 10)
   public var caption2Bold: UIFont {
     return UIFont(name: CustomFont.notoSansKRBold.name, size: 10) ?? UIFont.systemFont(ofSize: 10, weight: .bold)
   }
 
-  /// caption1 ( Weight: Medium, Size: 10)
+  /// caption2 ( Weight: Medium, Size: 10)
   public var caption2Regular: UIFont {
-    return UIFont(name: CustomFont.notoSansKRRegular.name, size: 10) ?? UIFont.systemFont(ofSize: 10, weight: .medium)
+    return UIFont(name: CustomFont.notoSansKRRegular.name, size: 10) ?? UIFont.systemFont(ofSize: 10, weight: .regular)
+  }
+
+  /// caption3 ( Weight: Regular, Size: 8)
+  public var caption3Regular: UIFont {
+    return UIFont(name: CustomFont.notoSansKRRegular.name, size: 8) ?? UIFont.systemFont(ofSize: 8, weight: .regular)
   }
 }

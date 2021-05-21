@@ -48,4 +48,8 @@ struct ThemeColor {
   var blue: UIColor {
     return UIColor(hex: "#18A0FB")
   }
+
+  var white: UIColor {
+    return UIColor(hex: "#FFFFFF")
+  }
 }

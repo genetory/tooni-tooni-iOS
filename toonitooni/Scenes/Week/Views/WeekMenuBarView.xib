@@ -33,22 +33,32 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYC-Bo-6Cn">
-                    <rect key="frame" x="16" y="48" width="50" height="2"/>
+                    <rect key="frame" x="16" y="31" width="50" height="7"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="cZc-le-E5Z"/>
-                        <constraint firstAttribute="height" constant="2" id="nTK-Tw-ixC"/>
+                        <constraint firstAttribute="height" constant="7" id="nTK-Tw-ixC"/>
+                    </constraints>
+                </view>
+                <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCD-t7-GCG">
+                    <rect key="frame" x="0.0" y="49" width="442" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="eD5-yz-o2j"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="gYC-Bo-6Cn" secondAttribute="bottom" id="T2i-VB-Wm9"/>
+                <constraint firstItem="mCD-t7-GCG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ChL-jK-54g"/>
+                <constraint firstAttribute="bottom" secondItem="gYC-Bo-6Cn" secondAttribute="bottom" constant="12" id="T2i-VB-Wm9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="mCD-t7-GCG" secondAttribute="trailing" id="XMO-Vt-fIS"/>
                 <constraint firstItem="gYC-Bo-6Cn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="auj-Jg-jCv"/>
                 <constraint firstAttribute="bottom" secondItem="ioD-bW-ner" secondAttribute="bottom" id="b7T-1N-seC"/>
                 <constraint firstItem="ioD-bW-ner" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eVh-Fj-qq6"/>
                 <constraint firstItem="ioD-bW-ner" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="s05-Db-B9A"/>
+                <constraint firstAttribute="bottom" secondItem="mCD-t7-GCG" secondAttribute="bottom" id="vQR-sO-3dc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ioD-bW-ner" secondAttribute="trailing" id="xvH-OZ-k3O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

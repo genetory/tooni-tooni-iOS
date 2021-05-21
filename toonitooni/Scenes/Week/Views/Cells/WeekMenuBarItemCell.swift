@@ -17,7 +17,8 @@ class WeekMenuBarItemCell: UICollectionViewCell {
 
   override var isSelected: Bool {
     didSet {
-      titleLabel.textColor = isSelected ? .black : .lightGray
+      titleLabel.textColor = isSelected ? .black : Theme.color.gray50
+      titleLabel.font = isSelected ? Theme.font.body1Bold : Theme.font.body1Regular
     }
   }
 
@@ -34,7 +35,8 @@ class WeekMenuBarItemCell: UICollectionViewCell {
     // titleLabel
     titleLabel.text = nil
     titleLabel.textAlignment = .center
-    titleLabel.textColor = .lightGray
+    titleLabel.textColor = Theme.color.gray50
+    titleLabel.font = Theme.font.body1Regular
   }
 }
 

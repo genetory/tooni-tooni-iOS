@@ -60,6 +60,13 @@ extension GeneralHelper {
     return vc
   }
 
+  func makePageVC(_ storyBoard: String, _ viewController: String) -> UIPageViewController {
+    let sb = UIStoryboard(name: storyBoard, bundle: nil)
+    let vc = sb.instantiateViewController(withIdentifier: viewController) as! UIPageViewController
+
+    return vc
+  }
+
   func makeTabBarViewController(_ storyBoard: String, _ viewController: String) -> UITabBarController {
     let sb: UIStoryboard = UIStoryboard(name: storyBoard, bundle: nil)
     let vc: BaseTabBarViewController = sb.instantiateViewController(withIdentifier: viewController) as! BaseTabBarViewController
