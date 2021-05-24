@@ -1,5 +1,5 @@
 //
-//  HomeGenreCell.swift
+//  StringExtensions.swift
 //  TooniTooni
 //
 //  Created by GENETORY on 2021/05/15.

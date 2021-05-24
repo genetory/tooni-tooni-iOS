@@ -7,22 +7,25 @@
 
 import Foundation
 
-enum WebtoonType: Int {
-    case naver
-    case daum
+struct WeekWebtoon: Codable {
+    var sites: [Site] = []
+    var webtoonList: [Webtoon] = []
 }
 
-struct WebtoonItem {
-    var title: String!
-    var authors: [String]!
-    var tags: [String]!
-    var type: WebtoonType!
-    
-    init(title: String, authors: [String], tags: [String], type: WebtoonType) {
-        self.title = title
-        self.authors = authors
-        self.tags = tags
-        self.type = type
-    }
-    
+struct Site: Codable {
+    let site: String
+    let thumbnail: String
+}
+
+struct Webtoon {
+    var id: Int?
+    var site: String?
+    var title: String?
+    var author: [String]?
+    var popularity: Int?
+    var thumbnail: String?
+}
+
+struct Author: Codable {
+    var name: String?
 }
