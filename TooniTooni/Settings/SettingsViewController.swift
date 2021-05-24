@@ -16,7 +16,7 @@ class SettingsViewController: BaseViewController {
     // MARK: - Life Cycle
     
     func initBackgroundView() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = kWHITE
     }
     
     func initNavigationView() {

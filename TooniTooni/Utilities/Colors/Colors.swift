@@ -47,3 +47,13 @@ let kYELLOW_500_HIGHLIGHT =             UIColor(named: "kYELLOW_500_HIGHLIGHT")!
 let kPURPLE_500 =                       UIColor(named: "kPURPLE_500")!
 let kPURPLE_500_HIGHLIGHT =             UIColor(named: "kPURPLE_500_HIGHLIGHT")!
 
+
+let kNAVER_100 =                        UIColor(named: "kNAVER_100")!
+let kNAVER_100_HIGHLIGHT =              UIColor(named: "kNAVER_100_HIGHLIGHT")!
+
+let kKAKAO_100 =                        UIColor(named: "kKAKAO_100")!
+let kKAKAO_100_HIGHLIGHT =              UIColor(named: "kKAKAO_100_HIGHLIGHT")!
+
+let kDAUM_100 =                         UIColor(named: "kDAUM_100")!
+let kDAUM_100_HIGHLIGHT =               UIColor(named: "kDAUM_100_HIGHLIGHT")!
+

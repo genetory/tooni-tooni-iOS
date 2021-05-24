@@ -8,7 +8,7 @@
 import Foundation
 
 struct CommonResponse<T: Codable>: Codable {
-  let status: String
-  let message: String?
-  let data: T?
+    let status: String?
+    let message: String?
+    let data: T?
 }

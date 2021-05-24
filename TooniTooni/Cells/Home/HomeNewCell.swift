@@ -23,11 +23,11 @@ class HomeNewCell: UICollectionViewCell {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .lightGray
+        self.baseView.backgroundColor = kGRAY_10
     }
     
     func initLabel() {
-        self.titleLabel.textColor = .white
+        self.titleLabel.textColor = kWHITE
         self.titleLabel.font = UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)
         self.titleLabel.textAlignment = .center
         self.titleLabel.text = nil
@@ -47,8 +47,8 @@ class HomeNewCell: UICollectionViewCell {
 
 extension HomeNewCell {
     
-    func bind(_ webtoonItem: WebtoonItem) {
-        self.titleLabel.text = webtoonItem.title
+    func bind(_ webtoon: Webtoon) {
+        self.titleLabel.text = webtoon.title
     }
     
 }

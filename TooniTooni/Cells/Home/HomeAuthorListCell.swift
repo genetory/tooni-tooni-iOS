@@ -16,7 +16,7 @@ class HomeAuthorListCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
-    var authorList: [AuthorItem] = []
+    var authorList: [Author] = []
     
     // MARK: - Life Cycle
     
@@ -25,7 +25,7 @@ class HomeAuthorListCell: UITableViewCell {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .white
+        self.baseView.backgroundColor = kWHITE
     }
     
     func initCollectionView() {
@@ -43,7 +43,7 @@ class HomeAuthorListCell: UITableViewCell {
         
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
-        self.mainCollectionView.backgroundColor = .white
+        self.mainCollectionView.backgroundColor = kWHITE
         self.mainCollectionView.showsVerticalScrollIndicator = false
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         self.mainCollectionView.alwaysBounceHorizontal = true
@@ -66,7 +66,7 @@ class HomeAuthorListCell: UITableViewCell {
 
 extension HomeAuthorListCell {
     
-    func bind(_ authorList: [AuthorItem]) {
+    func bind(_ authorList: [Author]) {
         self.authorList = authorList
         self.mainCollectionView.reloadData()
     }

@@ -24,13 +24,14 @@ class HomeAuthorCell: UICollectionViewCell {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .white
+        self.baseView.backgroundColor = kWHITE
     }
     
     func initImageView() {
         self.thumbImageView.layer.cornerRadius = 26.0
         self.thumbImageView.clipsToBounds = true
-        self.thumbImageView.backgroundColor = .lightGray
+        self.thumbImageView.backgroundColor = kGRAY_10
+        self.thumbImageView.contentMode = .scaleAspectFill
     }
     
     func initLabel() {
@@ -55,8 +56,8 @@ class HomeAuthorCell: UICollectionViewCell {
 
 extension HomeAuthorCell {
     
-    func bind(_ authorItem: AuthorItem) {
-        self.authorLabel.text = authorItem.name
+    func bind(_ author: Author) {
+        self.authorLabel.text = author.name
     }
     
 }

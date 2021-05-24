@@ -23,12 +23,12 @@ class GeneralTitleHeaderView: UITableViewHeaderFooterView {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .white
+        self.baseView.backgroundColor = kWHITE
     }
     
     func initLabel() {
-        self.titleLabel.textColor = .darkGray
-        self.titleLabel.font = UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.bold)
+        self.titleLabel.textColor = kGRAY_90
+        self.titleLabel.font = kHEADING3_BOLD
         self.titleLabel.text = nil
     }
     

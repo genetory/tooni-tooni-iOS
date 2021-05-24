@@ -16,7 +16,7 @@ class HomeWebtoonListCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
-    var webtoonList: [WebtoonItem] = []
+    var webtoonList: [Webtoon] = []
     
     // MARK: - Life Cycle
     
@@ -25,7 +25,7 @@ class HomeWebtoonListCell: UITableViewCell {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .white
+        self.baseView.backgroundColor = kWHITE
     }
     
     func initCollectionView() {
@@ -34,16 +34,16 @@ class HomeWebtoonListCell: UITableViewCell {
         
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize.init(width: 88.0, height: 152.0)
+        layout.itemSize = CGSize.init(width: 116.0, height: 192.0)
         layout.minimumLineSpacing = 8.0
         layout.minimumInteritemSpacing = 0.0
         layout.headerReferenceSize = .zero
         layout.footerReferenceSize = .zero
-        layout.sectionInset = UIEdgeInsets.init(top: 0.0, left: 24.0, bottom: 0.0, right: 24.0)
+        layout.sectionInset = UIEdgeInsets.init(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
-        self.mainCollectionView.backgroundColor = .white
+        self.mainCollectionView.backgroundColor = kWHITE
         self.mainCollectionView.showsVerticalScrollIndicator = false
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         self.mainCollectionView.alwaysBounceHorizontal = true
@@ -65,7 +65,7 @@ class HomeWebtoonListCell: UITableViewCell {
 
 extension HomeWebtoonListCell {
     
-    func bind(_ webtoonList: [WebtoonItem]) {
+    func bind(_ webtoonList: [Webtoon]) {
         self.webtoonList = webtoonList
         self.mainCollectionView.reloadData()
     }

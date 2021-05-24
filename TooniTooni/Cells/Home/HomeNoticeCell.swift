@@ -23,11 +23,11 @@ class HomeNoticeCell: UITableViewCell {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .darkGray
+        self.baseView.backgroundColor = kGRAY_10
     }
     
     func initLabel() {
-        self.titleLabel.textColor = .white
+        self.titleLabel.textColor = kWHITE
         self.titleLabel.font = UIFont.systemFont(ofSize: 10.0, weight: UIFont.Weight.bold)
         self.titleLabel.numberOfLines = 0
         self.titleLabel.textAlignment = .center

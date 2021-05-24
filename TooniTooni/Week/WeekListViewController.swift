@@ -12,15 +12,21 @@ class WeekListViewController: BaseViewController {
     // MARK: - Vars
     
     @IBOutlet weak var mainCollectionView: UICollectionView!
+    @IBOutlet weak var activity: GeneralActivity!
     
-    var webtoonList: [WebtoonItem] = []
-    
+    var webtoonList: [Webtoon]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.stopActivity()
+                self.mainCollectionView.reloadData()
+            }
+        }
+    }
+
     // MARK: - Life Cycle
     
     func initBackgroundView() {
-        self.view.backgroundColor = .white
-        
-        self.webtoonList = GeneralHelper.sharedInstance.webtoonList.shuffled()
+        self.view.backgroundColor = kWHITE
     }
     
     func initCollectionView() {
@@ -29,16 +35,16 @@ class WeekListViewController: BaseViewController {
         
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize.init(width: (kDEVICE_WIDTH - 64.0) / 3.0, height: (kDEVICE_WIDTH - 64.0) / 3.0 + 52.0)
-        layout.minimumLineSpacing = 8.0
-        layout.minimumInteritemSpacing = 8.0
+        layout.itemSize = CGSize.init(width: (kDEVICE_WIDTH - 64.0) / 3.0, height: (kDEVICE_WIDTH - 64.0) / 3.0 + 64.0)
+        layout.minimumLineSpacing = 0.0
+        layout.minimumInteritemSpacing = 12.0
         layout.headerReferenceSize = .zero
         layout.footerReferenceSize = .zero
-        layout.sectionInset = UIEdgeInsets.init(top: 16.0, left: 24.0, bottom: 16.0, right: 24.0)
+        layout.sectionInset = UIEdgeInsets.init(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
         
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
-        self.mainCollectionView.backgroundColor = .white
+        self.mainCollectionView.backgroundColor = kWHITE
         self.mainCollectionView.showsVerticalScrollIndicator = false
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         self.mainCollectionView.alwaysBounceHorizontal = false
@@ -51,6 +57,30 @@ class WeekListViewController: BaseViewController {
     
         self.initBackgroundView()
         self.initCollectionView()
+        
+        self.startActivity()
+        self.fetchWeekWebtoons()
+    }
+    
+}
+
+// MARK: - Week Webtoon
+
+extension WeekListViewController {
+    
+    func fetchWeekWebtoons() {
+        guard let short = WeekMenuType.init(rawValue: self.pageIdx)?.short else { return }
+
+        TooniNetworkService.shared.request(to: .weekWebtoon(short), decoder: WeekWebtoon.self) { [unowned self] response in
+            switch response.result {
+            case .success:
+                guard let webtoons = (response.json as? WeekWebtoon)?.webtoons else { return }
+                
+                self.webtoonList = webtoons
+            case .failure:
+                print(response)
+            }
+        }
     }
     
 }
@@ -64,12 +94,16 @@ extension WeekListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.webtoonList.count
+        guard let webtoonList = self.webtoonList else { return 0 }
+        
+        return webtoonList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let webtoonList = self.webtoonList else { return .init() }
+
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kWeekWebtoonCellID, for: indexPath) as? WeekWebtoonCell {
-            let webtoonItem = self.webtoonList[indexPath.row]
+            let webtoonItem = webtoonList[indexPath.row]
             cell.bind(webtoonItem)
             
             return cell
@@ -84,3 +118,20 @@ extension WeekListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
 }
+
+// MARK: - Activity
+
+extension WeekListViewController {
+    
+    func startActivity() {
+        if self.activity.isAnimating() { return }
+        self.activity.start()
+    }
+    
+    func stopActivity() {
+        if !self.activity.isAnimating() { return }
+        self.activity.stop()
+    }
+    
+}
+

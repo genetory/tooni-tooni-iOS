@@ -23,12 +23,12 @@ class WeekMenuCell: UICollectionViewCell {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .white
+        self.baseView.backgroundColor = kCLEAR
     }
     
     func initLabel() {
-        self.titleLabel.font = UIFont.systemFont(ofSize: 15.0, weight: UIFont.Weight.regular)
-        self.titleLabel.textColor = .lightGray
+        self.titleLabel.font = kBODY1_REGULAR
+        self.titleLabel.textColor = kGRAY_50
         self.titleLabel.textAlignment = .center
         self.titleLabel.text = nil
     }
@@ -52,7 +52,8 @@ extension WeekMenuCell {
     }
     
     func selected(_ selected: Bool) {
-        self.titleLabel.textColor = selected ? .black : .lightGray
+        self.titleLabel.font = selected ? kBODY1_BOLD : kBODY1_REGULAR
+        self.titleLabel.textColor = selected ? kGRAY_90 : kGRAY_50
     }
     
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -88,17 +88,28 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-BG-HRD" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Ehe-K5-53d"/>
+                                    <constraint firstAttribute="height" constant="40" id="Kg9-yc-uuk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5OL-B8-02u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5OL-B8-02u" firstAttribute="trailing" secondItem="jDt-Ud-dA3" secondAttribute="trailing" id="5pz-sz-f8x"/>
+                            <constraint firstItem="wBw-BG-HRD" firstAttribute="centerX" secondItem="YUG-mB-YD9" secondAttribute="centerX" id="97Q-Oi-WhM"/>
                             <constraint firstItem="jDt-Ud-dA3" firstAttribute="top" secondItem="5OL-B8-02u" secondAttribute="top" id="AIL-P2-DyX"/>
                             <constraint firstItem="5OL-B8-02u" firstAttribute="bottom" secondItem="jDt-Ud-dA3" secondAttribute="bottom" id="BeK-ce-8s1"/>
+                            <constraint firstItem="wBw-BG-HRD" firstAttribute="centerY" secondItem="YUG-mB-YD9" secondAttribute="centerY" id="bI7-cU-mtR"/>
                             <constraint firstItem="jDt-Ud-dA3" firstAttribute="leading" secondItem="YUG-mB-YD9" secondAttribute="leading" id="g2T-8A-scF"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activity" destination="wBw-BG-HRD" id="5Oo-zv-UJb"/>
                         <outlet property="mainCollectionView" destination="jDt-Ud-dA3" id="BW9-u6-opo"/>
                     </connections>
                 </viewController>

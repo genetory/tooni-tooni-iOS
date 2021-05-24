@@ -1,5 +1,5 @@
 //
-//  HomeGenreCell.swift
+//  HomeGenreListCell.swift
 //  TooniTooni
 //
 //  Created by GENETORY on 2021/05/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-let kHomeGenreCellID =                                                  "HomeGenreCell"
+let kHomeGenreListCellID =                                                  "HomeGenreListCell"
 
 class HomeGenreListCell: UITableViewCell {
     
@@ -16,7 +16,7 @@ class HomeGenreListCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
 
-    var webtoonList: [WebtoonItem] = []
+    var webtoonList: [Webtoon] = []
 
     // MARK: - Life Cycle
     
@@ -29,12 +29,12 @@ class HomeGenreListCell: UITableViewCell {
     }
     
     func initCollectionView() {
-        let webtoonCell = UINib.init(nibName: kHomeWebtoonCellID, bundle: nil)
-        self.mainCollectionView.register(webtoonCell, forCellWithReuseIdentifier: kHomeWebtoonCellID)
+        let webtoonCell = UINib.init(nibName: kHomeGenreCellID, bundle: nil)
+        self.mainCollectionView.register(webtoonCell, forCellWithReuseIdentifier: kHomeGenreCellID)
         
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize.init(width: 116.0, height: 156.0)
+        layout.itemSize = CGSize.init(width: 108.0, height: 156.0)
         layout.minimumLineSpacing = 16.0
         layout.minimumInteritemSpacing = 0.0
         layout.headerReferenceSize = .zero
@@ -65,7 +65,7 @@ class HomeGenreListCell: UITableViewCell {
 
 extension HomeGenreListCell {
     
-    func bind(_ webtoonList: [WebtoonItem]) {
+    func bind(_ webtoonList: [Webtoon]) {
         self.webtoonList = webtoonList
         self.mainCollectionView.reloadData()
     }
@@ -85,7 +85,7 @@ extension HomeGenreListCell: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeWebtoonCellID, for: indexPath) as? HomeWebtoonCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeGenreCellID, for: indexPath) as? HomeGenreCell {
             let webtoonItem = self.webtoonList[indexPath.row]
             cell.bind(webtoonItem)
             

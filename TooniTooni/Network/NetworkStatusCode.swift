@@ -8,6 +8,6 @@
 import Foundation
 
 enum NetworkStatusCode: Int {
-  case unauthorized = 401
-  case forbidden = 403
+    case unauthorized = 401
+    case forbidden = 403
 }

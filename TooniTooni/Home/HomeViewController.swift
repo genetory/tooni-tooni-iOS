@@ -12,72 +12,60 @@ protocol HomeViewSectionTitle {
 }
 
 enum HomeViewType: Int, HomeViewSectionTitle {
-    case notice
-    case new
-    case webtoon
+    case banner
+    case weekday
     case popular
     case genre
-    case author
+    case binge
     
     var title: String? {
         switch self {
-        case .notice:
+        case .banner:
             return nil
-        case .new:
-            return nil
-        case .webtoon:
-            return "🔥불금 추천 웹툰🔥"
+        case .weekday:
+            return "불금 추천 투니"
         case .popular:
             return "인기 급상승 투니"
         case .genre:
-            return "장르별 TOP"
-        case .author:
-            return "작가 추천"
+            return "장르별 추천 투니"
+        case .binge:
+            return "정주행하기 좋은 투니"
         }
     }
     
-    static let count = 6
+    static let count = 5
 }
 
 class HomeViewController: BaseViewController {
 
     // MARK: - Vars
     
-    @IBOutlet weak var navigationView: GeneralNavigationView!
     @IBOutlet weak var mainTableView: UITableView!
-    
-    var popularList: [WebtoonItem] = []
-    var genreList: [WebtoonItem] = []
-    
+    @IBOutlet weak var activity: GeneralActivity!
+
+    var home: Home? {
+        didSet {
+            DispatchQueue.main.async {
+                self.stopActivity()
+                self.mainTableView.reloadData()
+            }
+        }
+    }
+
     // MARK: - Life Cycle
     
     func initVars() {
         self.showBigTitle = false
-
-        self.popularList = Array(GeneralHelper.sharedInstance.webtoonList[0..<4])
-        self.genreList = Array(GeneralHelper.sharedInstance.webtoonList[0..<3])
     }
     
     func initBackgroundView() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = kWHITE
     }
-    
-    func initNavigationView() {
-        self.navigationView.title("TOONITOONI")
-        self.navigationView.bigTitle(self.showBigTitle)
         
-        self.navigationView.rightButton.isHidden = false
-        self.navigationView.rightButton.setImage(UIImage.init(named: "icon_search"), for: .normal)
-        self.navigationView.rightButton.addTarget(self, action: #selector(doSearch), for: .touchUpInside)
-    }
-    
     func initTableView() {
         let headerView = UINib.init(nibName: kGeneralTitleHeaderViewID, bundle: nil)
         self.mainTableView.register(headerView, forHeaderFooterViewReuseIdentifier: kGeneralTitleHeaderViewID)
-        
-        let noticeCell = UINib.init(nibName: kHomeNoticeCellID, bundle: nil)
-        self.mainTableView.register(noticeCell, forCellReuseIdentifier: kHomeNoticeCellID)
-        
+                
         let newCell = UINib.init(nibName: kHomeNewListCellID, bundle: nil)
         self.mainTableView.register(newCell, forCellReuseIdentifier: kHomeNewListCellID)
         
@@ -87,16 +75,16 @@ class HomeViewController: BaseViewController {
         let popularCell = UINib.init(nibName: kHomePopularCellID, bundle: nil)
         self.mainTableView.register(popularCell, forCellReuseIdentifier: kHomePopularCellID)
         
-        let genreCell = UINib.init(nibName: kHomeGenreCellID, bundle: nil)
-        self.mainTableView.register(genreCell, forCellReuseIdentifier: kHomeGenreCellID)
+        let genreCell = UINib.init(nibName: kHomeGenreListCellID, bundle: nil)
+        self.mainTableView.register(genreCell, forCellReuseIdentifier: kHomeGenreListCellID)
         
-        let authorCell = UINib.init(nibName: kHomeAuthorListCellID, bundle: nil)
-        self.mainTableView.register(authorCell, forCellReuseIdentifier: kHomeAuthorListCellID)
-        
+        let driveCell = UINib.init(nibName: kHomeDriveCellID, bundle: nil)
+        self.mainTableView.register(driveCell, forCellReuseIdentifier: kHomeDriveCellID)
+                
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.separatorStyle = .none
-        self.mainTableView.backgroundColor = .white
+        self.mainTableView.backgroundColor = kWHITE
         self.mainTableView.rowHeight = UITableView.automaticDimension
         self.mainTableView.estimatedRowHeight = 200.0
         self.mainTableView.sectionHeaderHeight = UITableView.automaticDimension
@@ -110,8 +98,10 @@ class HomeViewController: BaseViewController {
     
         self.initVars()
         self.initBackgroundView()
-        self.initNavigationView()
         self.initTableView()
+        
+        self.startActivity()
+        self.fetchHome()
     }
 
 }
@@ -127,6 +117,25 @@ extension HomeViewController {
     
 }
 
+// MARK: - Home
+
+extension HomeViewController {
+    
+    func fetchHome() {        
+        TooniNetworkService.shared.request(to: .home, decoder: Home.self) { [unowned self] response in
+            switch response.result {
+            case .success:
+                guard let home = response.json as? Home else { return }
+                
+                self.home = home
+            case .failure:
+                print(response)
+            }
+        }
+    }
+
+}
+
 // MARK: - UITableView
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -136,14 +145,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == HomeViewType.popular.rawValue {
-            return self.popularList.count
+        if section == HomeViewType.weekday.rawValue,
+           let weekdayList = self.home?.weekdayList, weekdayList.count > 0 {
+            return 1
         }
-        else if section == HomeViewType.genre.rawValue {
-            return self.genreList.count
+        else if section == HomeViewType.popular.rawValue,
+           let trendingList = self.home?.trendingList, trendingList.count > 0 {
+            return trendingList.count
         }
-
-        return 1
+        else if section == HomeViewType.genre.rawValue,
+                let genreList = self.home?.genreList, genreList.count > 0 {
+            return 1
+        }
+        else if section == HomeViewType.binge.rawValue,
+                let bingeList = self.home?.bingeList, bingeList.count > 0 {
+            return bingeList.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -170,47 +189,37 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == HomeViewType.notice.rawValue,
-           let cell = tableView.dequeueReusableCell(withIdentifier: kHomeNoticeCellID, for: indexPath) as? HomeNoticeCell {
-            
-            return cell
-        }
-        else if indexPath.section == HomeViewType.new.rawValue,
-                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeNewListCellID, for: indexPath) as? HomeNewListCell {
-            let webtoonList = Array(GeneralHelper.sharedInstance.webtoonList[0...3])
-            cell.bind(webtoonList)
-            
-            return cell
-        }
-        else if indexPath.section == HomeViewType.webtoon.rawValue,
-                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeWebtoonListCellID, for: indexPath) as? HomeWebtoonListCell {
-            let webtoonList = Array(GeneralHelper.sharedInstance.webtoonList[0...5])
-            cell.bind(webtoonList)
+        if indexPath.section == HomeViewType.weekday.rawValue,
+           let weekdayList = self.home?.weekdayList, weekdayList.count > 0,
+           let cell = tableView.dequeueReusableCell(withIdentifier: kHomeWebtoonListCellID, for: indexPath) as? HomeWebtoonListCell {
+            cell.bind(weekdayList)
             
             return cell
         }
         else if indexPath.section == HomeViewType.popular.rawValue,
+                let trendingList = self.home?.trendingList, trendingList.count > 0,
                 let cell = tableView.dequeueReusableCell(withIdentifier: kHomePopularCellID, for: indexPath) as? HomePopularCell {
-            let webtoonItem = self.popularList[indexPath.row]
+            let webtoonItem = trendingList[indexPath.row]
             cell.bind(webtoonItem)
             
             return cell
         }
         else if indexPath.section == HomeViewType.genre.rawValue,
-                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeGenreCellID, for: indexPath) as? HomeGenreCell {
-            let webtoonItem = self.genreList[indexPath.row]
+                let genreList = self.home?.genreList, genreList.count > 0,
+                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeGenreListCellID, for: indexPath) as? HomeGenreListCell {
+            cell.bind(genreList)
+            
+            return cell
+        }
+        else if indexPath.section == HomeViewType.binge.rawValue,
+                let bingeList = self.home?.bingeList, bingeList.count > 0,
+                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeDriveCellID, for: indexPath) as? HomeDriveCell {
+            let webtoonItem = bingeList[indexPath.row]
             cell.bind(webtoonItem)
-            
-            return cell
-        }
-        else if indexPath.section == HomeViewType.author.rawValue,
-                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeAuthorListCellID, for: indexPath) as? HomeAuthorListCell {
-            let authorList = Array(GeneralHelper.sharedInstance.authorList[0..<5])
-            cell.bind(authorList)
-            
-            return cell
-        }
 
+            return cell
+        }
+        
         return .init()
     }
     
@@ -220,3 +229,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+// MARK: - Activity
+
+extension HomeViewController {
+    
+    func startActivity() {
+        if self.activity.isAnimating() { return }
+        self.activity.start()
+    }
+    
+    func stopActivity() {
+        if !self.activity.isAnimating() { return }
+        self.activity.stop()
+    }
+    
+}
+

@@ -10,40 +10,49 @@ import Moya
 import Alamofire
 
 enum TooniRouter {
-  case weekWebtoon(String)
+    case home
+    case weekWebtoon(String)
 }
 
 extension TooniRouter: TargetType {
-  var baseURL: URL {
-    return URL(string: "https://webtoon.chandol.net")!
-  }
-
-  var path: String {
-    switch self {
-    case let .weekWebtoon(day):
-      return "/weekday/\(day)"
+   
+    var baseURL: URL {
+        return URL(string: "https://webtoon.chandol.net/api/v1/")!
     }
-  }
-
-  var method: Alamofire.HTTPMethod {
-    switch self {
-    case .weekWebtoon:
-      return .get
+    
+    var path: String {
+        switch self {
+        case .home:
+            return "home"
+        case let .weekWebtoon(day):
+            return "webtoons/weekday/\(day)"
+        }
     }
-  }
-
-  var sampleData: Data {
-    return "".data(using: .utf8)!
-  }
-
-  var task: Task {
-    switch self {
-    case .weekWebtoon:
-      return .requestPlain
+    
+    var method: Alamofire.HTTPMethod {
+        switch self {
+        case .home:
+            return .get
+        case .weekWebtoon:
+            return .get
+        }
     }
-  }
-
-  var headers: [String : String]? {
-    return nil
-  }
+    
+    var sampleData: Data {
+        return "".data(using: .utf8)!
+    }
+    
+    var task: Task {
+        switch self {
+        case .home:
+            return .requestPlain
+        case .weekWebtoon:
+            return .requestPlain
+        }
+    }
+    
+    var headers: [String : String]? {
+        return nil
+    }
+    
 }

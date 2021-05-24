@@ -21,14 +21,16 @@ class GeneralGenreView: BaseCustomView {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .gray
-        self.baseView.layer.cornerRadius = 4.0
+        self.baseView.backgroundColor = kWHITE
+        self.baseView.layer.cornerRadius = 2.0
         self.baseView.clipsToBounds = true
+        self.baseView.layer.borderWidth = 1.0
+        self.baseView.layer.borderColor = kGRAY_90.cgColor
     }
     
     func initLabel() {
-        self.titleLabel.textColor = .white
-        self.titleLabel.font = UIFont.systemFont(ofSize: 10.0, weight: UIFont.Weight.regular)
+        self.titleLabel.textColor = kGRAY_90
+        self.titleLabel.font = kCAPTION2_REGULAR
         self.titleLabel.text = nil
     }
     
@@ -46,8 +48,8 @@ class GeneralGenreView: BaseCustomView {
 
 extension GeneralGenreView {
     
-    func bind(_ webtoonItem: WebtoonItem) {
-        self.titleLabel.text = webtoonItem.tags.first
+    func bind(_ webtoon: Webtoon) {
+        self.titleLabel.text = webtoon.genres?.first
     }
     
 }

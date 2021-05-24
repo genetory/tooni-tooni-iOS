@@ -14,7 +14,7 @@ class SplashViewController: BaseViewController {
     // MARK: - Life Cycle
     
     func initBackgroundView() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = kWHITE
     }
     
     override func viewDidLoad() {

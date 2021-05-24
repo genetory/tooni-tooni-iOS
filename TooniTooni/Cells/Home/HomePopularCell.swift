@@ -18,8 +18,7 @@ class HomePopularCell: UITableViewCell {
     @IBOutlet weak var badgeView: GeneralBadgeView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var tagLabel: UILabel!
-    @IBOutlet weak var heartButton: UIButton!
+    @IBOutlet weak var infoLabel: UILabel!
     
     // MARK: - Life Cycle
     
@@ -29,7 +28,7 @@ class HomePopularCell: UITableViewCell {
     
     func initBackgroundView() {
         self.backgroundView = UIView()
-        self.backgroundView?.backgroundColor = .white
+        self.backgroundView?.backgroundColor = kWHITE
         self.selectedBackgroundView = UIView()
         self.selectedBackgroundView?.backgroundColor = UIColor(white: 0.98, alpha: 1.0)
         
@@ -37,28 +36,29 @@ class HomePopularCell: UITableViewCell {
     }
     
     func initImageView() {
-        self.thumbImageView.layer.cornerRadius = 4.0
+        self.thumbImageView.layer.cornerRadius = 5.0
         self.thumbImageView.clipsToBounds = true
-        self.thumbImageView.backgroundColor = .lightGray
+        self.thumbImageView.backgroundColor = kGRAY_10
+        self.thumbImageView.contentMode = .scaleAspectFill
     }
     
     func initLabels() {
-        self.titleLabel.textColor = .darkGray
-        self.titleLabel.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.bold)
+        self.titleLabel.textColor = kGRAY_90
+        self.titleLabel.font = kBODY2_MEDIUM
         self.titleLabel.text = nil
         
-        self.authorLabel.textColor = .darkGray
-        self.authorLabel.font = UIFont.systemFont(ofSize: 12.0, weight: UIFont.Weight.regular)
+        self.authorLabel.textColor = kGRAY_50
+        self.authorLabel.font = kCAPTION2_REGULAR
         self.authorLabel.text = nil
         
-        self.tagLabel.textColor = .darkGray
-        self.tagLabel.font = UIFont.systemFont(ofSize: 10.0, weight: UIFont.Weight.regular)
-        self.tagLabel.text = nil
+        self.infoLabel.textColor = kGRAY_80
+        self.infoLabel.font = kCAPTION2_REGULAR
+        self.infoLabel.text = nil
     }
     
-    func initButton() {
-        self.heartButton.setImage(UIImage.init(named: "icon_heart"), for: .normal)
-        self.heartButton.addTarget(self, action: #selector(doHeart), for: .touchUpInside)
+    func initBadgeView() {
+        self.badgeView.layer.cornerRadius = 2.0
+        self.badgeView.clipsToBounds = true
     }
     
     override func awakeFromNib() {
@@ -68,18 +68,7 @@ class HomePopularCell: UITableViewCell {
         self.initBackgroundView()
         self.initImageView()
         self.initLabels()
-        self.initButton()
-    }
-    
-}
-
-// MARK: - Event
-
-extension HomePopularCell {
-    
-    @objc
-    func doHeart() {
-        
+        self.initBadgeView()
     }
     
 }
@@ -88,12 +77,20 @@ extension HomePopularCell {
 
 extension HomePopularCell {
     
-    func bind(_ webtoonItem: WebtoonItem) {
-        self.titleLabel.text = webtoonItem.title
-        self.authorLabel.text = webtoonItem.authors?.joined(separator: "/")
-        self.tagLabel.text = webtoonItem.tags?.joined(separator: " | ")
+    func bind(_ webtoon: Webtoon) {
+        self.titleLabel.text = webtoon.title
+        self.authorLabel.text = webtoon.authors?.compactMap({ $0.name }).joined(separator: " / ")
+        
+        if let image = webtoon.thumbnail {
+            self.thumbImageView.kf.setImage(with: URL.init(string: image),
+                                           placeholder: nil,
+                                           options: [.transition(.fade(0.25))], completionHandler: nil)
+        }
+        
+        let infoString = webtoon.genres?.joined(separator: " | ")
+        self.infoLabel.text = infoString
 
-        self.badgeView.bind(webtoonItem.type)
+        self.badgeView.bind(webtoon)
     }
     
 }

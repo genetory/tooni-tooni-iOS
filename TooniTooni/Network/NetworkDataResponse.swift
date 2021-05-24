@@ -8,12 +8,12 @@
 import Foundation
 
 enum NetworkResult {
-  case success,
-  failure
+    case success,
+         failure
 }
 
 struct NetworkDataResponse {
-  let json: Codable?
-  let result: NetworkResult
-  let error: NetworkError?
+    let json: Codable?
+    let result: NetworkResult
+    let error: NetworkError?
 }

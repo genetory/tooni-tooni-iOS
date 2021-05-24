@@ -21,14 +21,14 @@ class GeneralBadgeView: BaseCustomView {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .darkGray
+        self.baseView.backgroundColor = kCLEAR
         self.baseView.layer.cornerRadius = 2.0
         self.baseView.clipsToBounds = true
     }
     
     func initLabel() {
-        self.titleLabel.textColor = .lightGray
-        self.titleLabel.font = UIFont.systemFont(ofSize: 10.0, weight: UIFont.Weight.heavy)
+        self.titleLabel.textColor = kWHITE
+        self.titleLabel.font = UIFont.systemFont(ofSize: 11.0, weight: .bold)
         self.titleLabel.textAlignment = .center
         self.titleLabel.text = nil
     }
@@ -47,12 +47,18 @@ class GeneralBadgeView: BaseCustomView {
 
 extension GeneralBadgeView {
     
-    func bind(_ type: WebtoonType) {
-        switch type {
-        case .naver:
+    func bind(_ webtoon: Webtoon) {
+        if webtoon.site?.lowercased() == "naver" {
             self.titleLabel.text = "N"
-        case .daum:
+            self.baseView.backgroundColor = kNAVER_100
+        }
+        else if webtoon.site?.lowercased() == "daum" {
             self.titleLabel.text = "D"
+            self.baseView.backgroundColor = kDAUM_100
+        }
+        else if webtoon.site?.lowercased() == "kakao" {
+            self.titleLabel.text = "K"
+            self.baseView.backgroundColor = kKAKAO_100
         }
     }
     

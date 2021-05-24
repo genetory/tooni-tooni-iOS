@@ -16,7 +16,7 @@ class WeekViewController: BaseViewController {
     @IBOutlet weak var baseView: UIView!
     
     var pageVC: UIPageViewController!
-    var selectedIdx = 0
+    var selectedIdx = WeekMenuType.currentWeekday
 
     // MARK: - Life Cycle
     
@@ -25,7 +25,7 @@ class WeekViewController: BaseViewController {
     }
     
     func initBackgroundView() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = kWHITE
     }
     
     func initNavigationView() {
@@ -46,7 +46,7 @@ class WeekViewController: BaseViewController {
         self.pageVC = GeneralHelper.sharedInstance.makePageVC("Week", "WeekPageViewController")
         self.pageVC.delegate = self
         self.pageVC.dataSource = self
-        let startVC = self.viewControllerAtIndex(index: self.pageIdx)
+        let startVC = self.viewControllerAtIndex(index: self.selectedIdx)
         let viewControllers = [startVC]
         
         self.pageVC.setViewControllers(viewControllers, direction: .forward, animated: true, completion: nil)
