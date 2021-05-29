@@ -10,45 +10,57 @@
     </dependencies>
     <scenes>
         <!--Home View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="2jq-zm-ZQ0">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TooniTooni" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="HomeViewController" id="9TU-lw-Moc" customClass="HomeViewController" customModule="TooniTooni" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q6A-0j-ykM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="BO1-h6-gHr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="OFl-Pj-Fge">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HvD-vk-yLP" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQt-HT-olu" customClass="HomeHeaderView" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="368"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="368" id="Ymy-YK-UKB"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-SQ-Xf3" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
                                 <rect key="frame" x="187" y="428" width="40" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="3cu-ru-jjT"/>
-                                    <constraint firstAttribute="width" constant="40" id="qBb-Nd-6tT"/>
+                                    <constraint firstAttribute="height" constant="40" id="F2G-T0-22N"/>
+                                    <constraint firstAttribute="width" constant="40" id="aZx-Jv-Q7E"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="oOZ-gj-aFU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="BO1-h6-gHr" secondAttribute="bottom" id="TAe-aJ-3Vb"/>
-                            <constraint firstItem="HvD-vk-yLP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WUp-l9-zy0"/>
-                            <constraint firstItem="BO1-h6-gHr" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Xfo-bE-PID"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BO1-h6-gHr" secondAttribute="trailing" id="Zma-aQ-BGn"/>
-                            <constraint firstItem="HvD-vk-yLP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hEe-Sw-Ass"/>
-                            <constraint firstItem="BO1-h6-gHr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="w2n-NO-Ml5"/>
+                            <constraint firstItem="oOZ-gj-aFU" firstAttribute="trailing" secondItem="HQt-HT-olu" secondAttribute="trailing" id="8JA-Gw-Cgq"/>
+                            <constraint firstItem="OFl-Pj-Fge" firstAttribute="top" secondItem="oOZ-gj-aFU" secondAttribute="top" id="ICZ-qo-3MQ"/>
+                            <constraint firstAttribute="bottom" secondItem="OFl-Pj-Fge" secondAttribute="bottom" id="ire-Cq-dFW"/>
+                            <constraint firstItem="Le2-SQ-Xf3" firstAttribute="centerX" secondItem="q6A-0j-ykM" secondAttribute="centerX" id="jWL-Lc-QXU"/>
+                            <constraint firstItem="Le2-SQ-Xf3" firstAttribute="centerY" secondItem="q6A-0j-ykM" secondAttribute="centerY" id="qJu-fR-gff"/>
+                            <constraint firstItem="HQt-HT-olu" firstAttribute="leading" secondItem="oOZ-gj-aFU" secondAttribute="leading" id="rpN-uv-HEW"/>
+                            <constraint firstItem="OFl-Pj-Fge" firstAttribute="leading" secondItem="oOZ-gj-aFU" secondAttribute="leading" id="sAa-Jx-Fv3"/>
+                            <constraint firstItem="HQt-HT-olu" firstAttribute="top" secondItem="oOZ-gj-aFU" secondAttribute="top" id="sN5-wE-ccU"/>
+                            <constraint firstItem="oOZ-gj-aFU" firstAttribute="trailing" secondItem="OFl-Pj-Fge" secondAttribute="trailing" id="tKO-p5-w0j"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activity" destination="HvD-vk-yLP" id="fMT-x4-9k6"/>
-                        <outlet property="mainTableView" destination="BO1-h6-gHr" id="2SF-X3-OnW"/>
+                        <outlet property="activity" destination="Le2-SQ-Xf3" id="Vyc-0B-wef"/>
+                        <outlet property="headerView" destination="HQt-HT-olu" id="khS-dD-403"/>
+                        <outlet property="headerViewHeightConstraint" destination="Ymy-YK-UKB" id="Y5C-iL-bC6"/>
+                        <outlet property="mainTableView" destination="OFl-Pj-Fge" id="HGI-MD-Hj6"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="urL-fj-Gv3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="29"/>
+            <point key="canvasLocation" x="137.68115942028987" y="28.794642857142854"/>
         </scene>
     </scenes>
     <resources>

@@ -40,6 +40,8 @@ class HomeViewController: BaseViewController {
 
     // MARK: - Vars
     
+    @IBOutlet weak var headerView: HomeHeaderView!
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var activity: GeneralActivity!
 
@@ -47,6 +49,8 @@ class HomeViewController: BaseViewController {
         didSet {
             DispatchQueue.main.async {
                 self.stopActivity()
+                
+                self.headerView.bind(self.home?.topBanner)
                 self.mainTableView.reloadData()
             }
         }
@@ -89,7 +93,7 @@ class HomeViewController: BaseViewController {
         self.mainTableView.estimatedRowHeight = 200.0
         self.mainTableView.sectionHeaderHeight = UITableView.automaticDimension
         self.mainTableView.estimatedSectionHeaderHeight = 44.0
-        self.mainTableView.contentInset = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        self.mainTableView.contentInset = UIEdgeInsets.init(top: 368.0 - kDEVICE_TOP_AREA, left: 0.0, bottom: 0.0, right: 0.0)
         self.mainTableView.showsVerticalScrollIndicator = false
     }
     
@@ -121,7 +125,7 @@ extension HomeViewController {
 
 extension HomeViewController {
     
-    func fetchHome() {        
+    func fetchHome() {
         TooniNetworkService.shared.request(to: .home, decoder: Home.self) { [unowned self] response in
             switch response.result {
             case .success:
@@ -181,11 +185,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableView.automaticDimension
         }
         
-        return 0.01
+        return .leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
+        return .leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -226,6 +230,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+    }
+    
+}
+
+// MARK: - UIScrollView
+
+extension HomeViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = 368.0 + (-scrollView.contentOffset.y - self.mainTableView.contentInset.top)
+        
+        self.headerViewHeightConstraint.constant = offsetY
+        print("offsetY: \(offsetY)")
     }
     
 }

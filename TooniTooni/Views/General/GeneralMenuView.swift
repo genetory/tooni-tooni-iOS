@@ -1,70 +1,17 @@
 //
-//  WeekMenuView.swift
+//  GeneralMenuView.swift
 //  TooniTooni
 //
-//  Created by GENETORY on 2021/04/27.
+//  Created by GENETORY on 2021/05/29.
 //
 
 import UIKit
 
-enum WeekMenuType: Int, CaseIterable {
-    case mon
-    case tue
-    case wed
-    case thu
-    case fri
-    case sat
-    case sun
-    case completed
-    
-    var title: String {
-        switch self {
-        case .mon: return "월"
-        case .tue: return "화"
-        case .wed: return "수"
-        case .thu: return "목"
-        case .fri: return "금"
-        case .sat: return "토"
-        case .sun: return "일"
-        case .completed: return "완결"
-        }
-    }
-    
-    var short: String {
-        switch self {
-        case .mon: return "mon"
-        case .tue: return "tue"
-        case .wed: return "wed"
-        case .thu: return "thu"
-        case .fri: return "fri"
-        case .sat: return "sat"
-        case .sun: return "sun"
-        case .completed: return ""
-        }
-    }
-    
-    static var currentWeekday: Int {
-        let day = Calendar.current.component(.weekday, from: Date())
-        switch day {
-        case 1: return WeekMenuType(rawValue: 6)?.rawValue ?? 0
-        case 2: return WeekMenuType(rawValue: 0)?.rawValue ?? 0
-        case 3: return WeekMenuType(rawValue: 1)?.rawValue ?? 0
-        case 4: return WeekMenuType(rawValue: 2)?.rawValue ?? 0
-        case 5: return WeekMenuType(rawValue: 3)?.rawValue ?? 0
-        case 6: return WeekMenuType(rawValue: 4)?.rawValue ?? 0
-        case 7: return WeekMenuType(rawValue: 5)?.rawValue ?? 0
-        default: return 0
-        }
-    }
-
-    static let count = 8
+protocol GeneralMenuViewDelegate: AnyObject {
+    func didMenuGeneralMenuView(view: GeneralMenuView, idx: Int)
 }
 
-protocol WeekMenuViewDelegate: AnyObject {
-    func didMenuWeekMenuView(view: WeekMenuView, idx: Int)
-}
-
-class WeekMenuView: BaseCustomView {
+class GeneralMenuView: BaseCustomView {
     
     // MARK: - Vars
     
@@ -75,9 +22,9 @@ class WeekMenuView: BaseCustomView {
     @IBOutlet weak var selectedViewLeftConstraint: NSLayoutConstraint!
 
     var selectedIdx = 0
-    let cellWidth = (kDEVICE_WIDTH - 32.0) / CGFloat(WeekMenuType.count)
-    
-    weak var delegate: WeekMenuViewDelegate?
+    var titleList: [String]!
+
+    weak var delegate: GeneralMenuViewDelegate?
     
     // MARK: - Life Cycle
     
@@ -95,9 +42,8 @@ class WeekMenuView: BaseCustomView {
         
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize.init(width: self.cellWidth, height: 50.0)
         layout.minimumLineSpacing = 0.0
-        layout.minimumInteritemSpacing = 0.0
+        layout.minimumInteritemSpacing = 8.0
         layout.headerReferenceSize = .zero
         layout.footerReferenceSize = .zero
         layout.sectionInset = UIEdgeInsets.init(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
@@ -117,7 +63,7 @@ class WeekMenuView: BaseCustomView {
         self.selectedView.backgroundColor = kBLUE_100
         
         self.selectedViewLeftConstraint.constant = 16.0
-        self.selectedViewWidthConstraint.constant = self.cellWidth
+        self.selectedViewWidthConstraint.constant = 100.0
     }
     
     override func awakeFromNib() {
@@ -127,18 +73,18 @@ class WeekMenuView: BaseCustomView {
         self.initBackgroundView()
         self.initCollectionView()
         self.initSelectedView()
-        
-        self.refreshSelectedView(0, false)
     }
     
 }
 
 // MARK: - Bind
 
-extension WeekMenuView {
+extension GeneralMenuView {
     
-    func bind(_ selectedIdx: Int) {
+    func bind(_ selectedIdx: Int, _ titleList: [String]) {
         self.selectedIdx = selectedIdx
+        self.titleList = titleList
+        
         self.refreshSelectedView(selectedIdx, false)
         self.mainCollectionView.reloadData()
     }
@@ -152,14 +98,18 @@ extension WeekMenuView {
     
     func refreshSelectedView(_ idx: Int, _ animation: Bool = true) {
         var width: CGFloat = 24.0
-        if let title = WeekMenuType.init(rawValue: idx)?.title {
-        let size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold)])
-            width = size.width + 12.0
-        }
+        let title = self.titleList[idx]
+        let size = title.size(withAttributes: [NSAttributedString.Key.font: kBODY1_BOLD!])
+        width = size.width + 8.0
 
+        var leftPadding = 0.0
+        for title in self.titleList[0..<idx] {
+            leftPadding += Double(title.size(withAttributes: [NSAttributedString.Key.font: kBODY1_BOLD!]).width) + (Double(idx) * 16.0)
+        }
+        
         UIView.animate(withDuration: animation ? 0.25 : 0.0) {
             self.selectedViewWidthConstraint.constant = width
-            self.selectedViewLeftConstraint.constant = self.cellWidth * CGFloat(idx) + 16.0 + (self.cellWidth - width) / 2.0
+            self.selectedViewLeftConstraint.constant = CGFloat(leftPadding) + 16.0
             self.layoutIfNeeded()
         }
     }
@@ -168,19 +118,19 @@ extension WeekMenuView {
 
 // MARK: - UICollectionView
 
-extension WeekMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension GeneralMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return WeekMenuType.count
+        return self.titleList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kWeekMenuCellID, for: indexPath) as? WeekMenuCell {
-            let title = WeekMenuType.init(rawValue: indexPath.row)?.title
+            let title = self.titleList[indexPath.row]
             cell.bind(title)
             cell.selected(indexPath.row == self.selectedIdx ? true : false)
             
@@ -194,7 +144,17 @@ extension WeekMenuView: UICollectionViewDelegate, UICollectionViewDataSource, UI
         collectionView.deselectItem(at: indexPath, animated: true)
 
         self.move(indexPath.row)
-        self.delegate?.didMenuWeekMenuView(view: self, idx: indexPath.row)
+        self.delegate?.didMenuGeneralMenuView(view: self, idx: indexPath.row)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        var width: CGFloat = 24.0
+        let title = self.titleList[indexPath.row]
+        let size = title.size(withAttributes: [NSAttributedString.Key.font: kBODY1_BOLD!])
+        width = size.width + 8.0
+
+        return CGSize.init(width: width, height: 50.0)
     }
     
 }

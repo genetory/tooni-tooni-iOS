@@ -71,12 +71,12 @@ extension WeekListViewController {
     func fetchWeekWebtoons() {
         guard let short = WeekMenuType.init(rawValue: self.pageIdx)?.short else { return }
 
-        TooniNetworkService.shared.request(to: .weekWebtoon(short), decoder: WeekWebtoon.self) { [unowned self] response in
+        TooniNetworkService.shared.request(to: .weekWebtoon(short), decoder: WeekWebtoon.self) { [weak self] response in
             switch response.result {
             case .success:
                 guard let webtoons = (response.json as? WeekWebtoon)?.webtoons else { return }
                 
-                self.webtoonList = webtoons
+                self?.webtoonList = webtoons
             case .failure:
                 print(response)
             }
@@ -115,6 +115,10 @@ extension WeekListViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
+        guard let webtoonList = self.webtoonList else { return }
+
+        let webtoonItem = webtoonList[indexPath.row]
+        GeneralHelper.sharedInstance.addFavoriteWebtoon(webtoonItem)
     }
     
 }
