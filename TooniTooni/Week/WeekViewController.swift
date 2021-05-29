@@ -29,6 +29,8 @@ class WeekViewController: BaseViewController {
     }
     
     func initNavigationView() {
+        self.setInteractiveRecognizer()
+        
         self.navigationView.title("요일별 투니")
         self.navigationView.bigTitle(self.showBigTitle)
         

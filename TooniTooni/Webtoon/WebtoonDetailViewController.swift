@@ -9,8 +9,11 @@ import UIKit
 
 enum WebtoonDetailViewType: Int {
     case info
+    case score
+    case comments
+    case recommend
     
-    static let count = 1
+    static let count = 4
 }
 
 class WebtoonDetailViewController: BaseViewController {
@@ -43,8 +46,20 @@ class WebtoonDetailViewController: BaseViewController {
     }
 
     func initTableView() {
+        let headerView = UINib.init(nibName: kGeneralTitleHeaderViewID, bundle: nil)
+        self.mainTableView.register(headerView, forHeaderFooterViewReuseIdentifier: kGeneralTitleHeaderViewID)
+
         let infoCell = UINib.init(nibName: kWebtoonDetailInfoCellID, bundle: nil)
         self.mainTableView.register(infoCell, forCellReuseIdentifier: kWebtoonDetailInfoCellID)
+        
+        let scoreCell = UINib.init(nibName: kWebtoonDetailScoreCellID, bundle: nil)
+        self.mainTableView.register(scoreCell, forCellReuseIdentifier: kWebtoonDetailScoreCellID)
+
+        let commentCell = UINib.init(nibName: kWebtoonDetailCommentCellID, bundle: nil)
+        self.mainTableView.register(commentCell, forCellReuseIdentifier: kWebtoonDetailCommentCellID)
+
+        let recommendCell = UINib.init(nibName: kHomeWebtoonListCellID, bundle: nil)
+        self.mainTableView.register(recommendCell, forCellReuseIdentifier: kHomeWebtoonListCellID)
         
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
@@ -121,16 +136,57 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
         switch section {
         case WebtoonDetailViewType.info.rawValue:
             return 1
+        case WebtoonDetailViewType.score.rawValue:
+            return 1
+        case WebtoonDetailViewType.comments.rawValue:
+            return 5
+        case WebtoonDetailViewType.recommend.rawValue:
+            return 1
         default:
             return 0
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == WebtoonDetailViewType.comments.rawValue,
+           let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: kGeneralTitleHeaderViewID) as? GeneralTitleHeaderView {
+            headerView.bind("투니 베스트 댓글")
+            
+            return headerView
+        }
+        else if section == WebtoonDetailViewType.recommend.rawValue,
+           let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: kGeneralTitleHeaderViewID) as? GeneralTitleHeaderView {
+            headerView.bind("이런 투니는 어때요?")
+            
+            return headerView
+        }
+        
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == WebtoonDetailViewType.comments.rawValue ||
+            section == WebtoonDetailViewType.recommend.rawValue {
+            return UITableView.automaticDimension
+        }
+        
         return .leastNonzeroMagnitude
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == WebtoonDetailViewType.comments.rawValue {
+            let headerView = UIView()
+            return headerView
+        }
+        
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == WebtoonDetailViewType.comments.rawValue {
+            return 16.0
+        }
+        
         return .leastNonzeroMagnitude
     }
     
@@ -141,7 +197,23 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
             
             return cell
         }
-        
+        else if indexPath.section == WebtoonDetailViewType.score.rawValue,
+                let cell = tableView.dequeueReusableCell(withIdentifier: kWebtoonDetailScoreCellID, for: indexPath) as? WebtoonDetailScoreCell {
+            cell.bind(self.webtoonItem)
+            
+            return cell
+        }
+        else if indexPath.section == WebtoonDetailViewType.comments.rawValue,
+                let cell = tableView.dequeueReusableCell(withIdentifier: kWebtoonDetailCommentCellID, for: indexPath) as? WebtoonDetailCommentCell {
+            
+            return cell
+        }
+        else if indexPath.section == WebtoonDetailViewType.recommend.rawValue,
+                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeWebtoonListCellID, for: indexPath) as? HomeWebtoonListCell {
+            
+            return cell
+        }
+
         return .init()
     }
     

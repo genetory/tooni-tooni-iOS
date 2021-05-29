@@ -56,9 +56,9 @@ class HomePopularCell: UITableViewCell {
         self.infoLabel.font = kCAPTION2_REGULAR
         self.infoLabel.text = nil
         
-        self.infoLabel.textColor = kGRAY_80
-        self.infoLabel.font = kCAPTION2_BOLD
-        self.infoLabel.text = nil
+        self.scoreLabel.textColor = kGRAY_80
+        self.scoreLabel.font = kCAPTION2_BOLD
+        self.scoreLabel.text = nil
     }
     
     func initBadgeView() {

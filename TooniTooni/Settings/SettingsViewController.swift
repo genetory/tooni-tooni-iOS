@@ -20,6 +20,8 @@ class SettingsViewController: BaseViewController {
     }
     
     func initNavigationView() {
+        self.setInteractiveRecognizer()
+        
         self.navigationView.title(self.tabItem?.title)
         self.navigationView.bigTitle(self.showBigTitle)
     }

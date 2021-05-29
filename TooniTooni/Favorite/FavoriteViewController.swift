@@ -31,6 +31,8 @@ class FavoriteViewController: BaseViewController {
     }
     
     func initNavigationView() {
+        self.setInteractiveRecognizer()
+        
         self.navigationView.title("마이툰")
         self.navigationView.bigTitle(self.showBigTitle)
         

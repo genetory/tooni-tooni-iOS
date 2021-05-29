@@ -7,14 +7,22 @@
 
 import UIKit
 
+protocol HomeHeaderViewDelegate: AnyObject {
+    func didSearchHomeHeaderView(view: HomeHeaderView)
+}
+
 class HomeHeaderView: BaseCustomView {
     
     // MARK: - Vars
     
     @IBOutlet weak var baseView: UIView!
+    @IBOutlet weak var navigationView: GeneralNavigationView!
+    @IBOutlet weak var navigationViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
     var topBanner: [HomeBanner]?
+    
+    weak var delegate: HomeHeaderViewDelegate?
     
     // MARK: - Life Cycle
     
@@ -26,13 +34,24 @@ class HomeHeaderView: BaseCustomView {
         self.baseView.backgroundColor = kWHITE
     }
     
+    func initNavigationView() {        
+        self.navigationView.bgColor(kCLEAR)
+        self.navigationView.title(nil)
+        self.navigationView.bigTitle(false)
+        
+        self.navigationView.rightButton.isHidden = false
+        self.navigationView.rightButton.setImage(UIImage.init(named: "icon_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.navigationView.rightButton.tintColor = kWHITE
+        self.navigationView.rightButton.addTarget(self, action: #selector(doSearch), for: .touchUpInside)
+    }
+    
     func initCollectionView() {
         let noticeCell = UINib.init(nibName: kHomeNoticeCellID, bundle: nil)
         self.mainCollectionView.register(noticeCell, forCellWithReuseIdentifier: kHomeNoticeCellID)
         
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize.init(width: kDEVICE_WIDTH, height: 368.0)
+        layout.itemSize = CGSize.init(width: kDEVICE_WIDTH, height: self.frame.size.height)
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
         layout.headerReferenceSize = .zero
@@ -41,7 +60,7 @@ class HomeHeaderView: BaseCustomView {
         
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
-        self.mainCollectionView.backgroundColor = kWHITE
+        self.mainCollectionView.backgroundColor = kGRAY_90
         self.mainCollectionView.showsVerticalScrollIndicator = false
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         self.mainCollectionView.alwaysBounceHorizontal = true
@@ -55,7 +74,25 @@ class HomeHeaderView: BaseCustomView {
         
         self.initVars()
         self.initBackgroundView()
+        self.initNavigationView()
         self.initCollectionView()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.navigationViewTopConstraint.constant = kDEVICE_TOP_AREA
+    }
+    
+}
+
+// MARK: - Event
+
+extension HomeHeaderView {
+    
+    @objc
+    func doSearch() {
+        self.delegate?.didSearchHomeHeaderView(view: self)
     }
     
 }

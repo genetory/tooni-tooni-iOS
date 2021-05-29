@@ -15,6 +15,8 @@ class BaseViewController: UIViewController {
     var tabItem: TabItem?
     var pageIdx = 0
             
+    var popRecognizer: InteractivePopRecognizer?
+
     // MARK: - Life Cycle
         
     override func viewDidLoad() {
@@ -121,4 +123,43 @@ extension BaseViewController {
         self.showAlertWithTitle(vc: vc, title: nil, message: "준비중")
     }
     
+}
+
+// MARK: - Navigation
+
+extension BaseViewController {
+    
+    func setInteractiveRecognizer() {
+        guard let controller = navigationController else { return }
+        
+        self.popRecognizer = InteractivePopRecognizer(controller: controller)
+        controller.interactivePopGestureRecognizer?.delegate = self.popRecognizer
+    }
+
+}
+
+// MARK: - InteractivePopRecognizer
+
+class InteractivePopRecognizer: NSObject {
+    
+    var navigationController: UINavigationController
+    
+    init(controller: UINavigationController) {
+        self.navigationController = controller
+    }
+    
+}
+
+// MARK: - UIGestureRecognizer Delegate
+
+extension InteractivePopRecognizer: UIGestureRecognizerDelegate {
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController.viewControllers.count > 1
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+
 }

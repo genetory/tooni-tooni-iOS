@@ -36,16 +36,23 @@ enum HomeViewType: Int, HomeViewSectionTitle {
     static let count = 5
 }
 
+let kHOME_HEADER_HEIGHT: CGFloat =                           386.0
+
 class HomeViewController: BaseViewController {
 
     // MARK: - Vars
     
-    @IBOutlet weak var navigationView: GeneralNavigationView!
+    @IBOutlet weak var hideNavigationView: GeneralNavigationView!
+    @IBOutlet weak var hideNavigationViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var hideNavigationViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerView: HomeHeaderView!
+    @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var activity: GeneralActivity!
 
+    var showHideNavigationView = false
+    
     var home: Home? {
         didSet {
             DispatchQueue.main.async {
@@ -60,7 +67,7 @@ class HomeViewController: BaseViewController {
     // MARK: - Life Cycle
     
     func initVars() {
-        self.showBigTitle = true
+        self.showBigTitle = false
     }
     
     func initBackgroundView() {
@@ -68,14 +75,26 @@ class HomeViewController: BaseViewController {
     }
         
     func initNavigationView() {
-        self.navigationView.title("투니 홈")
-        self.navigationView.bigTitle(self.showBigTitle)
+        self.setInteractiveRecognizer()
+            
+        self.hideNavigationView.bgColor(kWHITE)
+        self.hideNavigationView.title("투니 홈")
+        self.hideNavigationView.bigTitle(self.showBigTitle)
         
-        self.navigationView.rightButton.isHidden = false
-        self.navigationView.rightButton.setImage(UIImage.init(named: "icon_search"), for: .normal)
-        self.navigationView.rightButton.addTarget(self, action: #selector(doSearch), for: .touchUpInside)
+        self.hideNavigationView.rightButton.isHidden = false
+        self.hideNavigationView.rightButton.setImage(UIImage.init(named: "icon_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.hideNavigationView.rightButton.tintColor = kGRAY_90
+        self.hideNavigationView.rightButton.addTarget(self, action: #selector(doSearch), for: .touchUpInside)
+        
+        self.hideNavigationViewHeightConstraint.constant = 44.0 + kDEVICE_TOP_AREA
+        self.hideNavigationViewTopConstraint.constant = -self.hideNavigationViewHeightConstraint.constant - kDEVICE_TOP_AREA
     }
 
+    func initHeaderView() {
+        self.view.layoutIfNeeded()
+        self.headerViewHeightConstraint.constant = kHOME_HEADER_HEIGHT
+    }
+    
     func initTableView() {
         let headerView = UINib.init(nibName: kGeneralTitleHeaderViewID, bundle: nil)
         self.mainTableView.register(headerView, forHeaderFooterViewReuseIdentifier: kGeneralTitleHeaderViewID)
@@ -103,8 +122,9 @@ class HomeViewController: BaseViewController {
         self.mainTableView.estimatedRowHeight = 200.0
         self.mainTableView.sectionHeaderHeight = UITableView.automaticDimension
         self.mainTableView.estimatedSectionHeaderHeight = 44.0
-        self.mainTableView.contentInset = UIEdgeInsets.init(top: 368.0 - kDEVICE_TOP_AREA, left: 0.0, bottom: 24.0, right: 0.0)
+        self.mainTableView.contentInset = UIEdgeInsets.init(top: kHOME_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0, left: 0.0, bottom: 24.0, right: 0.0)
         self.mainTableView.showsVerticalScrollIndicator = false
+        self.mainTableView.insetsContentViewsToSafeArea = false
     }
     
     override func viewDidLoad() {
@@ -113,10 +133,15 @@ class HomeViewController: BaseViewController {
         self.initVars()
         self.initBackgroundView()
         self.initNavigationView()
+        self.initHeaderView()
         self.initTableView()
         
         self.startActivity()
         self.fetchHome()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.showHideNavigationView ? .default : .lightContent
     }
 
 }
@@ -249,11 +274,38 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: UIScrollViewDelegate {
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
+            self.showHideNavigationView(true)
+        }
+        else{
+            self.showHideNavigationView(false)
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = 368.0 + (-scrollView.contentOffset.y - self.mainTableView.contentInset.top)
+        let offsetY = -scrollView.contentOffset.y + kDEVICE_TOP_AREA - kHOME_HEADER_HEIGHT
         
-        self.headerViewHeightConstraint.constant = offsetY
-        print("offsetY: \(offsetY)")
+        if offsetY >= -24.0 {
+            let height = kHOME_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0
+            scrollView.contentOffset.y = -height
+            
+            self.headerViewTopConstraint.constant = 0.0
+        }
+        else {
+            self.headerViewTopConstraint.constant = offsetY + 24.0
+        }
+    }
+    
+    func showHideNavigationView(_ show: Bool) {
+        self.showHideNavigationView = show
+        
+        UIView.animate(withDuration: 0.25) {
+            self.hideNavigationViewTopConstraint.constant = show ? 0.0 : -self.hideNavigationViewHeightConstraint.constant
+            
+            self.setNeedsStatusBarAppearanceUpdate()
+            self.view.layoutIfNeeded()
+        }
     }
     
 }

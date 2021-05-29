@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="baseView" destination="7N5-RF-nrW" id="pZd-1J-RO2"/>
                 <outlet property="mainCollectionView" destination="DLH-fe-rmK" id="cPN-1S-MX5"/>
+                <outlet property="navigationView" destination="n5V-NU-io9" id="NjQ-yC-o7M"/>
+                <outlet property="navigationViewTopConstraint" destination="IP6-Bs-IWr" id="p3L-g6-uqS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -33,12 +35,21 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5V-NU-io9" customClass="GeneralNavigationView" customModule="TooniTooni" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="wpN-m1-GGN"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="n5V-NU-io9" firstAttribute="top" secondItem="7N5-RF-nrW" secondAttribute="top" id="IP6-Bs-IWr"/>
                         <constraint firstAttribute="bottom" secondItem="DLH-fe-rmK" secondAttribute="bottom" id="JBR-yd-bXK"/>
                         <constraint firstItem="DLH-fe-rmK" firstAttribute="top" secondItem="7N5-RF-nrW" secondAttribute="top" id="OkM-VU-0qi"/>
                         <constraint firstItem="DLH-fe-rmK" firstAttribute="leading" secondItem="7N5-RF-nrW" secondAttribute="leading" id="ZYa-Oh-Qjp"/>
+                        <constraint firstAttribute="trailing" secondItem="n5V-NU-io9" secondAttribute="trailing" id="cBf-We-hsG"/>
+                        <constraint firstItem="n5V-NU-io9" firstAttribute="leading" secondItem="7N5-RF-nrW" secondAttribute="leading" id="hyu-Hn-8x7"/>
                         <constraint firstAttribute="trailing" secondItem="DLH-fe-rmK" secondAttribute="trailing" id="jgH-n1-QNc"/>
                     </constraints>
                 </view>
