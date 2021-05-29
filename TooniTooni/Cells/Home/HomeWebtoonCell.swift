@@ -82,9 +82,9 @@ extension HomeWebtoonCell {
 
         self.badgeView.bind(webtoon)
         
-        let infoString = "4.5 (197)"
-        self.infoLabel.attributedText = infoString.style(changeText: "(197)",
-                                                         font: kCAPTION3_REGULAR)
+        if let score = webtoon.score {
+            self.infoLabel.text = String.init(format: "%.1f", score)
+        }
     }
     
 }

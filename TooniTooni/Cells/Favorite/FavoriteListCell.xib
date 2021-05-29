@@ -40,13 +40,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqj-yj-06T">
-                                <rect key="frame" x="100" y="26.5" width="254" height="14.5"/>
+                                <rect key="frame" x="100" y="23.5" width="254" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLI-0Z-2W6">
-                                <rect key="frame" x="100" y="52" width="254" height="12"/>
+                                <rect key="frame" x="100" y="52" width="26.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,16 +57,23 @@
                                     <constraint firstAttribute="width" constant="44" id="XVu-r3-7gl"/>
                                 </constraints>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUI-YS-jeb">
+                                <rect key="frame" x="134.5" y="52" width="26.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Qrh-Oq-Ftd" firstAttribute="leading" secondItem="3wX-Fe-2tj" secondAttribute="leading" constant="4" id="3f1-LK-jc0"/>
                             <constraint firstItem="hqj-yj-06T" firstAttribute="leading" secondItem="3wX-Fe-2tj" secondAttribute="trailing" constant="12" id="5wm-0s-peq"/>
                             <constraint firstItem="qvn-GP-arg" firstAttribute="leading" secondItem="bY2-hU-NsH" secondAttribute="trailing" constant="8" id="6fy-XM-GUK"/>
+                            <constraint firstItem="DUI-YS-jeb" firstAttribute="leading" secondItem="BLI-0Z-2W6" secondAttribute="trailing" constant="8" id="73L-D2-w6T"/>
                             <constraint firstAttribute="height" constant="72" id="7ZT-er-U6M"/>
                             <constraint firstItem="bY2-hU-NsH" firstAttribute="leading" secondItem="3wX-Fe-2tj" secondAttribute="trailing" constant="12" id="E2P-Sc-y5N"/>
+                            <constraint firstItem="DUI-YS-jeb" firstAttribute="centerY" secondItem="BLI-0Z-2W6" secondAttribute="centerY" id="HcH-CN-6uj"/>
                             <constraint firstItem="qvn-GP-arg" firstAttribute="leading" secondItem="hqj-yj-06T" secondAttribute="trailing" constant="8" id="MaX-dd-ntS"/>
-                            <constraint firstItem="qvn-GP-arg" firstAttribute="leading" secondItem="BLI-0Z-2W6" secondAttribute="trailing" constant="8" id="MhS-bM-MHc"/>
                             <constraint firstItem="Qrh-Oq-Ftd" firstAttribute="bottom" secondItem="3wX-Fe-2tj" secondAttribute="bottom" constant="-4" id="NwU-8T-amh"/>
                             <constraint firstItem="BLI-0Z-2W6" firstAttribute="bottom" secondItem="3wX-Fe-2tj" secondAttribute="bottom" constant="-4" id="eUC-nG-by4"/>
                             <constraint firstItem="qvn-GP-arg" firstAttribute="top" secondItem="dWU-qm-khC" secondAttribute="top" id="fxO-t4-4yc"/>
@@ -74,7 +81,7 @@
                             <constraint firstItem="3wX-Fe-2tj" firstAttribute="top" secondItem="dWU-qm-khC" secondAttribute="top" constant="4" id="nC3-jY-GEo"/>
                             <constraint firstAttribute="bottom" secondItem="3wX-Fe-2tj" secondAttribute="bottom" constant="4" id="qEm-XD-0b6"/>
                             <constraint firstItem="bY2-hU-NsH" firstAttribute="top" secondItem="3wX-Fe-2tj" secondAttribute="top" id="sAY-Bh-N9E"/>
-                            <constraint firstItem="hqj-yj-06T" firstAttribute="top" secondItem="bY2-hU-NsH" secondAttribute="bottom" constant="3" id="uK8-Ah-OUN"/>
+                            <constraint firstItem="hqj-yj-06T" firstAttribute="top" secondItem="bY2-hU-NsH" secondAttribute="bottom" id="uK8-Ah-OUN"/>
                             <constraint firstItem="3wX-Fe-2tj" firstAttribute="leading" secondItem="dWU-qm-khC" secondAttribute="leading" constant="24" id="vzn-DM-bg4"/>
                             <constraint firstItem="BLI-0Z-2W6" firstAttribute="leading" secondItem="3wX-Fe-2tj" secondAttribute="trailing" constant="12" id="x2s-EI-a9b"/>
                             <constraint firstAttribute="trailing" secondItem="qvn-GP-arg" secondAttribute="trailing" constant="8" id="xU6-67-GAk"/>
@@ -94,6 +101,7 @@
                 <outlet property="baseView" destination="dWU-qm-khC" id="9wc-rE-ts7"/>
                 <outlet property="eventButton" destination="qvn-GP-arg" id="jHW-yy-9gF"/>
                 <outlet property="infoLabel" destination="BLI-0Z-2W6" id="22a-j5-Wse"/>
+                <outlet property="scoreLabel" destination="DUI-YS-jeb" id="xiS-J0-Mvr"/>
                 <outlet property="thumbImageView" destination="3wX-Fe-2tj" id="HwT-h3-0m7"/>
                 <outlet property="titleLabel" destination="bY2-hU-NsH" id="Duh-AQ-oMb"/>
             </connections>

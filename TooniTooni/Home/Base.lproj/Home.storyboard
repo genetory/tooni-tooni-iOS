@@ -28,9 +28,15 @@
                                     <constraint firstAttribute="height" constant="368" id="Ymy-YK-UKB"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4N-tK-EQB" customClass="GeneralNavigationView" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="eTH-Kh-PHv"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-SQ-Xf3" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
                                 <rect key="frame" x="187" y="428" width="40" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="F2G-T0-22N"/>
                                     <constraint firstAttribute="width" constant="40" id="aZx-Jv-Q7E"/>
@@ -40,8 +46,11 @@
                         <viewLayoutGuide key="safeArea" id="oOZ-gj-aFU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="f4N-tK-EQB" firstAttribute="top" secondItem="oOZ-gj-aFU" secondAttribute="top" id="4AQ-IA-2cc"/>
                             <constraint firstItem="oOZ-gj-aFU" firstAttribute="trailing" secondItem="HQt-HT-olu" secondAttribute="trailing" id="8JA-Gw-Cgq"/>
+                            <constraint firstItem="oOZ-gj-aFU" firstAttribute="trailing" secondItem="f4N-tK-EQB" secondAttribute="trailing" id="Fgq-JB-Y8M"/>
                             <constraint firstItem="OFl-Pj-Fge" firstAttribute="top" secondItem="oOZ-gj-aFU" secondAttribute="top" id="ICZ-qo-3MQ"/>
+                            <constraint firstItem="f4N-tK-EQB" firstAttribute="leading" secondItem="oOZ-gj-aFU" secondAttribute="leading" id="OTA-TX-XaD"/>
                             <constraint firstAttribute="bottom" secondItem="OFl-Pj-Fge" secondAttribute="bottom" id="ire-Cq-dFW"/>
                             <constraint firstItem="Le2-SQ-Xf3" firstAttribute="centerX" secondItem="q6A-0j-ykM" secondAttribute="centerX" id="jWL-Lc-QXU"/>
                             <constraint firstItem="Le2-SQ-Xf3" firstAttribute="centerY" secondItem="q6A-0j-ykM" secondAttribute="centerY" id="qJu-fR-gff"/>
@@ -56,6 +65,7 @@
                         <outlet property="headerView" destination="HQt-HT-olu" id="khS-dD-403"/>
                         <outlet property="headerViewHeightConstraint" destination="Ymy-YK-UKB" id="Y5C-iL-bC6"/>
                         <outlet property="mainTableView" destination="OFl-Pj-Fge" id="HGI-MD-Hj6"/>
+                        <outlet property="navigationView" destination="f4N-tK-EQB" id="FOY-3E-X5L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urL-fj-Gv3" sceneMemberID="firstResponder"/>

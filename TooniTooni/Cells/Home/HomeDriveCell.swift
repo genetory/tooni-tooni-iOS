@@ -46,13 +46,13 @@ class HomeDriveCell: UITableViewCell {
     }
     
     func initLabels() {
-        self.titleLabel.textColor = .black
-        self.titleLabel.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+        self.titleLabel.textColor = kGRAY_90
+        self.titleLabel.font = kBODY2_MEDIUM
         self.titleLabel.textAlignment = .center
         self.titleLabel.text = nil
         
         self.infoLabel.textColor = kWHITE
-        self.infoLabel.font = UIFont.systemFont(ofSize: 10.0, weight: .bold)
+        self.infoLabel.font = kCAPTION2_BOLD
         self.infoLabel.text = nil
     }
     
@@ -84,9 +84,10 @@ extension HomeDriveCell {
                                            options: [.transition(.fade(0.25))], completionHandler: nil)
         }
         
-        let infoString = webtoon.genres?.joined(separator: " | ")
-        self.infoLabel.text = infoString
-
+        if let score = webtoon.score {
+            self.infoLabel.text = String.init(format: "%.1f", score)
+        }
+        
         self.badgeView.bind(webtoon)
         self.genreView.bind(webtoon)
     }

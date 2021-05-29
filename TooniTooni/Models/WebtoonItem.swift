@@ -33,5 +33,7 @@ struct Webtoon: Codable {
     var genres: [String]?
     var score: Double?
     var isComplete: Bool?
+    var weekday: [String]?
+    var summary: String?
 }
 

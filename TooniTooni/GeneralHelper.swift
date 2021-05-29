@@ -145,18 +145,22 @@ extension GeneralHelper {
         let homeItem = TabItem.init(storyBoard: "Home",
                                     viewController: "HomeViewController",
                                     title: "홈",
+                                    iconImage: "icon_tab_0",
                                     type: .home)
         let weekdayItem = TabItem.init(storyBoard: "Week",
                                        viewController: "WeekViewController",
                                        title: "요일별",
+                                       iconImage: "icon_tab_1",
                                        type: .weekday)
         let favoriteItem = TabItem.init(storyBoard: "Favorite",
                                        viewController: "FavoriteViewController",
-                                       title: "즐겨찾기",
+                                       title: "마이툰",
+                                       iconImage: "icon_tab_2",
                                        type: .favorite)
         let settingsItem = TabItem.init(storyBoard: "Settings",
                                        viewController: "SettingsViewController",
-                                       title: "설정",
+                                       title: "더보기",
+                                       iconImage: "icon_tab_3",
                                        type: .settings)
 
         self.tabList = [homeItem, weekdayItem, favoriteItem, settingsItem]

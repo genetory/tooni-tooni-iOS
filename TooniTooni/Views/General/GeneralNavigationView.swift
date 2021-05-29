@@ -26,7 +26,7 @@ class GeneralNavigationView: BaseCustomView {
     }
     
     func initBackgroundView() {
-        self.baseView.backgroundColor = .clear
+        self.baseView.backgroundColor = kCLEAR
     }
     
     func initButtons() {
@@ -36,13 +36,13 @@ class GeneralNavigationView: BaseCustomView {
     }
     
     func initLabels() {
-        self.titleLabel.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.bold)
-        self.titleLabel.textColor = .black
-        self.titleLabel.textAlignment = .center
+        self.titleLabel.font = kBODY1_BOLD
+        self.titleLabel.textColor = kGRAY_90
+        self.titleLabel.textAlignment = .left
         self.titleLabel.text = nil
 
         self.bigTitleLabel.font = UIFont.systemFont(ofSize: 26.0, weight: UIFont.Weight.heavy)
-        self.bigTitleLabel.textColor = .black
+        self.bigTitleLabel.textColor = kGRAY_90
         self.bigTitleLabel.text = nil
     }
     

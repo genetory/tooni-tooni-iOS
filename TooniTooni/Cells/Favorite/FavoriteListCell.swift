@@ -23,6 +23,7 @@ class FavoriteListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var eventButton: UIButton!
     
     var type: FavoriteListViewType!
@@ -63,6 +64,10 @@ class FavoriteListCell: UITableViewCell {
         self.infoLabel.textColor = kGRAY_80
         self.infoLabel.font = kCAPTION2_REGULAR
         self.infoLabel.text = nil
+        
+        self.scoreLabel.textColor = kGRAY_80
+        self.scoreLabel.font = kCAPTION2_BOLD
+        self.scoreLabel.text = nil
     }
     
     func initBadgeView() {
@@ -120,6 +125,10 @@ extension FavoriteListCell {
         self.infoLabel.text = infoString
 
         self.badgeView.bind(webtoon)
+        
+        if let score = webtoon.score {
+            self.scoreLabel.text = String.init(format: "%.1f", score)
+        }
     }
     
 }

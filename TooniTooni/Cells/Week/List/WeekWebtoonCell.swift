@@ -79,11 +79,11 @@ extension WeekWebtoonCell {
                                            options: [.transition(.fade(0.25))], completionHandler: nil)
         }
         
-        self.badgeView.bind(webtoon)
+        if let score = webtoon.score {
+            self.infoLabel.text = String.init(format: "%.1f", score)
+        }
         
-        let infoString = "4.5 (197)"
-        self.infoLabel.attributedText = infoString.style(changeText: "(197)",
-                                                         font: kCAPTION3_REGULAR)
+        self.badgeView.bind(webtoon)
     }
     
 }

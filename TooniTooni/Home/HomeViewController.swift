@@ -40,6 +40,7 @@ class HomeViewController: BaseViewController {
 
     // MARK: - Vars
     
+    @IBOutlet weak var navigationView: GeneralNavigationView!
     @IBOutlet weak var headerView: HomeHeaderView!
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
@@ -59,13 +60,22 @@ class HomeViewController: BaseViewController {
     // MARK: - Life Cycle
     
     func initVars() {
-        self.showBigTitle = false
+        self.showBigTitle = true
     }
     
     func initBackgroundView() {
         self.view.backgroundColor = kWHITE
     }
         
+    func initNavigationView() {
+        self.navigationView.title("투니 홈")
+        self.navigationView.bigTitle(self.showBigTitle)
+        
+        self.navigationView.rightButton.isHidden = false
+        self.navigationView.rightButton.setImage(UIImage.init(named: "icon_search"), for: .normal)
+        self.navigationView.rightButton.addTarget(self, action: #selector(doSearch), for: .touchUpInside)
+    }
+
     func initTableView() {
         let headerView = UINib.init(nibName: kGeneralTitleHeaderViewID, bundle: nil)
         self.mainTableView.register(headerView, forHeaderFooterViewReuseIdentifier: kGeneralTitleHeaderViewID)
@@ -93,7 +103,7 @@ class HomeViewController: BaseViewController {
         self.mainTableView.estimatedRowHeight = 200.0
         self.mainTableView.sectionHeaderHeight = UITableView.automaticDimension
         self.mainTableView.estimatedSectionHeaderHeight = 44.0
-        self.mainTableView.contentInset = UIEdgeInsets.init(top: 368.0 - kDEVICE_TOP_AREA, left: 0.0, bottom: 0.0, right: 0.0)
+        self.mainTableView.contentInset = UIEdgeInsets.init(top: 368.0 - kDEVICE_TOP_AREA, left: 0.0, bottom: 24.0, right: 0.0)
         self.mainTableView.showsVerticalScrollIndicator = false
     }
     
@@ -102,6 +112,7 @@ class HomeViewController: BaseViewController {
     
         self.initVars()
         self.initBackgroundView()
+        self.initNavigationView()
         self.initTableView()
         
         self.startActivity()
@@ -126,12 +137,12 @@ extension HomeViewController {
 extension HomeViewController {
     
     func fetchHome() {
-        TooniNetworkService.shared.request(to: .home, decoder: Home.self) { [unowned self] response in
+        TooniNetworkService.shared.request(to: .home, decoder: Home.self) { [weak self] response in
             switch response.result {
             case .success:
                 guard let home = response.json as? Home else { return }
                 
-                self.home = home
+                self?.home = home
             case .failure:
                 print(response)
             }

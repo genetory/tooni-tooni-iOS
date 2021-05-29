@@ -39,14 +39,14 @@
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rX1-D8-TZ9" customClass="GeneralBadgeView" customModule="TooniTooni" customModuleProvider="target">
-                                        <rect key="frame" x="334" y="51" width="16" height="16"/>
+                                        <rect key="frame" x="334" y="53" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="MGJ-qu-UCf"/>
                                             <constraint firstAttribute="width" constant="16" id="zzn-uQ-oWP"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFS-0w-860">
-                                        <rect key="frame" x="16" y="48.5" width="42" height="21"/>
+                                        <rect key="frame" x="8" y="50.5" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -60,9 +60,9 @@
                                     <constraint firstItem="byG-wX-WGI" firstAttribute="top" secondItem="jka-J5-ItU" secondAttribute="top" id="QOn-tL-NRS"/>
                                     <constraint firstItem="byG-wX-WGI" firstAttribute="centerX" secondItem="jka-J5-ItU" secondAttribute="centerX" id="aEg-j7-g23"/>
                                     <constraint firstItem="2G8-Nx-63k" firstAttribute="leading" secondItem="jka-J5-ItU" secondAttribute="leading" id="hTe-tk-lAz"/>
-                                    <constraint firstAttribute="bottom" secondItem="rX1-D8-TZ9" secondAttribute="bottom" constant="8" id="hkH-56-9rc"/>
+                                    <constraint firstAttribute="bottom" secondItem="rX1-D8-TZ9" secondAttribute="bottom" constant="6" id="hkH-56-9rc"/>
                                     <constraint firstItem="2G8-Nx-63k" firstAttribute="top" secondItem="jka-J5-ItU" secondAttribute="top" id="mB0-y5-0b4"/>
-                                    <constraint firstItem="bFS-0w-860" firstAttribute="leading" secondItem="jka-J5-ItU" secondAttribute="leading" constant="16" id="rLM-Jh-edm"/>
+                                    <constraint firstItem="bFS-0w-860" firstAttribute="leading" secondItem="jka-J5-ItU" secondAttribute="leading" constant="8" id="rLM-Jh-edm"/>
                                     <constraint firstAttribute="trailing" secondItem="2G8-Nx-63k" secondAttribute="trailing" id="stY-KX-Ux5"/>
                                     <constraint firstAttribute="bottom" secondItem="2G8-Nx-63k" secondAttribute="bottom" id="x3t-qd-Pds"/>
                                     <constraint firstItem="bFS-0w-860" firstAttribute="centerY" secondItem="rX1-D8-TZ9" secondAttribute="centerY" id="xHF-13-6rf"/>

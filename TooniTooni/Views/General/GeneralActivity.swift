@@ -28,7 +28,7 @@ class GeneralActivity: BaseCustomView {
     }
     
     func initBaseView() {
-        self.baseView.backgroundColor = kWHITE
+        self.baseView.backgroundColor = kCLEAR
         self.baseView.layer.cornerRadius = 20.0
         self.baseView.clipsToBounds = true
     }

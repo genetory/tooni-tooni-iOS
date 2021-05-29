@@ -29,7 +29,7 @@ class WeekViewController: BaseViewController {
     }
     
     func initNavigationView() {
-        self.navigationView.title("TOONITOONI")
+        self.navigationView.title("요일별 투니")
         self.navigationView.bigTitle(self.showBigTitle)
         
         self.navigationView.rightButton.isHidden = false

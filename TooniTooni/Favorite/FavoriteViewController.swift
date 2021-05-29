@@ -23,7 +23,7 @@ class FavoriteViewController: BaseViewController {
     // MARK: - Life Cycle
     
     func initVars() {
-        self.showBigTitle = true
+        self.showBigTitle = false
     }
     
     func initBackgroundView() {
@@ -31,7 +31,7 @@ class FavoriteViewController: BaseViewController {
     }
     
     func initNavigationView() {
-        self.navigationView.title(nil)
+        self.navigationView.title("마이툰")
         self.navigationView.bigTitle(self.showBigTitle)
         
         self.navigationView.rightButton.isHidden = false

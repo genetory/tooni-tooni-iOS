@@ -24,7 +24,7 @@ class WeekListViewController: BaseViewController {
     }
 
     // MARK: - Life Cycle
-    
+        
     func initBackgroundView() {
         self.view.backgroundColor = kWHITE
     }
@@ -54,12 +54,14 @@ class WeekListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+
         self.initBackgroundView()
         self.initCollectionView()
         
-        self.startActivity()
-        self.fetchWeekWebtoons()
+        if self.webtoonList == nil {
+            self.startActivity()
+            self.fetchWeekWebtoons()
+        }
     }
     
 }
@@ -118,7 +120,17 @@ extension WeekListViewController: UICollectionViewDelegate, UICollectionViewData
         guard let webtoonList = self.webtoonList else { return }
 
         let webtoonItem = webtoonList[indexPath.row]
-        GeneralHelper.sharedInstance.addFavoriteWebtoon(webtoonItem)
+        self.openDetailVC(webtoonItem)
+    }
+    
+    func openDetailVC(_ webtoonItem: Webtoon) {
+        guard let vc = GeneralHelper.sharedInstance.makeVC("Webtoon", "WebtoonDetailViewController") as? WebtoonDetailViewController else {
+            return
+        }
+        
+        vc.webtoonItem = webtoonItem
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

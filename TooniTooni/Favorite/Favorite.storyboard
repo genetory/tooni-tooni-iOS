@@ -83,7 +83,6 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9b7-Dh-kLr" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
                                 <rect key="frame" x="187" y="428" width="40" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3Dj-Vc-qyy"/>
                                     <constraint firstAttribute="width" constant="40" id="Zkn-NS-552"/>

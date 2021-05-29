@@ -19,6 +19,7 @@ class HomePopularCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     // MARK: - Life Cycle
     
@@ -53,6 +54,10 @@ class HomePopularCell: UITableViewCell {
         
         self.infoLabel.textColor = kGRAY_80
         self.infoLabel.font = kCAPTION2_REGULAR
+        self.infoLabel.text = nil
+        
+        self.infoLabel.textColor = kGRAY_80
+        self.infoLabel.font = kCAPTION2_BOLD
         self.infoLabel.text = nil
     }
     
@@ -91,6 +96,10 @@ extension HomePopularCell {
         self.infoLabel.text = infoString
 
         self.badgeView.bind(webtoon)
+        
+        if let score = webtoon.score {
+            self.scoreLabel.text = String.init(format: "%.1f", score)
+        }
     }
     
 }

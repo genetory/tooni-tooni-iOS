@@ -11,6 +11,7 @@ import Alamofire
 
 enum TooniRouter {
     case home
+    case webtoonDetail(String)
     case weekWebtoon(String)
 }
 
@@ -24,6 +25,8 @@ extension TooniRouter: TargetType {
         switch self {
         case .home:
             return "home"
+        case .webtoonDetail:
+            return "webtoons/detail"
         case let .weekWebtoon(day):
             return "webtoons/weekday/\(day)"
         }
@@ -32,6 +35,8 @@ extension TooniRouter: TargetType {
     var method: Alamofire.HTTPMethod {
         switch self {
         case .home:
+            return .get
+        case .webtoonDetail:
             return .get
         case .weekWebtoon:
             return .get
@@ -46,6 +51,8 @@ extension TooniRouter: TargetType {
         switch self {
         case .home:
             return .requestPlain
+        case let .webtoonDetail(id):
+            return .requestParameters(parameters: ["id" : id], encoding: URLEncoding.queryString)
         case .weekWebtoon:
             return .requestPlain
         }
