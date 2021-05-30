@@ -153,7 +153,7 @@ extension WeekMenuView {
     func refreshSelectedView(_ idx: Int, _ animation: Bool = true) {
         var width: CGFloat = 24.0
         if let title = WeekMenuType.init(rawValue: idx)?.title {
-        let size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: UIFont.Weight.bold)])
+        let size = title.size(withAttributes: [NSAttributedString.Key.font: kBODY1_BOLD!])
             width = size.width + 12.0
         }
 

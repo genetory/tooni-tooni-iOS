@@ -115,6 +115,7 @@ extension FavoriteViewController: UIPageViewControllerDelegate, UIPageViewContro
         if let vc = GeneralHelper.sharedInstance.makeVC("Favorite", "FavoriteListViewController") as? FavoriteListViewController {
             vc.pageIdx = index
             vc.type = FavoriteListViewType.init(rawValue: index)!
+            vc.delegate = self
             
             return vc
         }
@@ -161,4 +162,24 @@ extension FavoriteViewController: UIPageViewControllerDelegate, UIPageViewContro
         return self.viewControllerAtIndex(index: index)
     }
         
+}
+
+// MARK: - FavoriteListViewController
+
+extension FavoriteViewController: FavoriteListViewControllerDelegate {
+    
+    func didWebtoonFavoriteListViewController(controller: FavoriteListViewController, webtoon: Webtoon) {
+        self.openDetailVC(webtoon)
+    }
+    
+    func openDetailVC(_ webtoonItem: Webtoon) {
+        guard let vc = GeneralHelper.sharedInstance.makeVC("Webtoon", "WebtoonDetailViewController") as? WebtoonDetailViewController else {
+            return
+        }
+        
+        vc.webtoonItem = webtoonItem
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

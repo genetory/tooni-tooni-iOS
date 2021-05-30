@@ -16,20 +16,30 @@ enum WebtoonDetailViewType: Int {
     static let count = 4
 }
 
+let kWEBTOON_DETAIL_HEADER_HEIGHT: CGFloat =                            252.0
+
 class WebtoonDetailViewController: BaseViewController {
     
     // MARK: - Vars
     
-    @IBOutlet weak var navigationView: GeneralNavigationView!
+    @IBOutlet weak var hideNavigationView: GeneralNavigationView!
+    @IBOutlet weak var hideNavigationViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var hideNavigationViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerView: WebtoonDetailHeaderView!
+    @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var activity: GeneralActivity!
 
+    var showHideNavigationView = false
+
     var webtoonItem: Webtoon!
+    var webtoonDetailItem: WebtoonDetail!
 
     // MARK: - Life Cycle
     
     func initVars() {
-        self.showBigTitle = true
+        self.showBigTitle = false
     }
     
     func initBackgroundView() {
@@ -37,14 +47,30 @@ class WebtoonDetailViewController: BaseViewController {
     }
     
     func initNavigationView() {
-        self.navigationView.title(nil)
-        self.navigationView.bigTitle(self.showBigTitle)
+        self.hideNavigationView.bgColor(kWHITE)
+        self.hideNavigationView.title(self.webtoonItem.title)
+        self.hideNavigationView.bigTitle(false)
+        self.hideNavigationView.leftButton(true)
+        self.hideNavigationView.alpha = 0.0
         
-        self.navigationView.leftButton.isHidden = false
-        self.navigationView.leftButton.setImage(UIImage.init(named: "icon_back"), for: .normal)
-        self.navigationView.leftButton.addTarget(self, action: #selector(doBack), for: .touchUpInside)
+        self.hideNavigationView.leftButton.isHidden = false
+        self.hideNavigationView.leftButton.setImage(UIImage.init(named: "icon_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.hideNavigationView.leftButton.tintColor = kGRAY_90
+        self.hideNavigationView.leftButton.addTarget(self, action: #selector(doBack), for: .touchUpInside)
+        
+        self.hideNavigationViewHeightConstraint.constant = 44.0 + kDEVICE_TOP_AREA
+        self.hideNavigationViewTopConstraint.constant = -self.hideNavigationViewHeightConstraint.constant - kDEVICE_TOP_AREA
     }
 
+    func initHeaderView() {
+        self.headerView.bind(self.webtoonItem)
+        self.headerView.delegate = self
+        self.headerView.alpha = 0.0
+        
+        self.view.layoutIfNeeded()
+        self.headerViewHeightConstraint.constant = kWEBTOON_DETAIL_HEADER_HEIGHT
+    }
+    
     func initTableView() {
         let headerView = UINib.init(nibName: kGeneralTitleHeaderViewID, bundle: nil)
         self.mainTableView.register(headerView, forHeaderFooterViewReuseIdentifier: kGeneralTitleHeaderViewID)
@@ -68,9 +94,12 @@ class WebtoonDetailViewController: BaseViewController {
         self.mainTableView.rowHeight = UITableView.automaticDimension
         self.mainTableView.estimatedRowHeight = 200.0
         self.mainTableView.sectionHeaderHeight = UITableView.automaticDimension
-        self.mainTableView.estimatedSectionHeaderHeight = 44.0
-        self.mainTableView.contentInset = UIEdgeInsets.init(top: 16.0, left: 0.0, bottom: 16.0, right: 0.0)
+        self.mainTableView.estimatedSectionHeaderHeight = 40.0
+        self.mainTableView.sectionFooterHeight = UITableView.automaticDimension
+        self.mainTableView.estimatedSectionFooterHeight = 16.0
+        self.mainTableView.contentInset = UIEdgeInsets.init(top: kWEBTOON_DETAIL_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0, left: 0.0, bottom: 16.0, right: 0.0)
         self.mainTableView.showsVerticalScrollIndicator = false
+        self.mainTableView.alpha = 0.0
     }
 
     override func viewDidLoad() {
@@ -79,12 +108,23 @@ class WebtoonDetailViewController: BaseViewController {
         self.initVars()
         self.initBackgroundView()
         self.initNavigationView()
+        self.initHeaderView()
         self.initTableView()
         
         self.startActivity()
         self.fetchWebtoonDetail()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.headerView.bind(self.webtoonItem)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.showHideNavigationView ? .default : .lightContent
+    }
+
 }
 
 // MARK: - Week Webtoon
@@ -94,17 +134,27 @@ extension WebtoonDetailViewController {
     func fetchWebtoonDetail() {
         guard let webtoonId = self.webtoonItem.id?.string else { return }
 
-        TooniNetworkService.shared.request(to: .webtoonDetail(webtoonId), decoder: Webtoon.self) { [weak self] response in
+        TooniNetworkService.shared.request(to: .webtoonDetail(webtoonId), decoder: WebtoonDetail.self) { [weak self] response in
             switch response.result {
             case .success:
-                guard let webtoon = (response.json as? Webtoon) else { return }
+                guard let webtoonDetail = (response.json as? WebtoonDetail) else { return }
                 
-                self?.webtoonItem = webtoon
+                self?.webtoonItem = webtoonDetail.webtoon
+                self?.webtoonDetailItem = webtoonDetail
                 
                 DispatchQueue.main.async {
                     self?.stopActivity()
                     self?.mainTableView.reloadData()
-                }
+                    
+                    self?.view.layoutIfNeeded()
+                    self?.mainTableView.setContentOffset(CGPoint.init(x: 0.0, y: -kWEBTOON_DETAIL_HEADER_HEIGHT + kDEVICE_TOP_AREA + 24.0), animated: false)
+                    
+                    UIView.animate(withDuration: 0.3) {
+                        self?.headerView.alpha = 1.0
+                        self?.mainTableView.alpha = 1.0
+                        self?.hideNavigationView.alpha = 1.0
+                    }
+                 }
             case .failure:
                 print(response)
             }
@@ -120,6 +170,16 @@ extension WebtoonDetailViewController {
     @objc
     func doBack() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+// MARK: - WebtoonDetailHeaderView
+
+extension WebtoonDetailViewController: WebtoonDetailHeaderViewDelegate {
+    
+    func didBackWebtoonDetailHeaderView(view: WebtoonDetailHeaderView) {
+        self.doBack()
     }
     
 }
@@ -194,6 +254,7 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
         if indexPath.section == WebtoonDetailViewType.info.rawValue,
            let cell = tableView.dequeueReusableCell(withIdentifier: kWebtoonDetailInfoCellID, for: indexPath) as? WebtoonDetailInfoCell {
             cell.bind(self.webtoonItem)
+            cell.delegate = self
             
             return cell
         }
@@ -224,6 +285,61 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
     
 }
 
+// MARK: - WebtoonDetailInfoCell
+
+extension WebtoonDetailViewController: WebtoonDetailInfoCellDelegate {
+    
+    func didFavoriteWebtoonDetailInfoCell(cell: WebtoonDetailInfoCell) {
+        GeneralHelper.sharedInstance.doVibrate()
+        
+        if GeneralHelper.sharedInstance.existFavorite(self.webtoonItem) {
+            GeneralHelper.sharedInstance.removeFavoriteWebtoon(self.webtoonItem)
+        }
+        else {
+            GeneralHelper.sharedInstance.addFavoriteWebtoon(self.webtoonItem)
+        }
+        
+        self.mainTableView.reloadRows(at: [IndexPath.init(row: WebtoonDetailViewType.info.rawValue, section: 0)], with: .none)
+    }
+    
+}
+
+// MARK: - UIScrollView
+
+extension WebtoonDetailViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = -scrollView.contentOffset.y + kDEVICE_TOP_AREA - kWEBTOON_DETAIL_HEADER_HEIGHT
+        let zeroOffsetY = offsetY + 24.0
+        let topMargin = kWEBTOON_DETAIL_HEADER_HEIGHT - self.hideNavigationViewHeightConstraint.constant - 50
+        
+        self.hideNavigationViewTopConstraint.constant = -self.hideNavigationViewHeightConstraint.constant - zeroOffsetY
+        if zeroOffsetY <= -self.hideNavigationViewHeightConstraint.constant {
+            self.hideNavigationViewTopConstraint.constant = 0.0
+        }
+                        
+        if offsetY >= -24.0 {
+            let height = kWEBTOON_DETAIL_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0
+            scrollView.contentOffset.y = -height
+
+            self.headerViewTopConstraint.constant = 0.0
+            
+            self.showHideNavigationView = false
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+        else if zeroOffsetY <= -topMargin {
+            self.headerViewTopConstraint.constant = -topMargin
+            
+            self.showHideNavigationView = true
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+        else {
+            self.headerViewTopConstraint.constant = offsetY + 24.0
+        }
+    }
+
+}
+
 // MARK: - Activity
 
 extension WebtoonDetailViewController {
@@ -239,3 +355,4 @@ extension WebtoonDetailViewController {
     }
     
 }
+

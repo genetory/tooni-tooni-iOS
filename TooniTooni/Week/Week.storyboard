@@ -110,6 +110,7 @@
                     <connections>
                         <outlet property="activity" destination="wBw-BG-HRD" id="5Oo-zv-UJb"/>
                         <outlet property="mainCollectionView" destination="jDt-Ud-dA3" id="BW9-u6-opo"/>
+                        <outlet property="mainCollectionViewTopConstraint" destination="AIL-P2-DyX" id="6fN-UO-mIS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6D-Ga-bwM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

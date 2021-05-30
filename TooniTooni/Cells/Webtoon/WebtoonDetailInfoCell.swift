@@ -9,6 +9,10 @@ import UIKit
 
 let kWebtoonDetailInfoCellID =                                      "WebtoonDetailInfoCell"
 
+protocol WebtoonDetailInfoCellDelegate: AnyObject {
+    func didFavoriteWebtoonDetailInfoCell(cell: WebtoonDetailInfoCell)
+}
+
 class WebtoonDetailInfoCell: UITableViewCell {
     
     // MARK: - Vars
@@ -20,6 +24,8 @@ class WebtoonDetailInfoCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var genreView: GeneralGenreListView!
     @IBOutlet weak var genreViewHeightConstraint: NSLayoutConstraint!
+    
+    weak var delegate: WebtoonDetailInfoCellDelegate?
     
     // MARK: - Life Cycle
     
@@ -74,7 +80,7 @@ extension WebtoonDetailInfoCell {
     
     @objc
     func doFavorite() {
-        
+        self.delegate?.didFavoriteWebtoonDetailInfoCell(cell: self)
     }
     
 }
@@ -90,7 +96,7 @@ extension WebtoonDetailInfoCell {
         }
         
         self.authorLabel.text = webtoon.authors?.compactMap({ $0.name }).joined(separator: " / ")
-        
+        print("webtoon.authors: \(webtoon.authors)")
         if let desc = webtoon.summary {
             self.descLabel.attributedText = desc.style(changeText: desc,
                                                        lineSpacing: 3.0)
@@ -99,6 +105,13 @@ extension WebtoonDetailInfoCell {
         if let genre = webtoon.genres, genre.count > 0 {
             self.genreView.bind(webtoon)
             self.genreViewHeightConstraint.constant = 60.0
+        }
+        
+        if GeneralHelper.sharedInstance.existFavorite(webtoon) {
+            self.favoriteButton.setImage(UIImage.init(named: "icon_favorite"), for: .normal)
+        }
+        else {
+            self.favoriteButton.setImage(UIImage.init(named: "icon_heart"), for: .normal)
         }
     }
     

@@ -9,43 +9,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GeneralCloverView" customModule="TooniTooni" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GeneralConeView" customModule="TooniTooni" customModuleProvider="target">
             <connections>
-                <outlet property="baseView" destination="Tee-7f-hkA" id="AFi-kf-S5x"/>
-                <outlet property="thumbImageView" destination="KV6-jP-TgF" id="bx7-wC-Jmg"/>
+                <outlet property="baseView" destination="AkE-lH-spN" id="yG3-1v-Ts1"/>
+                <outlet property="thumbImageView" destination="yKF-Zz-Y7L" id="28j-K5-SfI"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="pcm-Pg-BVA">
             <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tee-7f-hkA">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkE-lH-spN">
                     <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KV6-jP-TgF">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yKF-Zz-Y7L">
                             <rect key="frame" x="0.0" y="0.0" width="220" height="220"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="KV6-jP-TgF" secondAttribute="bottom" id="1xs-Mf-etd"/>
-                        <constraint firstItem="KV6-jP-TgF" firstAttribute="leading" secondItem="Tee-7f-hkA" secondAttribute="leading" id="HV9-a9-aS4"/>
-                        <constraint firstItem="KV6-jP-TgF" firstAttribute="top" secondItem="Tee-7f-hkA" secondAttribute="top" id="JrK-Tn-ANE"/>
-                        <constraint firstAttribute="trailing" secondItem="KV6-jP-TgF" secondAttribute="trailing" id="jH9-ok-7Op"/>
+                        <constraint firstItem="yKF-Zz-Y7L" firstAttribute="leading" secondItem="AkE-lH-spN" secondAttribute="leading" id="8AL-Bw-80x"/>
+                        <constraint firstAttribute="trailing" secondItem="yKF-Zz-Y7L" secondAttribute="trailing" id="Cdq-bo-3ea"/>
+                        <constraint firstAttribute="bottom" secondItem="yKF-Zz-Y7L" secondAttribute="bottom" id="IUc-n0-IvQ"/>
+                        <constraint firstItem="yKF-Zz-Y7L" firstAttribute="top" secondItem="AkE-lH-spN" secondAttribute="top" id="V8W-Ev-OSJ"/>
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="m2s-9L-HA4"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Tee-7f-hkA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FNn-Os-1K1"/>
-                <constraint firstItem="Tee-7f-hkA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="G4M-Z9-xFH"/>
-                <constraint firstAttribute="trailing" secondItem="Tee-7f-hkA" secondAttribute="trailing" id="RgU-Fi-zcn"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Tee-7f-hkA" secondAttribute="bottom" id="eRO-TX-eZA"/>
+                <constraint firstAttribute="trailing" secondItem="AkE-lH-spN" secondAttribute="trailing" id="7EO-98-K7z"/>
+                <constraint firstItem="m2s-9L-HA4" firstAttribute="bottom" secondItem="AkE-lH-spN" secondAttribute="bottom" id="GJ3-pg-QAv"/>
+                <constraint firstItem="AkE-lH-spN" firstAttribute="top" secondItem="m2s-9L-HA4" secondAttribute="top" id="GXF-8a-FsT"/>
+                <constraint firstItem="AkE-lH-spN" firstAttribute="leading" secondItem="pcm-Pg-BVA" secondAttribute="leading" id="ede-Ch-e2T"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="139" y="106"/>
+            <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
         </view>
     </objects>
     <resources>

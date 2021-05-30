@@ -122,6 +122,11 @@
 		19EA903C2662A78C00F280A2 /* WebtoonDetailCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EA903B2662A78C00F280A2 /* WebtoonDetailCommentCell.swift */; };
 		19EA903E2662A79500F280A2 /* WebtoonDetailCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19EA903D2662A79500F280A2 /* WebtoonDetailCommentCell.xib */; };
 		19EA90402662AA4C00F280A2 /* CommentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EA903F2662AA4C00F280A2 /* CommentItem.swift */; };
+		19EA90432663417C00F280A2 /* WebtoonDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EA90422663417C00F280A2 /* WebtoonDetailHeaderView.swift */; };
+		19EA90452663418300F280A2 /* WebtoonDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19EA90442663418300F280A2 /* WebtoonDetailHeaderView.xib */; };
+		19EA904726634B1E00F280A2 /* GeneralConeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EA904626634B1E00F280A2 /* GeneralConeView.swift */; };
+		19EA904926634B2400F280A2 /* GeneralConeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19EA904826634B2400F280A2 /* GeneralConeView.xib */; };
+		19EA904B2663AB6C00F280A2 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EA904A2663AB6C00F280A2 /* CGFloatExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -239,6 +244,11 @@
 		19EA903B2662A78C00F280A2 /* WebtoonDetailCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebtoonDetailCommentCell.swift; sourceTree = "<group>"; };
 		19EA903D2662A79500F280A2 /* WebtoonDetailCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebtoonDetailCommentCell.xib; sourceTree = "<group>"; };
 		19EA903F2662AA4C00F280A2 /* CommentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItem.swift; sourceTree = "<group>"; };
+		19EA90422663417C00F280A2 /* WebtoonDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebtoonDetailHeaderView.swift; sourceTree = "<group>"; };
+		19EA90442663418300F280A2 /* WebtoonDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebtoonDetailHeaderView.xib; sourceTree = "<group>"; };
+		19EA904626634B1E00F280A2 /* GeneralConeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralConeView.swift; sourceTree = "<group>"; };
+		19EA904826634B2400F280A2 /* GeneralConeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralConeView.xib; sourceTree = "<group>"; };
+		19EA904A2663AB6C00F280A2 /* CGFloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
 		DCB1D1CF57D86EDE346198F6 /* Pods_TooniTooni.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TooniTooni.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -268,6 +278,7 @@
 		194D7A412625462B00BEEF1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				19EA90412663417100F280A2 /* Webtoon */,
 				19EA900226620C7F00F280A2 /* Home */,
 				19BFA52B2637B61100C6B82E /* Week */,
 				194D7A422625462F00BEEF1C /* General */,
@@ -294,6 +305,8 @@
 				19EA900926620E1000F280A2 /* GeneralMenuView.xib */,
 				19EA90372662963800F280A2 /* GeneralCloverView.swift */,
 				19EA90392662969E00F280A2 /* GeneralCloverView.xib */,
+				19EA904626634B1E00F280A2 /* GeneralConeView.swift */,
+				19EA904826634B2400F280A2 /* GeneralConeView.xib */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -371,6 +384,7 @@
 				19EA90292662413100F280A2 /* IntExtensions.swift */,
 				19B1B492262426800016F195 /* ImageExtensions.swift */,
 				19CA5FAE264F625E00A5DC76 /* StringExtensions.swift */,
+				19EA904A2663AB6C00F280A2 /* CGFloatExtensions.swift */,
 				19CA7123265B6A340095BE24 /* ColorExtensions.swift */,
 				19CA7125265B6A5A0095BE24 /* DataExtensions.swift */,
 				19CA7127265B6A770095BE24 /* ViewExtensions.swift */,
@@ -609,6 +623,15 @@
 			path = Webtoon;
 			sourceTree = "<group>";
 		};
+		19EA90412663417100F280A2 /* Webtoon */ = {
+			isa = PBXGroup;
+			children = (
+				19EA90422663417C00F280A2 /* WebtoonDetailHeaderView.swift */,
+				19EA90442663418300F280A2 /* WebtoonDetailHeaderView.xib */,
+			);
+			path = Webtoon;
+			sourceTree = "<group>";
+		};
 		C13235123DB2C5C93B6A4429 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +728,7 @@
 				19EA900A26620E1000F280A2 /* GeneralMenuView.xib in Resources */,
 				19BFA58A26380A3400C6B82E /* HomePopularCell.xib in Resources */,
 				19BFA5312637B62300C6B82E /* WeekMenuView.xib in Resources */,
+				19EA90452663418300F280A2 /* WebtoonDetailHeaderView.xib in Resources */,
 				19CA7151265B707F0095BE24 /* GeneralActivity.xib in Resources */,
 				19EA900526620C8600F280A2 /* HomeHeaderView.xib in Resources */,
 				194D7A462625464300BEEF1C /* GeneralNavigationView.xib in Resources */,
@@ -714,6 +738,7 @@
 				19B1B471262425760016F195 /* Home.storyboard in Resources */,
 				19EA903E2662A79500F280A2 /* WebtoonDetailCommentCell.xib in Resources */,
 				19EA90302662461600F280A2 /* GeneralGenreCell.xib in Resources */,
+				19EA904926634B2400F280A2 /* GeneralConeView.xib in Resources */,
 				19B1B4A6262428770016F195 /* Settings.storyboard in Resources */,
 				19BFA59C2638163700C6B82E /* HomeAuthorListCell.xib in Resources */,
 				19BFA53D2637CAD300C6B82E /* WeekMenuCell.xib in Resources */,
@@ -739,9 +764,11 @@
 			files = (
 				19EA902A2662413100F280A2 /* IntExtensions.swift in Sources */,
 				19B1B484262425A20016F195 /* BaseCustomView.swift in Sources */,
+				19EA904B2663AB6C00F280A2 /* CGFloatExtensions.swift in Sources */,
 				19B1B46E262425760016F195 /* HomeViewController.swift in Sources */,
 				19CA7150265B707F0095BE24 /* GeneralActivity.swift in Sources */,
 				19EA903426624D5900F280A2 /* WebtoonDetailScoreCell.swift in Sources */,
+				19EA904726634B1E00F280A2 /* GeneralConeView.swift in Sources */,
 				19EA900826620E0B00F280A2 /* GeneralMenuView.swift in Sources */,
 				19CA7147265B6DC00095BE24 /* ErrorModel.swift in Sources */,
 				19EA90182662248800F280A2 /* FavoriteItem.swift in Sources */,
@@ -784,6 +811,7 @@
 				19EA90322662461D00F280A2 /* GeneralGenreCell.swift in Sources */,
 				19BFA56F2637FF2200C6B82E /* HomeNewCell.swift in Sources */,
 				19CA7146265B6DC00095BE24 /* CommonResponse.swift in Sources */,
+				19EA90432663417C00F280A2 /* WebtoonDetailHeaderView.swift in Sources */,
 				19CA5FA9264F59DF00A5DC76 /* Colors.swift in Sources */,
 				19EA9014266220FE00F280A2 /* FavoriteListCell.swift in Sources */,
 				19CA714A265B6DC50095BE24 /* TooniRouter.swift in Sources */,

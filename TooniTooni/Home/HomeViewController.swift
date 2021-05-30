@@ -60,6 +60,12 @@ class HomeViewController: BaseViewController {
                 
                 self.headerView.bind(self.home?.topBanner)
                 self.mainTableView.reloadData()
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.headerView.alpha = 1.0
+                    self.mainTableView.alpha = 1.0
+                    self.hideNavigationView.alpha = 1.0
+                }
             }
         }
     }
@@ -80,6 +86,7 @@ class HomeViewController: BaseViewController {
         self.hideNavigationView.bgColor(kWHITE)
         self.hideNavigationView.title("투니 홈")
         self.hideNavigationView.bigTitle(self.showBigTitle)
+        self.hideNavigationView.alpha = 0.0
         
         self.hideNavigationView.rightButton.isHidden = false
         self.hideNavigationView.rightButton.setImage(UIImage.init(named: "icon_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -93,6 +100,9 @@ class HomeViewController: BaseViewController {
     func initHeaderView() {
         self.view.layoutIfNeeded()
         self.headerViewHeightConstraint.constant = kHOME_HEADER_HEIGHT
+        
+        self.headerView.delegate = self
+        self.headerView.alpha = 0.0
     }
     
     func initTableView() {
@@ -125,6 +135,7 @@ class HomeViewController: BaseViewController {
         self.mainTableView.contentInset = UIEdgeInsets.init(top: kHOME_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0, left: 0.0, bottom: 24.0, right: 0.0)
         self.mainTableView.showsVerticalScrollIndicator = false
         self.mainTableView.insetsContentViewsToSafeArea = false
+        self.mainTableView.alpha = 0.0
     }
     
     override func viewDidLoad() {
@@ -140,6 +151,12 @@ class HomeViewController: BaseViewController {
         self.fetchHome()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.headerView.bind(self.home?.topBanner)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.showHideNavigationView ? .default : .lightContent
     }
@@ -153,6 +170,16 @@ extension HomeViewController {
     @objc
     func doSearch() {
         self.showReadyAlert(vc: self)
+    }
+    
+    func openDetailVC(_ webtoonItem: Webtoon) {
+        guard let vc = GeneralHelper.sharedInstance.makeVC("Webtoon", "WebtoonDetailViewController") as? WebtoonDetailViewController else {
+            return
+        }
+        
+        vc.webtoonItem = webtoonItem
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -233,6 +260,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
            let weekdayList = self.home?.weekdayList, weekdayList.count > 0,
            let cell = tableView.dequeueReusableCell(withIdentifier: kHomeWebtoonListCellID, for: indexPath) as? HomeWebtoonListCell {
             cell.bind(weekdayList)
+            cell.delegate = self
             
             return cell
         }
@@ -248,6 +276,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 let genreList = self.home?.genreList, genreList.count > 0,
                 let cell = tableView.dequeueReusableCell(withIdentifier: kHomeGenreListCellID, for: indexPath) as? HomeGenreListCell {
             cell.bind(genreList)
+            cell.delegate = self
             
             return cell
         }
@@ -266,6 +295,50 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if indexPath.section == HomeViewType.popular.rawValue,
+           let trendingList = self.home?.trendingList, trendingList.count > 0 {
+            let webtoon = trendingList[indexPath.row]
+            self.openDetailVC(webtoon)
+        }
+        else if indexPath.section == HomeViewType.binge.rawValue,
+                let bingeList = self.home?.bingeList, bingeList.count > 0 {
+            let webtoon = bingeList[indexPath.row]
+            self.openDetailVC(webtoon)
+        }
+    }
+    
+}
+
+// MARK: - HomeHeaderView
+
+extension HomeViewController: HomeHeaderViewDelegate {
+    
+    func didWebtoonHomeHeaderView(view: HomeHeaderView, webtoon: Webtoon) {
+        self.openDetailVC(webtoon)
+    }
+    
+    func didSearchHomeHeaderView(view: HomeHeaderView) {
+        self.doSearch()
+    }
+    
+}
+
+// MARK: - HomeWebtoonListCell
+
+extension HomeViewController: HomeWebtoonListCellDelegate {
+    
+    func didWebtoonHomeWebtoonListCell(cell: HomeWebtoonListCell, webtoon: Webtoon) {
+        self.openDetailVC(webtoon)
+    }
+    
+}
+
+// MARK: - HomeGenreListCell
+
+extension HomeViewController: HomeGenreListCellDelegate {
+    
+    func didWebtoonHomeGenreListCell(cell: HomeGenreListCell, webtoon: Webtoon) {
+        self.openDetailVC(webtoon)
     }
     
 }

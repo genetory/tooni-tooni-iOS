@@ -32,10 +32,25 @@ class GeneralHelper {
 
 }
 
+// MARK: - Vibrate
+
+extension GeneralHelper {
+    
+    func doVibrate() {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
+
+}
+
 // MARK: - Recent
 
 extension GeneralHelper {
     
+    func existRecents(_ webtoon: Webtoon) -> Bool {
+        return self.recentItem.webtoons.contains(where: { $0.id == webtoon.id })
+    }
+
     func addRecentWebtoon(_ webtoon: Webtoon) {
         if let idx = self.recentItem.webtoons.firstIndex(where: { $0.id == webtoon.id }) {
             let webtoon = self.recentItem.webtoons[idx]
@@ -82,6 +97,10 @@ extension GeneralHelper {
 // MARK: - Favorite
 
 extension GeneralHelper {
+    
+    func existFavorite(_ webtoon: Webtoon) -> Bool {
+        return self.favoriteItem.webtoons.contains(where: { $0.id == webtoon.id })
+    }
     
     func addFavoriteWebtoon(_ webtoon: Webtoon) {
         if let idx = self.favoriteItem.webtoons.firstIndex(where: { $0.id == webtoon.id }) {

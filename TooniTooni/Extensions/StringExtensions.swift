@@ -61,5 +61,44 @@ extension String {
         return attributedString
     }
 
+    // Site
+    var siteShortString: String {
+        switch self.lowercased() {
+        case "naver":
+            return "N"
+        case "daum":
+            return "D"
+        case "kakao":
+            return "K"
+        default:
+            return ""
+        }
+    }
+    
+    var siteColor: UIColor {
+        switch self.lowercased() {
+        case "naver":
+            return kNAVER_100
+        case "daum":
+            return kDAUM_100
+        case "kakao":
+            return kKAKAO_100
+        default:
+            return kBLUE_100
+        }
+    }
+
+    var weekString: String {
+        switch self {
+        case "MON": return "월"
+        case "TUE": return "화"
+        case "WED": return "수"
+        case "THU": return "목"
+        case "FRI": return "금"
+        case "SAT": return "토"
+        case "SUN": return "일"
+        default: return ""
+        }
+    }
 
 }

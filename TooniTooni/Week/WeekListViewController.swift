@@ -11,6 +11,7 @@ class WeekListViewController: BaseViewController {
     
     // MARK: - Vars
     
+    @IBOutlet weak var mainCollectionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var activity: GeneralActivity!
     
@@ -19,6 +20,13 @@ class WeekListViewController: BaseViewController {
             DispatchQueue.main.async {
                 self.stopActivity()
                 self.mainCollectionView.reloadData()
+                
+                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.25) {
+                    self.mainCollectionView.alpha = 1.0
+                } completion: { _ in
+
+                }
             }
         }
     }
@@ -50,6 +58,7 @@ class WeekListViewController: BaseViewController {
         self.mainCollectionView.alwaysBounceHorizontal = false
         self.mainCollectionView.alwaysBounceVertical = true
         self.mainCollectionView.collectionViewLayout = layout
+        self.mainCollectionView.alpha = 0.0
     }
     
     override func viewDidLoad() {

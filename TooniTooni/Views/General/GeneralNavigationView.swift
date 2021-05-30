@@ -15,6 +15,7 @@ class GeneralNavigationView: BaseCustomView {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleLabelLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var subButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var bigTitleLabel: UILabel!
@@ -60,6 +61,10 @@ class GeneralNavigationView: BaseCustomView {
 // MARK: -
 
 extension GeneralNavigationView {
+    
+    func leftButton(_ left: Bool) {
+        self.titleLabelLeftConstraint.constant = left ? 52.0 : 20.0
+    }
     
     func title(_ title: String?) {
         self.titleLabel.text = title

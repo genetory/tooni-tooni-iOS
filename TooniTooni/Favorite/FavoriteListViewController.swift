@@ -21,6 +21,10 @@ enum FavoriteListViewType: Int, CaseIterable {
     static let count = 2
 }
 
+protocol FavoriteListViewControllerDelegate: AnyObject {
+    func didWebtoonFavoriteListViewController(controller: FavoriteListViewController, webtoon: Webtoon)
+}
+
 class FavoriteListViewController: BaseViewController {
     
     // MARK: - Vars
@@ -31,6 +35,8 @@ class FavoriteListViewController: BaseViewController {
     var pageVC: UIPageViewController!
     var type: FavoriteListViewType = .recents
 
+    weak var delegate: FavoriteListViewControllerDelegate?
+    
     // MARK: - Life Cycle
     
     func initVars() {
@@ -133,6 +139,14 @@ extension FavoriteListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if self.type == .recents, GeneralHelper.sharedInstance.recentItem.webtoons.count > 0 {
+            let webtoonItem = GeneralHelper.sharedInstance.recentItem.webtoons[indexPath.row]
+            self.delegate?.didWebtoonFavoriteListViewController(controller: self, webtoon: webtoonItem)
+        }
+        else if self.type == .favorite, GeneralHelper.sharedInstance.favoriteItem.webtoons.count > 0 {
+            let webtoonItem = GeneralHelper.sharedInstance.favoriteItem.webtoons[indexPath.row]
+            self.delegate?.didWebtoonFavoriteListViewController(controller: self, webtoon: webtoonItem)
+        }
     }
     
 }
@@ -143,6 +157,8 @@ extension FavoriteListViewController: FavoriteListCellDelegate {
     
     func didEventFavoriteListCell(cell: FavoriteListCell) {
         guard let idx = self.mainTableView.indexPath(for: cell)?.row else { return }
+        
+        GeneralHelper.sharedInstance.doVibrate()
         
         switch cell.type {
         case .recents:

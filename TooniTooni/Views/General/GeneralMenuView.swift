@@ -81,6 +81,10 @@ class GeneralMenuView: BaseCustomView {
 
 extension GeneralMenuView {
     
+    func color(_ color: UIColor) {
+        self.selectedView.backgroundColor = color
+    }
+    
     func bind(_ selectedIdx: Int, _ titleList: [String]) {
         self.selectedIdx = selectedIdx
         self.titleList = titleList

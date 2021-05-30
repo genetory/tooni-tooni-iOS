@@ -17,6 +17,7 @@
                 <outlet property="rightButton" destination="Ecy-1f-IKP" id="pQl-KH-Aty"/>
                 <outlet property="subButton" destination="I9c-ai-xKd" id="rih-Ds-xWe"/>
                 <outlet property="titleLabel" destination="aXS-wP-0O2" id="Hwi-6R-czW"/>
+                <outlet property="titleLabelLeftConstraint" destination="JhT-t4-hfo" id="7Ol-WT-OcA"/>
                 <outlet property="topView" destination="DDG-CN-n3h" id="AVN-uX-Ofd"/>
             </connections>
         </placeholder>
@@ -56,7 +57,7 @@
                                     </constraints>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXS-wP-0O2">
-                                    <rect key="frame" x="20" y="2" width="374" height="42"/>
+                                    <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -77,7 +78,7 @@
                                 <constraint firstAttribute="trailing" secondItem="Ecy-1f-IKP" secondAttribute="trailing" constant="8" id="lov-J1-spR"/>
                                 <constraint firstItem="plc-Hv-Mnb" firstAttribute="top" secondItem="DDG-CN-n3h" secondAttribute="top" id="nOT-qI-Ia1"/>
                                 <constraint firstItem="I9c-ai-xKd" firstAttribute="top" secondItem="DDG-CN-n3h" secondAttribute="top" id="p4O-wt-Cje"/>
-                                <constraint firstItem="aXS-wP-0O2" firstAttribute="top" secondItem="DDG-CN-n3h" secondAttribute="top" constant="2" id="rIP-V5-dYq"/>
+                                <constraint firstItem="aXS-wP-0O2" firstAttribute="top" secondItem="DDG-CN-n3h" secondAttribute="top" id="rIP-V5-dYq"/>
                             </constraints>
                         </view>
                     </subviews>

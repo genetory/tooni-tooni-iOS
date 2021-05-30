@@ -33,9 +33,9 @@ class BaseTabBarViewController: UITabBarController {
         UITabBar.appearance().shadowImage = UIImage.imageFromColor(kGRAY_90)
         UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(kGRAY_90)
 
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 9.0)], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 9.0)], for: .disabled)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 9.0)], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .disabled)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .selected)
 
         if let tabBarItems = self.tabBar.items {
             for (index, tabItem) in GeneralHelper.sharedInstance.tabList.enumerated() {

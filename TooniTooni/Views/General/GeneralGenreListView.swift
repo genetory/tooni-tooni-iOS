@@ -34,7 +34,7 @@ class GeneralGenreListView: BaseCustomView {
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize.init(width: kDEVICE_WIDTH, height: 60.0)
         layout.minimumLineSpacing = 8.0
-        layout.minimumInteritemSpacing = 0.0
+        layout.minimumInteritemSpacing = 8.0
         layout.headerReferenceSize = .zero
         layout.footerReferenceSize = .zero
         layout.sectionInset = UIEdgeInsets.init(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)

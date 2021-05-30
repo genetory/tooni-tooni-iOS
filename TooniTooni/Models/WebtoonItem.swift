@@ -5,7 +5,12 @@
 //  Created by GENETORY on 2021/04/27.
 //
 
-import Foundation
+import UIKit
+
+struct WebtoonDetail: Codable {
+    var webtoon: Webtoon?
+    var comments: [CommentItem]?
+}
 
 struct WeekWebtoon: Codable {
     var sites: [Site]?

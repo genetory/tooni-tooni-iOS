@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeHeaderViewDelegate: AnyObject {
     func didSearchHomeHeaderView(view: HomeHeaderView)
+    func didWebtoonHomeHeaderView(view: HomeHeaderView, webtoon: Webtoon)
 }
 
 class HomeHeaderView: BaseCustomView {
@@ -105,7 +106,7 @@ extension HomeHeaderView {
         self.topBanner = topBanner
         self.mainCollectionView.reloadData()
     }
-    
+        
 }
 
 // MARK: - UICollectionView
@@ -139,6 +140,10 @@ extension HomeHeaderView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
+        if let topBanner = self.topBanner, topBanner.count > 0,
+           let webtoonItem = topBanner[indexPath.row].webtoon {
+            self.delegate?.didWebtoonHomeHeaderView(view: self, webtoon: webtoonItem)
+        }
     }
     
 }
