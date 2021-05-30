@@ -40,5 +40,6 @@ struct Webtoon: Codable {
     var isComplete: Bool?
     var weekday: [String]?
     var summary: String?
+    var url: String?
 }
 

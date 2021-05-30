@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 enum WebtoonDetailViewType: Int {
     case info
@@ -29,8 +30,15 @@ class WebtoonDetailViewController: BaseViewController {
     @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var portalView: UIView!
+    @IBOutlet weak var portalButton: UIButton!
+    @IBOutlet weak var portalLabel: UILabel!
+    @IBOutlet weak var portalButtonHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var portalButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var activity: GeneralActivity!
 
+    var selectedIdx = 0
     var showHideNavigationView = false
 
     var webtoonItem: Webtoon!
@@ -97,11 +105,35 @@ class WebtoonDetailViewController: BaseViewController {
         self.mainTableView.estimatedSectionHeaderHeight = 40.0
         self.mainTableView.sectionFooterHeight = UITableView.automaticDimension
         self.mainTableView.estimatedSectionFooterHeight = 16.0
-        self.mainTableView.contentInset = UIEdgeInsets.init(top: kWEBTOON_DETAIL_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0, left: 0.0, bottom: 16.0, right: 0.0)
+        self.mainTableView.contentInset = UIEdgeInsets.init(top: kWEBTOON_DETAIL_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0, left: 0.0, bottom: self.portalButtonBottomConstraint.constant + self.portalButtonHeightConstraint.constant + 16.0, right: 0.0)
         self.mainTableView.showsVerticalScrollIndicator = false
         self.mainTableView.alpha = 0.0
     }
+    
+    func initCommentView() {
+        self.commentView.alpha = 0.0
+    }
+    
+    func initPortalView() {
+        self.portalView.backgroundColor = kGRAY_80
+        self.portalView.layer.cornerRadius = 3.0
+        self.portalView.clipsToBounds = true
+        
+        self.portalView.layer.shadowOpacity = 0.5
+        self.portalView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        self.portalView.layer.shadowRadius = 3.0
+        self.portalView.layer.masksToBounds = false
 
+        self.portalLabel.textColor = kWHITE
+        self.portalLabel.font = kBODY2_MEDIUM
+        self.portalLabel.textAlignment = .center
+        self.portalLabel.text = "투니 감상하기"
+        
+        self.portalButton.addTarget(self, action: #selector(doPortal), for: .touchUpInside)
+        
+        self.portalButtonBottomConstraint.constant = -200.0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,6 +142,8 @@ class WebtoonDetailViewController: BaseViewController {
         self.initNavigationView()
         self.initHeaderView()
         self.initTableView()
+        self.initCommentView()
+        self.initPortalView()
         
         self.startActivity()
         self.fetchWebtoonDetail()
@@ -154,6 +188,19 @@ extension WebtoonDetailViewController {
                         self?.mainTableView.alpha = 1.0
                         self?.hideNavigationView.alpha = 1.0
                     }
+                    
+                    self?.view.layoutIfNeeded()
+                    UIView.animate(withDuration: 0.7,
+                                   delay: 0.25,
+                                   usingSpringWithDamping: 0.8,
+                                   initialSpringVelocity: 0.0,
+                                   options: .curveEaseInOut) {
+                        self?.portalButtonBottomConstraint.constant = 16.0
+                        self?.view.layoutIfNeeded()
+                    } completion: { _ in
+                        
+                    }
+
                  }
             case .failure:
                 print(response)
@@ -172,11 +219,33 @@ extension WebtoonDetailViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc
+    func doPortal() {
+        if let webtoonUrl = self.webtoonItem.url,
+           let url = URL.init(string: webtoonUrl) {
+            let safariVC = SFSafariViewController(url: url)
+
+            self.present(safariVC, animated: true) {
+                GeneralHelper.sharedInstance.addRecentWebtoon(self.webtoonItem)
+            }
+        }
+    }
+    
 }
 
 // MARK: - WebtoonDetailHeaderView
 
 extension WebtoonDetailViewController: WebtoonDetailHeaderViewDelegate {
+    
+    func didMenuWebtoonDetailHeaderView(view: WebtoonDetailHeaderView, idx: Int) {
+        self.selectedIdx = idx
+        
+        self.refreshUI()
+    }
+    
+    func refreshUI() {
+        self.commentView.alpha = self.selectedIdx == 0 ? 0.0 : 1.0
+    }
     
     func didBackWebtoonDetailHeaderView(view: WebtoonDetailHeaderView) {
         self.doBack()

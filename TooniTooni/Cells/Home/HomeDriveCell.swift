@@ -16,6 +16,7 @@ class HomeDriveCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var genreView: GeneralGenreView!
     @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var colorImageView: UIImageView!
     @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var badgeView: GeneralBadgeView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -40,7 +41,12 @@ class HomeDriveCell: UITableViewCell {
         self.bgImageView.clipsToBounds = true
         self.bgImageView.contentMode = .scaleAspectFill
         self.bgImageView.layer.cornerRadius = 5.0
+        self.bgImageView.alpha = 0.5
 
+        self.colorImageView.contentMode = .scaleToFill
+        self.colorImageView.backgroundColor = kGRAY_90
+        self.colorImageView.alpha = 0.8
+        
         self.thumbImageView.clipsToBounds = true
         self.thumbImageView.contentMode = .scaleAspectFill
     }

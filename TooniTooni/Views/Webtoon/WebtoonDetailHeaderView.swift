@@ -9,6 +9,7 @@ import UIKit
 
 protocol WebtoonDetailHeaderViewDelegate: AnyObject {
     func didBackWebtoonDetailHeaderView(view: WebtoonDetailHeaderView)
+    func didMenuWebtoonDetailHeaderView(view: WebtoonDetailHeaderView, idx: Int)
 }
 
 class WebtoonDetailHeaderView: BaseCustomView {
@@ -127,6 +128,7 @@ extension WebtoonDetailHeaderView: GeneralMenuViewDelegate {
     
     func didMenuGeneralMenuView(view: GeneralMenuView, idx: Int) {
         self.selectedIdx = idx
+        self.delegate?.didMenuWebtoonDetailHeaderView(view: self, idx: idx)
     }
     
 }
