@@ -66,7 +66,7 @@ extension WebtoonDetailScoreCell {
         self.badgeView.bind(webtoon)
         
         if let score = webtoon.score {
-            self.scoreLabel.text = String.init(format: "%.1f", score)
+            self.scoreLabel.text = String.init(format: "%.2f", score)
         }
     }
     

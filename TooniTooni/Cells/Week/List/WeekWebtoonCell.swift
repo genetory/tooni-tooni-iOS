@@ -80,7 +80,7 @@ extension WeekWebtoonCell {
         }
         
         if let score = webtoon.score {
-            self.infoLabel.text = String.init(format: "%.1f", score)
+            self.infoLabel.text = String.init(format: "%.2f", score)
         }
         
         self.badgeView.bind(webtoon)

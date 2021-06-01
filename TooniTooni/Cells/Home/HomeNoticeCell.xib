@@ -26,7 +26,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaG-a6-sES">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qk3-oU-kLI" customClass="GeneralCloverView" customModule="TooniTooni" customModuleProvider="target">
                                 <rect key="frame" x="192" y="100" width="202" height="202"/>
