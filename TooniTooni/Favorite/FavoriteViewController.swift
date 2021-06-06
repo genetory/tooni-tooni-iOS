@@ -80,7 +80,15 @@ extension FavoriteViewController {
     
     @objc
     func doSearch() {
-        
+        self.openSearchVC()
+    }
+    
+    func openSearchVC() {
+        if let vc = GeneralHelper.sharedInstance.makeVC("Search", "SearchViewController") as? SearchViewController {
+            vc.hidesBottomBarWhenPushed = true
+
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

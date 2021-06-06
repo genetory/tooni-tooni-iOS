@@ -63,7 +63,7 @@ class GeneralNavigationView: BaseCustomView {
 extension GeneralNavigationView {
     
     func leftButton(_ left: Bool) {
-        self.titleLabelLeftConstraint.constant = left ? 52.0 : 20.0
+        self.titleLabelLeftConstraint.constant = left ? 60.0 : 20.0
     }
     
     func title(_ title: String?) {

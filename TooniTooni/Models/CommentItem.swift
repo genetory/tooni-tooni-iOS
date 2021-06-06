@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct CommentInfoItem: Codable {
-    var commentInfo: CommentItem?
+struct CommentInfo: Codable {
+    var commentInfo: Comment?
     var isLastComment: Bool?
     var lastCommentId: Int?
 }
 
-struct CommentItem: Codable {
+struct Comment: Codable {
     var id: Int?
+    var account: User?
     var content: String?
-    var nickname: String?
     var writeDate: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "commentId"
+        case account
         case content
-        case nickname
         case writeDate
     }
 

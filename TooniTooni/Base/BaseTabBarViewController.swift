@@ -28,10 +28,10 @@ class BaseTabBarViewController: UITabBarController {
         whiteView.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: kDEVICE_WIDTH, height: kDEVICE_HEIGHT))
         self.tabBar.addSubview(whiteView)
 
-        UITabBar.appearance().tintColor = kGRAY_90
-        UITabBar.appearance().backgroundImage = UIImage.imageFromColor(kWHITE)
-        UITabBar.appearance().shadowImage = UIImage.imageFromColor(kGRAY_90)
-        UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(kGRAY_90)
+//        UITabBar.appearance().tintColor = kGRAY_90
+//        UITabBar.appearance().backgroundImage = UIImage.imageFromColor(kWHITE)
+//        UITabBar.appearance().shadowImage = UIImage.imageFromColor(kGRAY_90)
+//        UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(kGRAY_90)
 
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .disabled)
@@ -44,7 +44,8 @@ class BaseTabBarViewController: UITabBarController {
                 let tabBarItem = tabBarItems[index]
                 tabBarItem.title = tabItem.title
                 tabBarItem.tag = index
-                tabBarItem.image = UIImage.init(named: tabItem.iconImage!)
+                tabBarItem.image = UIImage.init(named: tabItem.iconImage!)?.withRenderingMode(.alwaysOriginal)
+                tabBarItem.selectedImage = UIImage.init(named: tabItem.iconImage! + "_on")?.withRenderingMode(.alwaysOriginal)
             }
         }
     }

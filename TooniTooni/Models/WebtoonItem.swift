@@ -7,9 +7,15 @@
 
 import UIKit
 
+struct Genre: Codable {
+    var genre: String?
+    var top20Webtoons: [Webtoon]?
+}
+
 struct WebtoonDetail: Codable {
     var webtoon: Webtoon?
-    var comments: [CommentItem]?
+    var comments: [Comment]?
+    var randomRecommendWebtoons: [Webtoon]?
 }
 
 struct WeekWebtoon: Codable {

@@ -17,7 +17,7 @@ struct Home: Codable {
     enum CodingKeys: String, CodingKey {
         case topBanner = "mainBanner"
         case weekdayList = "weekdayWebtoons"
-        case trendingList = "trendingWebtons"
+        case trendingList = "trendingWebtoons"
         case genreList = "genreWebtoons"
         case bingeList = "bingeWatchableWebtoons"
     }

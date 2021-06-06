@@ -9,6 +9,15 @@ import UIKit
 
 let kWebtoonDetailCommentCellID =                                       "WebtoonDetailCommentCell"
 
+enum WebtoonDetailCommentMenuType: Int {
+    case report
+    case delete
+}
+
+protocol WebtoonDetailCommentCellDelegate: AnyObject {
+    func didMenuWebtoonDetailCommentCell(cell: WebtoonDetailCommentCell, type: WebtoonDetailCommentMenuType)
+}
+
 class WebtoonDetailCommentCell: UITableViewCell {
     
     // MARK: - Vars
@@ -22,6 +31,8 @@ class WebtoonDetailCommentCell: UITableViewCell {
     @IBOutlet weak var dotView: UIImageView!
     @IBOutlet weak var deleteLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    
+    weak var delegate: WebtoonDetailCommentCellDelegate?
     
     // MARK: - Life Cycle
     
@@ -68,6 +79,11 @@ class WebtoonDetailCommentCell: UITableViewCell {
         self.dotView.clipsToBounds = true
     }
     
+    func initButtons() {
+        self.reportButton.addTarget(self, action: #selector(doReport), for: .touchUpInside)
+        self.deleteButton.addTarget(self, action: #selector(doDelete), for: .touchUpInside)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -75,6 +91,23 @@ class WebtoonDetailCommentCell: UITableViewCell {
         self.initBackgroundView()
         self.initLabels()
         self.initImageView()
+        self.initButtons()
+    }
+    
+}
+
+// MARK: - Event
+
+extension WebtoonDetailCommentCell {
+    
+    @objc
+    func doReport() {
+        self.delegate?.didMenuWebtoonDetailCommentCell(cell: self, type: .report)
+    }
+    
+    @objc
+    func doDelete() {
+        self.delegate?.didMenuWebtoonDetailCommentCell(cell: self, type: .delete)
     }
     
 }
@@ -83,5 +116,15 @@ class WebtoonDetailCommentCell: UITableViewCell {
 
 extension WebtoonDetailCommentCell {
     
-//    func bind(_ commentItem: Comment)
+    func bind(_ commentItem: Comment) {
+        if let nickname = commentItem.account?.nickname {
+            self.nameLabel.text = nickname
+        }
+        
+        if let content = commentItem.content {
+            self.contentLabel.attributedText = content.style(changeText: content,
+                                                             lineSpacing: 3.0)
+        }
+    }
+    
 }

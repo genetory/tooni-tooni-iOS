@@ -169,7 +169,15 @@ extension HomeViewController {
     
     @objc
     func doSearch() {
-        self.showReadyAlert(vc: self)
+        self.openSearchVC()
+    }
+    
+    func openSearchVC() {
+        if let vc = GeneralHelper.sharedInstance.makeVC("Search", "SearchViewController") as? SearchViewController {
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func openDetailVC(_ webtoonItem: Webtoon) {
@@ -212,21 +220,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == HomeViewType.weekday.rawValue,
-           let weekdayList = self.home?.weekdayList, weekdayList.count > 0 {
-            return 1
-        }
-        else if section == HomeViewType.popular.rawValue,
-           let trendingList = self.home?.trendingList, trendingList.count > 0 {
-            return trendingList.count
-        }
-        else if section == HomeViewType.genre.rawValue,
-                let genreList = self.home?.genreList, genreList.count > 0 {
-            return 1
-        }
-        else if section == HomeViewType.binge.rawValue,
-                let bingeList = self.home?.bingeList, bingeList.count > 0 {
-            return bingeList.count
+        switch section {
+        case HomeViewType.weekday.rawValue:
+            if let weekdayList = self.home?.weekdayList, weekdayList.count > 0 {
+                return 1
+            }
+        case HomeViewType.popular.rawValue:
+            if let trendingList = self.home?.trendingList, trendingList.count > 0 {
+                return trendingList.count
+            }
+        case HomeViewType.genre.rawValue:
+            if let genreList = self.home?.genreList, genreList.count > 0 {
+                return 1
+            }
+        case HomeViewType.binge.rawValue:
+            if let bingeList = self.home?.bingeList, bingeList.count > 0 {
+                return bingeList.count
+            }
+        default:
+            return 0
         }
         
         return 0
@@ -234,8 +246,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: kGeneralTitleHeaderViewID) as? GeneralTitleHeaderView,
-           let title = HomeViewType.init(rawValue: section)?.title {
-            headerView.bind(title)
+           let type = HomeViewType.init(rawValue: section) {
+            headerView.bind(type.title)
+            headerView.more(false)
+            headerView.tag = section
+            
+            if type == .popular ||
+                type == .genre {
+                headerView.more(true)
+                headerView.delegate = self
+            }
             
             return headerView
         }
@@ -319,6 +339,39 @@ extension HomeViewController: HomeHeaderViewDelegate {
     
     func didSearchHomeHeaderView(view: HomeHeaderView) {
         self.doSearch()
+    }
+    
+}
+
+// MARK: - GeneralTitleHeaderView
+
+extension HomeViewController: GeneralTitleHeaderViewDelegate {
+    
+    func didMoreGeneralTitleHeaderView(view: GeneralTitleHeaderView) {
+        switch view.tag {
+        case HomeViewType.popular.rawValue:
+            self.openPopularVC()
+        case HomeViewType.genre.rawValue:
+            self.openGenreVC()
+        default:
+            return
+        }
+    }
+    
+    func openPopularVC() {
+        if let vc = GeneralHelper.sharedInstance.makeVC("Home", "HomePopularViewController") as? HomePopularViewController {
+            
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func openGenreVC() {
+        if let vc = GeneralHelper.sharedInstance.makeVC("Home", "HomeGenreViewController") as? HomeGenreViewController {
+            
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

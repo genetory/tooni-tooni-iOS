@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Hhw-dv-FQW" secondAttribute="bottom" id="xG4-Bj-qVi"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFK-A6-eiI">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFK-A6-eiI" customClass="WebtoonDetailCommentView" customModule="TooniTooni" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="252" width="414" height="644"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>

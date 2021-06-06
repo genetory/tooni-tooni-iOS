@@ -21,32 +21,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tv4-c3-O41">
-                                <rect key="frame" x="24" y="4" width="64" height="64"/>
+                                <rect key="frame" x="20" y="4" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tv4-c3-O41" secondAttribute="height" id="BB5-2T-ShL"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSt-zn-iV0" customClass="GeneralBadgeView" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="28" y="48" width="16" height="16"/>
+                                <rect key="frame" x="24" y="48" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="TJR-JD-bU1"/>
                                     <constraint firstAttribute="height" constant="16" id="bQC-d7-qat"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-a2-Dq2">
-                                <rect key="frame" x="100" y="4" width="246" height="19.5"/>
+                                <rect key="frame" x="96" y="4" width="250" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDC-c8-twO">
-                                <rect key="frame" x="100" y="23.5" width="246" height="14.5"/>
+                                <rect key="frame" x="96" y="23.5" width="250" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXL-TR-MEj">
-                                <rect key="frame" x="100" y="52" width="26.5" height="12"/>
+                                <rect key="frame" x="96" y="52" width="26.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjX-6E-eJ6">
-                                <rect key="frame" x="134.5" y="52" width="26.5" height="12"/>
+                                <rect key="frame" x="130.5" y="52" width="26.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                             <constraint firstItem="HSt-zn-iV0" firstAttribute="bottom" secondItem="tv4-c3-O41" secondAttribute="bottom" constant="-4" id="2HV-sg-BbA"/>
                             <constraint firstItem="oDC-c8-twO" firstAttribute="leading" secondItem="tv4-c3-O41" secondAttribute="trailing" constant="12" id="5fN-Bl-vOS"/>
                             <constraint firstItem="0u9-TB-MSg" firstAttribute="leading" secondItem="ZaV-a2-Dq2" secondAttribute="trailing" constant="12" id="AAH-4t-5Gc"/>
-                            <constraint firstItem="tv4-c3-O41" firstAttribute="leading" secondItem="Cg9-9b-ott" secondAttribute="leading" constant="24" id="DeV-so-8tJ"/>
+                            <constraint firstItem="tv4-c3-O41" firstAttribute="leading" secondItem="Cg9-9b-ott" secondAttribute="leading" constant="20" id="DeV-so-8tJ"/>
                             <constraint firstItem="ZaV-a2-Dq2" firstAttribute="leading" secondItem="tv4-c3-O41" secondAttribute="trailing" constant="12" id="KAl-nA-XqD"/>
                             <constraint firstItem="tv4-c3-O41" firstAttribute="top" secondItem="Cg9-9b-ott" secondAttribute="top" constant="4" id="Nm5-xt-ALz"/>
                             <constraint firstItem="HSt-zn-iV0" firstAttribute="leading" secondItem="tv4-c3-O41" secondAttribute="leading" constant="4" id="XeL-Xp-rqj"/>

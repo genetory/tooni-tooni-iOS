@@ -69,7 +69,7 @@ extension HomeNoticeCell {
             self.titleLabel.text = title
         }
         
-        if let image = homeBanner.webtoon?.thumbnail {
+        if let image = homeBanner.webtoon?.thumbnail { //?.replacingOccurrences(of: "http://", with: "https://") {
             self.bgImageView.kf.setImage(with: URL.init(string: image),
                                            placeholder: nil,
                                            options: [.transition(.fade(0.25))], completionHandler: nil)

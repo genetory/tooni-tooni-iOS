@@ -73,7 +73,7 @@ extension WeekWebtoonCell {
         self.titleLabel.text = webtoon.title
         self.authorLabel.text = webtoon.authors?.compactMap({ $0.name }).joined(separator: " / ")
         
-        if let image = webtoon.thumbnail {
+        if let image = webtoon.thumbnail { //}?.replacingOccurrences(of: "http://", with: "https://") {
             self.thumbImageView.kf.setImage(with: URL.init(string: image),
                                            placeholder: nil,
                                            options: [.transition(.fade(0.25))], completionHandler: nil)

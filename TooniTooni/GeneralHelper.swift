@@ -10,15 +10,19 @@ import AudioToolbox
 
 let kFAVORITE_WEBTOON_LIST =                                    "FAVORITE_WEBTOON_LIST"
 let kRECENT_WEBTOON_LIST =                                      "RECENT_WEBTOON_LIST"
+let kRECENT_SEARCH_LIST =                                       "RECENT_SEARCH_LIST"
 
 class GeneralHelper {
 
     // MARK: - Vars
     
+    var user: User?
+    
     var tabList: [TabItem] = []
     
     var recentItem = RecentItem()
     var favoriteItem = FavoriteItem()
+    var searchList: [String] = []
         
     static let sharedInstance = GeneralHelper()
     
@@ -26,10 +30,26 @@ class GeneralHelper {
     
     func setup() {
         self.initTabList()
+        
+        self.fetchSearches()
         self.fetchRecentWebtoons()
         self.fetchFavoriteWebtoons()
     }
 
+}
+
+// MARK: - User
+
+extension GeneralHelper {
+
+    func isSigning() -> Bool {
+        return self.user == nil ? false : true
+    }
+    
+    func loginToken() -> String? {
+        return self.user?.loginToken
+    }
+    
 }
 
 // MARK: - Vibrate
@@ -41,6 +61,57 @@ extension GeneralHelper {
         generator.impactOccurred()
     }
 
+}
+
+// MARK: - Search
+
+extension GeneralHelper {
+    
+    func existSearches(_ text: String) -> Bool {
+        return self.searchList.contains(where: { $0 == text })
+    }
+
+    func addSearches(_ text: String) {
+        if let idx = self.searchList.firstIndex(where: { $0 == text }) {
+            self.searchList.remove(at: idx)
+            self.searchList.insert(text, at: 0)
+        }
+        else {
+            self.searchList.insert(text, at: 0)
+        }
+        
+        self.saveSearches()
+    }
+    
+    func removeSearches(_ text: String) {
+        if let idx = self.searchList.firstIndex(where: { $0 == text }) {
+            self.searchList.remove(at: idx)
+        }
+        
+        self.saveSearches()
+    }
+
+    func fetchSearches() {
+        if let searchList = UserDefaults.standard.object(forKey: kRECENT_SEARCH_LIST) as? [String] {
+            self.searchList = searchList
+        }
+        else {
+            self.searchList = []
+        }
+        
+        print("fetchSearches: \( self.searchList)")
+    }
+    
+    func saveSearches() {
+        if self.searchList.count > 5 {
+            self.searchList = Array(self.searchList[0..<5])
+        }
+        
+        self.saveUserDefault(item: self.searchList, key: kRECENT_SEARCH_LIST)
+
+        self.fetchSearches()
+    }
+    
 }
 
 // MARK: - Recent

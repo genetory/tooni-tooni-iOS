@@ -10,9 +10,14 @@ import Moya
 import Alamofire
 
 enum TooniRouter {
+    case sign(loginToken: String)
     case home
     case webtoonDetail(String)
     case weekWebtoon(String)
+    case commentList(String)
+    case genre(String)
+    case random
+    case search(String)
 }
 
 extension TooniRouter: TargetType {
@@ -23,22 +28,42 @@ extension TooniRouter: TargetType {
     
     var path: String {
         switch self {
+        case .sign:
+            return "login"
         case .home:
             return "home"
         case .webtoonDetail:
             return "webtoons/detail"
         case let .weekWebtoon(day):
             return "webtoons/weekday/\(day)"
+        case .commentList:
+            return "comment/list"
+        case let .genre(genre):
+            return "webtoons/\(genre)"
+        case .random:
+            return "webtoons/random"
+        case .search:
+            return "webtoons/search"
         }
     }
     
     var method: Alamofire.HTTPMethod {
         switch self {
+        case .sign:
+            return .post
         case .home:
             return .get
         case .webtoonDetail:
             return .get
         case .weekWebtoon:
+            return .get
+        case .commentList:
+            return .get
+        case .genre:
+            return .get
+        case .random:
+            return .get
+        case .search:
             return .get
         }
     }
@@ -49,17 +74,31 @@ extension TooniRouter: TargetType {
     
     var task: Task {
         switch self {
+        case let .sign(loginToken):
+            return .requestParameters(parameters: ["loginToken" : loginToken], encoding: JSONEncoding.default)
         case .home:
             return .requestPlain
         case let .webtoonDetail(id):
             return .requestParameters(parameters: ["id" : id], encoding: URLEncoding.queryString)
         case .weekWebtoon:
             return .requestPlain
+        case let .commentList(id):
+            return .requestParameters(parameters: ["webtoonId": id, "pageSize": 30], encoding: URLEncoding.queryString)
+        case .genre:
+            return .requestPlain
+        case .random:
+            return .requestPlain
+        case let .search(text):
+            return .requestParameters(parameters: ["query": text], encoding: URLEncoding.queryString)
         }
     }
     
     var headers: [String : String]? {
-        return nil
+        let loginToken = GeneralHelper.sharedInstance.loginToken() ?? ""
+        return [
+            "Content-type": "application/json",
+            "Authorization": "Bearer \(loginToken)"
+        ]
     }
     
 }

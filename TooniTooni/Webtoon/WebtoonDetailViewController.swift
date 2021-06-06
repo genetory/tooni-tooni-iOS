@@ -30,7 +30,7 @@ class WebtoonDetailViewController: BaseViewController {
     @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var commentView: WebtoonDetailCommentView!
     @IBOutlet weak var portalView: UIView!
     @IBOutlet weak var portalButton: UIButton!
     @IBOutlet weak var portalLabel: UILabel!
@@ -42,7 +42,7 @@ class WebtoonDetailViewController: BaseViewController {
     var showHideNavigationView = false
 
     var webtoonItem: Webtoon!
-    var webtoonDetailItem: WebtoonDetail!
+    var webtoonDetailItem: WebtoonDetail?
 
     // MARK: - Life Cycle
     
@@ -111,7 +111,7 @@ class WebtoonDetailViewController: BaseViewController {
     }
     
     func initCommentView() {
-        self.commentView.alpha = 0.0
+//        self.commentView.isHidden = true
     }
     
     func initPortalView() {
@@ -268,12 +268,18 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case WebtoonDetailViewType.score.rawValue:
             return 1
         case WebtoonDetailViewType.comments.rawValue:
-            return 5
+            if let comments = self.webtoonDetailItem?.comments, comments.count > 0 {
+                return comments.count
+            }
         case WebtoonDetailViewType.recommend.rawValue:
-            return 1
+            if let randomRecommendWebtoons = self.webtoonDetailItem?.randomRecommendWebtoons, randomRecommendWebtoons.count > 0 {
+                return 1
+            }
         default:
             return 0
         }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -334,12 +340,18 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
             return cell
         }
         else if indexPath.section == WebtoonDetailViewType.comments.rawValue,
+                let comments = self.webtoonDetailItem?.comments, comments.count > 0,
                 let cell = tableView.dequeueReusableCell(withIdentifier: kWebtoonDetailCommentCellID, for: indexPath) as? WebtoonDetailCommentCell {
+            let commentItem = comments[indexPath.row]
+            cell.bind(commentItem)
+            cell.delegate = self
             
             return cell
         }
         else if indexPath.section == WebtoonDetailViewType.recommend.rawValue,
+                let randomRecommendWebtoons = self.webtoonDetailItem?.randomRecommendWebtoons, randomRecommendWebtoons.count > 0,
                 let cell = tableView.dequeueReusableCell(withIdentifier: kHomeWebtoonListCellID, for: indexPath) as? HomeWebtoonListCell {
+            cell.bind(randomRecommendWebtoons)
             
             return cell
         }
@@ -370,6 +382,29 @@ extension WebtoonDetailViewController: WebtoonDetailInfoCellDelegate {
         
         self.mainTableView.reloadRows(at: [IndexPath.init(row: WebtoonDetailViewType.info.rawValue, section: 0)], with: .none)
     }
+    
+}
+
+// MARK: - WebtoonDetailCommentCell
+
+extension WebtoonDetailViewController: WebtoonDetailCommentCellDelegate {
+    
+    func didMenuWebtoonDetailCommentCell(cell: WebtoonDetailCommentCell, type: WebtoonDetailCommentMenuType) {
+        switch type {
+        case .report:
+            self.showAlertWithTitle(vc: self, title: "알림", message: "댓글을 신고했어요\n제보 감사합니다 😎")
+        case .delete:
+            if let idx = self.mainTableView.indexPath(for: cell)?.row {
+                self.deleteComment(idx)
+            }
+        }
+    }
+    
+    func deleteComment(_ idx: Int) {
+//        if let commentItem = self.webtoonDetailItem?.comments[idx] {
+//
+//        }
+     }
     
 }
 

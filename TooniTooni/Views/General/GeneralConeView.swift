@@ -54,7 +54,7 @@ class GeneralConeView: BaseCustomView {
 extension GeneralConeView {
     
     func bind(_ webtoon: Webtoon?) {
-        if let image = webtoon?.thumbnail {
+        if let image = webtoon?.thumbnail { //}?.replacingOccurrences(of: "http://", with: "https://") {
             self.thumbImageView.kf.setImage(with: URL.init(string: image),
                                            placeholder: nil,
                                            options: [.transition(.fade(0.25))], completionHandler: nil)

@@ -32,7 +32,6 @@ class FavoriteListViewController: BaseViewController {
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var activity: GeneralActivity!
 
-    var pageVC: UIPageViewController!
     var type: FavoriteListViewType = .recents
 
     weak var delegate: FavoriteListViewControllerDelegate?
@@ -51,8 +50,8 @@ class FavoriteListViewController: BaseViewController {
         let listCell = UINib.init(nibName: kFavoriteListCellID, bundle: nil)
         self.mainTableView.register(listCell, forCellReuseIdentifier: kFavoriteListCellID)
         
-        let nodataCell = UINib.init(nibName: kFavoriteNodataCellID, bundle: nil)
-        self.mainTableView.register(nodataCell, forCellReuseIdentifier: kFavoriteNodataCellID)
+        let nodataCell = UINib.init(nibName: kGeneralNodataCellID, bundle: nil)
+        self.mainTableView.register(nodataCell, forCellReuseIdentifier: kGeneralNodataCellID)
         
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
@@ -128,7 +127,14 @@ extension FavoriteListViewController: UITableViewDelegate, UITableViewDataSource
             
             return cell
         }
-        else if let cell = tableView.dequeueReusableCell(withIdentifier: kFavoriteNodataCellID, for: indexPath) as? FavoriteNodataCell {
+        else if let cell = tableView.dequeueReusableCell(withIdentifier: kGeneralNodataCellID, for: indexPath) as? GeneralNodataCell {
+            
+            switch self.type {
+            case .recents:
+                cell.bind("empty_lastseen", "최근 본 작품이 없어요 😭")
+            case .favorite:
+                cell.bind("empty_favorite", "즐겨찾는 작품이 없어요 😭")
+            }
             
             return cell
         }

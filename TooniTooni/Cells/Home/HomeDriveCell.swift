@@ -80,7 +80,7 @@ extension HomeDriveCell {
     func bind(_ webtoon: Webtoon) {
         self.titleLabel.text = webtoon.title
         
-        if let image = webtoon.thumbnail {
+        if let image = webtoon.thumbnail { //}?.replacingOccurrences(of: "http://", with: "https://") {
             self.bgImageView.kf.setImage(with: URL.init(string: image),
                                            placeholder: nil,
                                            options: [.transition(.fade(0.25))], completionHandler: nil)
