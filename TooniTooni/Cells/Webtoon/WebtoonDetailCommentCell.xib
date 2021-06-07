@@ -137,6 +137,7 @@
                 <outlet property="dateLabel" destination="thQ-I7-xwT" id="E2n-3z-wAB"/>
                 <outlet property="deleteButton" destination="391-Ss-rqU" id="6ga-Re-Urj"/>
                 <outlet property="deleteLabel" destination="SOP-gz-aEO" id="Q0G-Ee-ajL"/>
+                <outlet property="dividerView" destination="buC-AH-QYr" id="ge1-y3-zxR"/>
                 <outlet property="dotView" destination="AHr-T5-nx1" id="3RU-Pu-Ell"/>
                 <outlet property="nameLabel" destination="3BK-PZ-7Wp" id="qaF-ZE-Qhj"/>
                 <outlet property="reportButton" destination="FgB-T5-GKF" id="gbq-zO-TI9"/>

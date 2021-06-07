@@ -108,7 +108,6 @@ extension GeneralHelper {
         }
         
         self.saveUserDefault(item: self.searchList, key: kRECENT_SEARCH_LIST)
-
         self.fetchSearches()
     }
     

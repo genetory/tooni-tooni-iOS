@@ -61,8 +61,20 @@ extension SplashViewController {
     func failedSign() {
         DispatchQueue.main.async {
             self.stopActivity()
-            self.showAlertWithTitle(vc: self, title: "알림", message: "앱을 시작할 수 없어요\n잠시 후 다시 시도해주세요 😭")
+            self.retry()
         }
+    }
+    
+    func retry() {
+        let alert = UIAlertController.init(title: "알림", message: "앱을 시작할 수 없어요\n잠시 후 다시 시도해주세요 😭", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction.init(title: "확인", style: .default) { _  in
+            self.startActivity()
+            self.sign()
+        }
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

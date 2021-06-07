@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct CommentInfo: Codable {
-    var commentInfo: Comment?
+struct CommentData: Codable {
+    var commentResponse: [Comment]?
     var isLastComment: Bool?
     var lastCommentId: Int?
 }

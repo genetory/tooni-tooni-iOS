@@ -31,6 +31,7 @@ class WebtoonDetailViewController: BaseViewController {
     @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var commentView: WebtoonDetailCommentView!
+    @IBOutlet weak var commentViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var portalView: UIView!
     @IBOutlet weak var portalButton: UIButton!
     @IBOutlet weak var portalLabel: UILabel!
@@ -43,6 +44,8 @@ class WebtoonDetailViewController: BaseViewController {
 
     var webtoonItem: Webtoon!
     var webtoonDetailItem: WebtoonDetail?
+    
+    var commentList: [Comment]?
 
     // MARK: - Life Cycle
     
@@ -111,7 +114,8 @@ class WebtoonDetailViewController: BaseViewController {
     }
     
     func initCommentView() {
-//        self.commentView.isHidden = true
+        self.commentView.delegate = self
+        self.commentView.isHidden = true
     }
     
     func initPortalView() {
@@ -146,7 +150,13 @@ class WebtoonDetailViewController: BaseViewController {
         self.initPortalView()
         
         self.startActivity()
-        self.fetchWebtoonDetail()
+        self.fetchAll()
+        
+        self.initObservers()
+    }
+    
+    deinit {
+        self.deInitObservers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -161,11 +171,94 @@ class WebtoonDetailViewController: BaseViewController {
 
 }
 
+// MARK: - Fetch
+
+extension WebtoonDetailViewController {
+    
+    func fetchAll() {
+        let group = DispatchGroup()
+        
+        self.fetchWebtoonDetail(group)
+        self.fetchComment(group)
+        
+        group.notify(queue: .main) {
+            DispatchQueue.main.async {
+                self.stopActivity()
+                
+                self.commentView.reset()
+                self.commentView.bind(self.commentList)
+                self.mainTableView.reloadData()
+                
+                self.view.layoutIfNeeded()
+                self.mainTableView.setContentOffset(CGPoint.init(x: 0.0, y: -kWEBTOON_DETAIL_HEADER_HEIGHT + kDEVICE_TOP_AREA + 24.0), animated: false)
+                
+                UIView.animate(withDuration: 0.3) {
+                    self.headerView.alpha = 1.0
+                    self.mainTableView.alpha = 1.0
+                    self.hideNavigationView.alpha = 1.0
+                }
+                
+                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.7,
+                               delay: 0.25,
+                               usingSpringWithDamping: 0.8,
+                               initialSpringVelocity: 0.0,
+                               options: .curveEaseInOut) {
+                    self.portalButtonBottomConstraint.constant = 16.0
+                    self.view.layoutIfNeeded()
+                } completion: { _ in
+                    
+                }
+            }
+        }
+    }
+    
+}
+
+// MARK: - Comment
+
+extension WebtoonDetailViewController {
+    
+    func fetchComment(_ group: DispatchGroup? = nil) {
+        group?.enter()
+        
+        guard let webtoonId = self.webtoonItem.id?.string else { return }
+
+        TooniNetworkService.shared.request(to: .commentList(webtoonId), decoder: CommentData.self) { [weak self] response in
+            switch response.result {
+            case .success:
+                guard let commentList = response.json as? CommentData else { return }
+
+                self?.commentList = commentList.commentResponse
+                
+                group?.leave()
+                
+                if group == nil {
+                    DispatchQueue.main.async {
+                        self?.commentView.reset()
+
+                        self?.stopActivity()
+                        self?.commentView.bind(self?.commentList)
+                        self?.mainTableView.reloadData()
+                    }
+                }
+            case .failure:
+                print(response)
+                
+                group?.leave()
+            }
+        }
+    }
+    
+}
+
 // MARK: - Week Webtoon
 
 extension WebtoonDetailViewController {
     
-    func fetchWebtoonDetail() {
+    func fetchWebtoonDetail(_ group: DispatchGroup? = nil) {
+        group?.enter()
+        
         guard let webtoonId = self.webtoonItem.id?.string else { return }
 
         TooniNetworkService.shared.request(to: .webtoonDetail(webtoonId), decoder: WebtoonDetail.self) { [weak self] response in
@@ -176,33 +269,38 @@ extension WebtoonDetailViewController {
                 self?.webtoonItem = webtoonDetail.webtoon
                 self?.webtoonDetailItem = webtoonDetail
                 
-                DispatchQueue.main.async {
-                    self?.stopActivity()
-                    self?.mainTableView.reloadData()
-                    
-                    self?.view.layoutIfNeeded()
-                    self?.mainTableView.setContentOffset(CGPoint.init(x: 0.0, y: -kWEBTOON_DETAIL_HEADER_HEIGHT + kDEVICE_TOP_AREA + 24.0), animated: false)
-                    
-                    UIView.animate(withDuration: 0.3) {
-                        self?.headerView.alpha = 1.0
-                        self?.mainTableView.alpha = 1.0
-                        self?.hideNavigationView.alpha = 1.0
-                    }
-                    
-                    self?.view.layoutIfNeeded()
-                    UIView.animate(withDuration: 0.7,
-                                   delay: 0.25,
-                                   usingSpringWithDamping: 0.8,
-                                   initialSpringVelocity: 0.0,
-                                   options: .curveEaseInOut) {
-                        self?.portalButtonBottomConstraint.constant = 16.0
-                        self?.view.layoutIfNeeded()
-                    } completion: { _ in
+                group?.leave()
+                
+                if group == nil {
+                    DispatchQueue.main.async {
+                        self?.stopActivity()
+                        self?.mainTableView.reloadData()
                         
-                    }
-
-                 }
+                        self?.view.layoutIfNeeded()
+                        self?.mainTableView.setContentOffset(CGPoint.init(x: 0.0, y: -kWEBTOON_DETAIL_HEADER_HEIGHT + kDEVICE_TOP_AREA + 24.0), animated: false)
+                        
+                        UIView.animate(withDuration: 0.3) {
+                            self?.headerView.alpha = 1.0
+                            self?.mainTableView.alpha = 1.0
+                            self?.hideNavigationView.alpha = 1.0
+                        }
+                        
+                        self?.view.layoutIfNeeded()
+                        UIView.animate(withDuration: 0.7,
+                                       delay: 0.25,
+                                       usingSpringWithDamping: 0.8,
+                                       initialSpringVelocity: 0.0,
+                                       options: .curveEaseInOut) {
+                            self?.portalButtonBottomConstraint.constant = 16.0
+                            self?.view.layoutIfNeeded()
+                        } completion: { _ in
+                            
+                        }
+                     }
+                }
             case .failure:
+                group?.leave()
+                
                 print(response)
             }
         }
@@ -244,7 +342,7 @@ extension WebtoonDetailViewController: WebtoonDetailHeaderViewDelegate {
     }
     
     func refreshUI() {
-        self.commentView.alpha = self.selectedIdx == 0 ? 0.0 : 1.0
+        self.commentView.isHidden = self.selectedIdx == 0 ? true : false
     }
     
     func didBackWebtoonDetailHeaderView(view: WebtoonDetailHeaderView) {
@@ -345,6 +443,7 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
             let commentItem = comments[indexPath.row]
             cell.bind(commentItem)
             cell.delegate = self
+            cell.divider(indexPath.row == comments.count - 1 ? false : true)
             
             return cell
         }
@@ -408,6 +507,30 @@ extension WebtoonDetailViewController: WebtoonDetailCommentCellDelegate {
     
 }
 
+// MARK: - WebtoonDetailCommentView
+
+extension WebtoonDetailViewController: WebtoonDetailCommentViewDelegate {
+    
+    func didSendWebtoonDetailCommentView(view: WebtoonDetailCommentView, text: String?) {
+        guard let text = text, text.count > 0 else { return }
+        guard let webtoonId = self.webtoonItem.id?.string else { return }
+
+        self.startActivity()
+        TooniNetworkService.shared.request(to: .writeComment(webtoonId, text), decoder: ResponseItem.self) { [weak self] response in
+            switch response.result {
+            case .success:
+                guard let response = response.json as? ResponseItem else { return }
+                print(response)
+                
+                self?.fetchAll()
+            case .failure:
+                print(response)
+            }
+        }
+    }
+    
+}
+
 // MARK: - UIScrollView
 
 extension WebtoonDetailViewController: UIScrollViewDelegate {
@@ -443,6 +566,51 @@ extension WebtoonDetailViewController: UIScrollViewDelegate {
     }
 
 }
+
+// MARK: -
+
+extension WebtoonDetailViewController {
+    
+    func initObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(sender:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(sender:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    func deInitObservers() {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
+    }
+    
+    @objc
+    func keyboardWillShow(sender: NSNotification) {
+        let userInfo = sender.userInfo
+        let value = userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+        let keyboardRect = (value as! NSValue).cgRectValue
+        
+        self.commentViewBottomConstraint.constant = keyboardRect.size.height - kDEVICE_BOTTOM_AREA + 32.0
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc
+    func keyboardWillHide(sender: NSNotification) {
+        self.commentViewBottomConstraint.constant = 0.0
+        self.view.layoutIfNeeded()
+    }
+    
+}
+
 
 // MARK: - Activity
 

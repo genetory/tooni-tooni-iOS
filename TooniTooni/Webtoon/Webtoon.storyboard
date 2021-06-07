@@ -111,6 +111,7 @@
                     <connections>
                         <outlet property="activity" destination="HbZ-33-92d" id="uGx-H3-dc4"/>
                         <outlet property="commentView" destination="VFK-A6-eiI" id="1T7-bC-kuA"/>
+                        <outlet property="commentViewBottomConstraint" destination="tzZ-R0-pg4" id="NYI-Ld-d0F"/>
                         <outlet property="headerView" destination="PvL-LH-o2a" id="fzv-r3-huM"/>
                         <outlet property="headerViewHeightConstraint" destination="osJ-th-Swf" id="PJS-Jp-fXX"/>
                         <outlet property="headerViewTopConstraint" destination="8qd-Am-9IQ" id="QHH-lq-q4O"/>

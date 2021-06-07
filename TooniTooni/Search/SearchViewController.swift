@@ -276,8 +276,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                 let webtoonItem = list[indexPath.row]
                 self.openDetailVC(webtoonItem)
             }
-        default:
-            return
         }
     }
     

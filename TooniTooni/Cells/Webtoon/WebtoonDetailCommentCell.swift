@@ -31,7 +31,8 @@ class WebtoonDetailCommentCell: UITableViewCell {
     @IBOutlet weak var dotView: UIImageView!
     @IBOutlet weak var deleteLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
-    
+    @IBOutlet weak var dividerView: UIImageView!
+
     weak var delegate: WebtoonDetailCommentCellDelegate?
     
     // MARK: - Life Cycle
@@ -125,6 +126,14 @@ extension WebtoonDetailCommentCell {
             self.contentLabel.attributedText = content.style(changeText: content,
                                                              lineSpacing: 3.0)
         }
+        
+        if let date = commentItem.writeDate {
+            self.dateLabel.text = date
+        }
+    }
+    
+    func divider(_ divider: Bool) {
+        self.dividerView.isHidden = !divider
     }
     
 }
