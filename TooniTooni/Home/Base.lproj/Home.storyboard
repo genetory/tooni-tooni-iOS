@@ -175,7 +175,7 @@
                                     <constraint firstAttribute="height" constant="44" id="xDZ-aZ-d5o"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sza-xO-Z8n" customClass="GeneralMenuView" customModule="TooniTooni" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sza-xO-Z8n" customClass="GenreHeaderView" customModule="TooniTooni" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>

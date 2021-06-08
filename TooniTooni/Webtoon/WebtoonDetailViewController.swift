@@ -114,6 +114,7 @@ class WebtoonDetailViewController: BaseViewController {
     }
     
     func initCommentView() {
+        self.commentView.commentInputView.contentTextView.keyboardDismissMode = .onDrag
         self.commentView.delegate = self
         self.commentView.isHidden = true
     }
@@ -249,7 +250,35 @@ extension WebtoonDetailViewController {
             }
         }
     }
-    
+
+    func deleteComment(_ commentItem: Comment?) {
+        guard let commentId = commentItem?.id?.string else { return }
+
+        let alert = UIAlertController.init(title: "알림", message: "댓글을 삭제하실건가요?", preferredStyle: .alert)
+        
+        let noAction = UIAlertAction.init(title: "아니오", style: .default, handler: nil)
+        let deleteAction = UIAlertAction.init(title: "삭제", style: .destructive) { _  in
+            self.startActivity()
+            TooniNetworkService.shared.request(to: .deleteComment(commentId), decoder: ResponseItem.self) { [weak self] response in
+                switch response.result {
+                case .success:
+                    self?.fetchAll()
+                case .failure:
+                    
+                    DispatchQueue.main.async {
+                        self?.stopActivity()
+                    }
+                    print(response)
+                }
+            }
+        }
+        
+        alert.addAction(noAction)
+        alert.addAction(deleteAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
 
 // MARK: - Week Webtoon
@@ -327,6 +356,16 @@ extension WebtoonDetailViewController {
                 GeneralHelper.sharedInstance.addRecentWebtoon(self.webtoonItem)
             }
         }
+    }
+    
+    func openDetailVC(_ webtoonItem: Webtoon) {
+        guard let vc = GeneralHelper.sharedInstance.makeVC("Webtoon", "WebtoonDetailViewController") as? WebtoonDetailViewController else {
+            return
+        }
+        
+        vc.webtoonItem = webtoonItem
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -451,6 +490,7 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 let randomRecommendWebtoons = self.webtoonDetailItem?.randomRecommendWebtoons, randomRecommendWebtoons.count > 0,
                 let cell = tableView.dequeueReusableCell(withIdentifier: kHomeWebtoonListCellID, for: indexPath) as? HomeWebtoonListCell {
             cell.bind(randomRecommendWebtoons)
+            cell.delegate = self
             
             return cell
         }
@@ -488,28 +528,29 @@ extension WebtoonDetailViewController: WebtoonDetailInfoCellDelegate {
 
 extension WebtoonDetailViewController: WebtoonDetailCommentCellDelegate {
     
-    func didMenuWebtoonDetailCommentCell(cell: WebtoonDetailCommentCell, type: WebtoonDetailCommentMenuType) {
+    func didMenuWebtoonDetailCommentCell(cell: WebtoonDetailCommentCell, commentItem: Comment?, type: WebtoonDetailCommentMenuType) {
         switch type {
         case .report:
             self.showAlertWithTitle(vc: self, title: "알림", message: "댓글을 신고했어요\n제보 감사합니다 😎")
         case .delete:
-            if let idx = self.mainTableView.indexPath(for: cell)?.row {
-                self.deleteComment(idx)
-            }
+            self.deleteComment(commentItem)
         }
     }
-    
-    func deleteComment(_ idx: Int) {
-//        if let commentItem = self.webtoonDetailItem?.comments[idx] {
-//
-//        }
-     }
-    
+        
 }
 
 // MARK: - WebtoonDetailCommentView
 
 extension WebtoonDetailViewController: WebtoonDetailCommentViewDelegate {
+    
+    func didMenuWebtoonDetailCommentView(view: WebtoonDetailCommentView, commentItem: Comment?, type: WebtoonDetailCommentMenuType) {
+        switch type {
+        case .report:
+            self.showAlertWithTitle(vc: self, title: "알림", message: "댓글을 신고했어요\n제보 감사합니다 😎")
+        case .delete:
+            self.deleteComment(commentItem)
+        }
+    }
     
     func didSendWebtoonDetailCommentView(view: WebtoonDetailCommentView, text: String?) {
         guard let text = text, text.count > 0 else { return }
@@ -527,6 +568,16 @@ extension WebtoonDetailViewController: WebtoonDetailCommentViewDelegate {
                 print(response)
             }
         }
+    }
+    
+}
+
+// MARK: - HomeWebtoonListCell
+
+extension WebtoonDetailViewController: HomeWebtoonListCellDelegate {
+    
+    func didWebtoonHomeWebtoonListCell(cell: HomeWebtoonListCell, webtoon: Webtoon) {
+        self.openDetailVC(webtoon)
     }
     
 }

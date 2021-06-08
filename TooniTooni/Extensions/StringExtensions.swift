@@ -9,6 +9,29 @@ import UIKit
 
 extension String {
     
+    // 앱 버전 가져오기
+    var appVersion: String {
+        guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+            return "-"
+        }
+        
+        return version
+    }
+    
+    // 앱 빌드 가져오기
+    var appBuild: String {
+        guard let version = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else {
+            return "-"
+        }
+        
+        return version
+    }
+    
+    // 앱 버전 (빌드) 가져오기
+    var appLongVersion: String {
+        return self.appVersion + " (\(self.appBuild))"
+    }
+
     func style(changeText: String,
                underLine: Bool? = nil,
                stroke: UIColor? = nil,

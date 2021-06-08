@@ -11,10 +11,12 @@ struct User: Codable {
     var id: Int?
     var nickname: String?
     var loginToken: String?
+    var profileImage: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "accountId"
         case nickname
         case loginToken
+        case profileImage
     }
 }

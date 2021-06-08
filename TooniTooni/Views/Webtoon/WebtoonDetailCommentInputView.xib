@@ -32,7 +32,7 @@
                             </constraints>
                         </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZjD-bI-H5S">
-                            <rect key="frame" x="20" y="0.0" width="306" height="50"/>
+                            <rect key="frame" x="12" y="0.0" width="314" height="50"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <color key="textColor" systemColor="labelColor"/>
@@ -45,7 +45,7 @@
                         <constraint firstItem="R9d-Ff-Hnz" firstAttribute="leading" secondItem="ZjD-bI-H5S" secondAttribute="trailing" constant="8" id="4K5-PO-wlw"/>
                         <constraint firstAttribute="trailing" secondItem="R9d-Ff-Hnz" secondAttribute="trailing" id="MOk-4S-E68"/>
                         <constraint firstAttribute="bottom" secondItem="R9d-Ff-Hnz" secondAttribute="bottom" id="PR5-N5-f8j"/>
-                        <constraint firstItem="ZjD-bI-H5S" firstAttribute="leading" secondItem="6DQ-0O-SGb" secondAttribute="leading" constant="20" id="Y9l-nn-nQ8"/>
+                        <constraint firstItem="ZjD-bI-H5S" firstAttribute="leading" secondItem="6DQ-0O-SGb" secondAttribute="leading" constant="12" id="Y9l-nn-nQ8"/>
                         <constraint firstItem="ZjD-bI-H5S" firstAttribute="top" secondItem="6DQ-0O-SGb" secondAttribute="top" id="ffu-gU-YoW"/>
                         <constraint firstAttribute="bottom" secondItem="ZjD-bI-H5S" secondAttribute="bottom" id="kaz-dk-zuA"/>
                         <constraint firstItem="R9d-Ff-Hnz" firstAttribute="top" secondItem="6DQ-0O-SGb" secondAttribute="top" id="rxz-t3-rPj"/>

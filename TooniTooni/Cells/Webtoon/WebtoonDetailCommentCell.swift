@@ -15,7 +15,7 @@ enum WebtoonDetailCommentMenuType: Int {
 }
 
 protocol WebtoonDetailCommentCellDelegate: AnyObject {
-    func didMenuWebtoonDetailCommentCell(cell: WebtoonDetailCommentCell, type: WebtoonDetailCommentMenuType)
+    func didMenuWebtoonDetailCommentCell(cell: WebtoonDetailCommentCell, commentItem: Comment?, type: WebtoonDetailCommentMenuType)
 }
 
 class WebtoonDetailCommentCell: UITableViewCell {
@@ -28,11 +28,10 @@ class WebtoonDetailCommentCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var reportLabel: UILabel!
     @IBOutlet weak var reportButton: UIButton!
-    @IBOutlet weak var dotView: UIImageView!
-    @IBOutlet weak var deleteLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var dividerView: UIImageView!
 
+    var commentItem: Comment?
+    
     weak var delegate: WebtoonDetailCommentCellDelegate?
     
     // MARK: - Life Cycle
@@ -68,21 +67,11 @@ class WebtoonDetailCommentCell: UITableViewCell {
         self.reportLabel.font = kCAPTION1_REGULAR
         self.reportLabel.textColor = kGRAY_50
         self.reportLabel.text = "신고"
-        
-        self.deleteLabel.font = kCAPTION1_REGULAR
-        self.deleteLabel.textColor = kGRAY_50
-        self.deleteLabel.text = "삭제"
-    }
-    
-    func initImageView() {
-        self.dotView.image = UIImage.imageFromColor(kGRAY_50)
-        self.dotView.layer.cornerRadius = 2.0
-        self.dotView.clipsToBounds = true
     }
     
     func initButtons() {
-        self.reportButton.addTarget(self, action: #selector(doReport), for: .touchUpInside)
-        self.deleteButton.addTarget(self, action: #selector(doDelete), for: .touchUpInside)
+//        self.reportButton.addTarget(self, action: #selector(doReport), for: .touchUpInside)
+//        self.deleteButton.addTarget(self, action: #selector(doDelete), for: .touchUpInside)
     }
     
     override func awakeFromNib() {
@@ -91,7 +80,6 @@ class WebtoonDetailCommentCell: UITableViewCell {
         self.initVars()
         self.initBackgroundView()
         self.initLabels()
-        self.initImageView()
         self.initButtons()
     }
     
@@ -103,12 +91,12 @@ extension WebtoonDetailCommentCell {
     
     @objc
     func doReport() {
-        self.delegate?.didMenuWebtoonDetailCommentCell(cell: self, type: .report)
+        self.delegate?.didMenuWebtoonDetailCommentCell(cell: self, commentItem: self.commentItem, type: .report)
     }
     
     @objc
     func doDelete() {
-        self.delegate?.didMenuWebtoonDetailCommentCell(cell: self, type: .delete)
+        self.delegate?.didMenuWebtoonDetailCommentCell(cell: self, commentItem: self.commentItem, type: .delete)
     }
     
 }
@@ -118,6 +106,17 @@ extension WebtoonDetailCommentCell {
 extension WebtoonDetailCommentCell {
     
     func bind(_ commentItem: Comment) {
+        self.commentItem = commentItem
+        
+        if commentItem.account?.id == GeneralHelper.sharedInstance.user?.id {
+            self.reportLabel.text = "삭제"
+            self.reportButton.addTarget(self, action: #selector(doDelete), for: .touchUpInside)
+        }
+        else {
+            self.reportLabel.text = "신고"
+            self.reportButton.addTarget(self, action: #selector(doReport), for: .touchUpInside)
+        }
+        
         if let nickname = commentItem.account?.nickname {
             self.nameLabel.text = nickname
         }

@@ -23,6 +23,8 @@ enum HomeGenreType: Int, CaseIterable {
         case .romance: return "순정"
         }
     }
+    
+    static let count = 5
 }
 
 class HomeGenreViewController: BaseViewController {
@@ -30,7 +32,7 @@ class HomeGenreViewController: BaseViewController {
     // MARK: - Vars
     
     @IBOutlet weak var navigationView: GeneralNavigationView!
-    @IBOutlet weak var menuView: GeneralMenuView!
+    @IBOutlet weak var menuView: GenreHeaderView!
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var activity: GeneralActivity!
 
@@ -63,7 +65,7 @@ class HomeGenreViewController: BaseViewController {
 
     func initMenuView() {
         self.menuView.delegate = self
-        self.menuView.bind(self.selectedIdx, self.titleList)
+        self.menuView.bind(self.selectedIdx)
     }
     
     func initPageView() {
@@ -107,9 +109,9 @@ extension HomeGenreViewController {
 
 // MARK: - GeneralMenuView
 
-extension HomeGenreViewController: GeneralMenuViewDelegate {
+extension HomeGenreViewController: GenreHeaderViewDelegate {
     
-    func didMenuGeneralMenuView(view: GeneralMenuView, idx: Int) {
+    func didMenuGenreHeaderView(view: GenreHeaderView, idx: Int) {
         if self.selectedIdx == idx { return }
      
         var direction: UIPageViewController.NavigationDirection = .forward

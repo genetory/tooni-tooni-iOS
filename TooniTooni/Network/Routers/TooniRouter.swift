@@ -16,6 +16,7 @@ enum TooniRouter {
     case weekWebtoon(String)
     case commentList(String)
     case writeComment(String, String)
+    case deleteComment(String)
     case genre(String)
     case random
     case search(String)
@@ -41,6 +42,8 @@ extension TooniRouter: TargetType {
             return "comment/list"
         case .writeComment:
             return "comment"
+        case .deleteComment:
+            return "comment"
         case let .genre(genre):
             return "webtoons/\(genre)"
         case .random:
@@ -64,6 +67,8 @@ extension TooniRouter: TargetType {
             return .get
         case .writeComment:
             return .post
+        case .deleteComment:
+            return .delete
         case .genre:
             return .get
         case .random:
@@ -91,6 +96,8 @@ extension TooniRouter: TargetType {
             return .requestParameters(parameters: ["webtoonId": id, "pageSize": 30], encoding: URLEncoding.queryString)
         case let .writeComment(id, content):
             return .requestParameters(parameters: ["webtoonId": id, "content": content], encoding: JSONEncoding.default)
+        case let .deleteComment(id):
+            return .requestParameters(parameters: ["commentId": id], encoding: URLEncoding.queryString)
         case .genre:
             return .requestPlain
         case .random:

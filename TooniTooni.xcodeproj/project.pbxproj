@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1918313C266FC49200B5CCED /* GenreHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918313B266FC49200B5CCED /* GenreHeaderView.swift */; };
+		1918313E266FC49900B5CCED /* GenreHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1918313D266FC49900B5CCED /* GenreHeaderView.xib */; };
+		19183141266FD1D200B5CCED /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19183140266FD1D200B5CCED /* SettingsHeaderView.swift */; };
+		19183143266FD1D900B5CCED /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19183142266FD1D900B5CCED /* SettingsHeaderView.xib */; };
+		19183146266FD4A700B5CCED /* SettingsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19183145266FD4A700B5CCED /* SettingsListCell.swift */; };
+		19183148266FD4AF00B5CCED /* SettingsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19183147266FD4AF00B5CCED /* SettingsListCell.xib */; };
 		194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194D7A35262543B400BEEF1C /* Splash.storyboard */; };
 		194D7A39262543BB00BEEF1C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A38262543BB00BEEF1C /* SplashViewController.swift */; };
 		194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A432625464300BEEF1C /* GeneralNavigationView.swift */; };
@@ -156,6 +162,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1918313B266FC49200B5CCED /* GenreHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreHeaderView.swift; sourceTree = "<group>"; };
+		1918313D266FC49900B5CCED /* GenreHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreHeaderView.xib; sourceTree = "<group>"; };
+		19183140266FD1D200B5CCED /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		19183142266FD1D900B5CCED /* SettingsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
+		19183145266FD4A700B5CCED /* SettingsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCell.swift; sourceTree = "<group>"; };
+		19183147266FD4AF00B5CCED /* SettingsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListCell.xib; sourceTree = "<group>"; };
 		194D7A35262543B400BEEF1C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		194D7A38262543BB00BEEF1C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		194D7A432625464300BEEF1C /* GeneralNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralNavigationView.swift; sourceTree = "<group>"; };
@@ -318,6 +330,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1918313A266FC48700B5CCED /* Genre */ = {
+			isa = PBXGroup;
+			children = (
+				1918313B266FC49200B5CCED /* GenreHeaderView.swift */,
+				1918313D266FC49900B5CCED /* GenreHeaderView.xib */,
+			);
+			path = Genre;
+			sourceTree = "<group>";
+		};
+		1918313F266FD1C900B5CCED /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				19183140266FD1D200B5CCED /* SettingsHeaderView.swift */,
+				19183142266FD1D900B5CCED /* SettingsHeaderView.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		19183144266FD49B00B5CCED /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				19183145266FD4A700B5CCED /* SettingsListCell.swift */,
+				19183147266FD4AF00B5CCED /* SettingsListCell.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		194D7A34262543AC00BEEF1C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +369,8 @@
 		194D7A412625462B00BEEF1C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1918313F266FD1C900B5CCED /* Settings */,
+				1918313A266FC48700B5CCED /* Genre */,
 				195AE4E4266CF7AE001A5352 /* Search */,
 				19EA90412663417100F280A2 /* Webtoon */,
 				19EA900226620C7F00F280A2 /* Home */,
@@ -535,6 +576,7 @@
 		19BFA5362637C9D500C6B82E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				19183144266FD49B00B5CCED /* Settings */,
 				195AE4CD266B26D7001A5352 /* Search */,
 				19EA902426623D9E00F280A2 /* Webtoon */,
 				19EA9012266220F000F280A2 /* Favorite */,
@@ -814,6 +856,7 @@
 				195AE4C3266B1975001A5352 /* GoogleService-Info.plist in Resources */,
 				19EA900F26620EFA00F280A2 /* GeneralMenuCell.xib in Resources */,
 				19BFA59626380F3100C6B82E /* GeneralGenreView.xib in Resources */,
+				19183143266FD1D900B5CCED /* SettingsHeaderView.xib in Resources */,
 				19EA90162662211400F280A2 /* FavoriteListCell.xib in Resources */,
 				195AE4F2266DBF7A001A5352 /* WebtoonDetailCommentInputView.xib in Resources */,
 				19B1B483262425A20016F195 /* Base.storyboard in Resources */,
@@ -830,6 +873,7 @@
 				194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */,
 				195AE4E8266CF7C2001A5352 /* SearchNoneFooterView.xib in Resources */,
 				19CA5FB3264F78C300A5DC76 /* HomeGenreListCell.xib in Resources */,
+				19183148266FD4AF00B5CCED /* SettingsListCell.xib in Resources */,
 				19B1B49D262428630016F195 /* Week.storyboard in Resources */,
 				19BFA578263804DF00C6B82E /* HomeWebtoonListCell.xib in Resources */,
 				195AE4EC266D0EF9001A5352 /* SearchHeaderView.xib in Resources */,
@@ -841,6 +885,7 @@
 				195AE4C1266B15E2001A5352 /* Search.storyboard in Resources */,
 				19CA7151265B707F0095BE24 /* GeneralActivity.xib in Resources */,
 				19EA900526620C8600F280A2 /* HomeHeaderView.xib in Resources */,
+				1918313E266FC49900B5CCED /* GenreHeaderView.xib in Resources */,
 				194D7A462625464300BEEF1C /* GeneralNavigationView.xib in Resources */,
 				19CA5FA7264F595900A5DC76 /* Color.xcassets in Resources */,
 				19B1B473262425770016F195 /* Assets.xcassets in Resources */,
@@ -897,6 +942,7 @@
 				19CA713D265B6DAE0095BE24 /* NetworkLoggerPlugin.swift in Sources */,
 				19CA713F265B6DAE0095BE24 /* AlamofireSession.swift in Sources */,
 				19B1B48A262425DB0016F195 /* TabItem.swift in Sources */,
+				19183146266FD4A700B5CCED /* SettingsListCell.swift in Sources */,
 				19BFA59326380F2C00C6B82E /* GeneralGenreView.swift in Sources */,
 				19EA900626620C8600F280A2 /* HomeHeaderView.swift in Sources */,
 				194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */,
@@ -935,6 +981,7 @@
 				19BFA56F2637FF2200C6B82E /* HomeNewCell.swift in Sources */,
 				19CA7146265B6DC00095BE24 /* CommonResponse.swift in Sources */,
 				19EA90432663417C00F280A2 /* WebtoonDetailHeaderView.swift in Sources */,
+				1918313C266FC49200B5CCED /* GenreHeaderView.swift in Sources */,
 				19CA5FA9264F59DF00A5DC76 /* Colors.swift in Sources */,
 				19EA9014266220FE00F280A2 /* FavoriteListCell.swift in Sources */,
 				19CA714A265B6DC50095BE24 /* TooniRouter.swift in Sources */,
@@ -953,6 +1000,7 @@
 				19B1B486262425A20016F195 /* BaseViewController.swift in Sources */,
 				195AE4CF266B26E4001A5352 /* SearchRecentCell.swift in Sources */,
 				19B1B496262426AF0016F195 /* GeneralHelper.swift in Sources */,
+				19183141266FD1D200B5CCED /* SettingsHeaderView.swift in Sources */,
 				19B1B49A2624285D0016F195 /* WeekViewController.swift in Sources */,
 				19B1B4A9262428800016F195 /* SettingsViewController.swift in Sources */,
 				19B1B4A02624286A0016F195 /* FavoriteViewController.swift in Sources */,

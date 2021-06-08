@@ -9,6 +9,7 @@ import UIKit
 
 protocol WebtoonDetailCommentViewDelegate: AnyObject {
     func didSendWebtoonDetailCommentView(view: WebtoonDetailCommentView, text: String?)
+    func didMenuWebtoonDetailCommentView(view: WebtoonDetailCommentView, commentItem: Comment?, type: WebtoonDetailCommentMenuType)
 }
 
 class WebtoonDetailCommentView: BaseCustomView {
@@ -35,7 +36,6 @@ class WebtoonDetailCommentView: BaseCustomView {
     }
     
     func initInputView() {
-        self.commentInputView.contentTextView.delegate = self
         self.commentInputView.delegate = self
     }
     
@@ -85,6 +85,12 @@ extension WebtoonDetailCommentView {
     
     func bind(_ commentList: [Comment]?) {
         self.commentList = commentList
+        
+        self.commentInputView.contentTextView.textColor = kGRAY_50
+        self.commentInputView.contentTextView.text = "투니의 의견을 작성해주세요 🤩"
+        self.commentInputView.contentTextView.delegate = self
+        self.commentInputView.contentTextView.keyboardDismissMode = .interactive
+
         self.mainTableView.reloadData()
     }
     
@@ -120,11 +126,32 @@ extension WebtoonDetailCommentView: UITableViewDelegate, UITableViewDataSource {
             let commentItem = commentList[indexPath.row]
             cell.bind(commentItem)
             cell.divider(indexPath.row == commentList.count - 1 ? false : true)
-
+            cell.delegate = self
+            
             return cell
         }
         
         return .init()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+    }
+    
+}
+
+// MARK: - WebtoonDetailCommentCell
+
+extension WebtoonDetailCommentView: WebtoonDetailCommentCellDelegate {
+    
+    func didMenuWebtoonDetailCommentCell(cell: WebtoonDetailCommentCell, commentItem: Comment?, type: WebtoonDetailCommentMenuType) {
+        if let indexPath = self.mainTableView.indexPath(for: cell),
+           let commentList = self.commentList, commentList.count > 0 {
+            let commentItem = commentList[indexPath.row]
+
+            self.delegate?.didMenuWebtoonDetailCommentView(view: self, commentItem: commentItem, type: type)
+        }
     }
     
 }
@@ -135,6 +162,16 @@ extension WebtoonDetailCommentView: WebtoonDetailCommentInputViewDelegate {
     
     func didCommentWebtoonDetailCommentInputView(view: WebtoonDetailCommentInputView, text: String?) {
         self.delegate?.didSendWebtoonDetailCommentView(view: self, text: text)
+    }
+    
+}
+
+// MARK: - UIScrollView
+
+extension WebtoonDetailCommentView: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.endEditing(true)
     }
     
 }
@@ -156,6 +193,13 @@ extension WebtoonDetailCommentView: UITextViewDelegate {
         else {
             self.commentInputViewHeightConstraint.constant = estimatedSize.height
         }
+        
+        if let text = textView.text, text.count > 0 {
+            self.commentInputView.typing(true)
+        }
+        else {
+            self.commentInputView.typing(false)
+        }
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -163,12 +207,11 @@ extension WebtoonDetailCommentView: UITextViewDelegate {
             textView.text = nil
             textView.textColor = kGRAY_90
         }
-        
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "투니의 의견을 자성해주세요 🤩"
+            textView.text = "투니의 의견을 작성해주세요 🤩"
             textView.textColor = kGRAY_50
         }
     }

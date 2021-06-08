@@ -25,9 +25,9 @@ class SearchViewController: BaseViewController {
 
     var type: SearchType = .none {
         didSet {
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.mainCollectionView.reloadData()
-            }
+//            }
         }
     }
     
