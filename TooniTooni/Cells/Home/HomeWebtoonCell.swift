@@ -16,6 +16,7 @@ class HomeWebtoonCell: UICollectionViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var thumbView: UIView!
     @IBOutlet weak var thumbImageView: UIImageView!
+    @IBOutlet weak var cloverImageView: UIImageView!
     @IBOutlet weak var badgeView: GeneralBadgeView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -39,6 +40,8 @@ class HomeWebtoonCell: UICollectionViewCell {
         self.thumbImageView.clipsToBounds = true
         self.thumbImageView.backgroundColor = kGRAY_10
         self.thumbImageView.contentMode = .scaleAspectFill
+        
+        self.cloverImageView.isHidden = true
     }
     
     func initLabel() {
@@ -85,6 +88,10 @@ extension HomeWebtoonCell {
         if let score = webtoon.score {
             self.infoLabel.text = String.init(format: "%.2f", score)
         }
+    }
+    
+    func clover(_ clover: Bool) {
+        self.cloverImageView.isHidden = !clover
     }
     
 }

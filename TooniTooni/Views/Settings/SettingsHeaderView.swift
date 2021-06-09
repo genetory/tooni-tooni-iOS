@@ -85,6 +85,12 @@ extension SettingsHeaderView {
         if let nickname = GeneralHelper.sharedInstance.user?.nickname {
             self.nameLabel.text = nickname
         }
+        
+        if let profileImage = GeneralHelper.sharedInstance.user?.profileImage {
+            self.profileImageView.kf.setImage(with: URL.init(string: profileImage),
+                                              placeholder: nil,
+                                              options: [.transition(.fade(0.25))], completionHandler: nil)
+        }
     }
     
 }

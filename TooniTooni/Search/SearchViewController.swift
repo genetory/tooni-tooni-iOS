@@ -234,6 +234,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kHomeWebtoonCellID, for: indexPath) as? HomeWebtoonCell {
                 let webtoonItem = list[indexPath.row]
                 cell.bind(webtoonItem)
+                cell.clover(true)
                 
              return cell
             }
