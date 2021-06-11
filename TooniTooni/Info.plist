@@ -42,6 +42,7 @@
 		<string>NotoSansKR-Bold.otf</string>
 		<string>NotoSansKR-Medium.otf</string>
 		<string>NotoSansKR-Regular.otf</string>
+		<string>Montserrat-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

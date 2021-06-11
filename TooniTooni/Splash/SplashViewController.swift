@@ -11,19 +11,29 @@ import FirebaseAuth
 class SplashViewController: BaseViewController {
     
     // MARK: - Vars
-    
+
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activity: GeneralActivity!
 
     // MARK: - Life Cycle
     
     func initBackgroundView() {
-        self.view.backgroundColor = kWHITE
+        self.view.backgroundColor = kGRAY_90
+    }
+    
+    func initLabel() {
+        self.titleLabel.textColor = kWHITE
+        self.titleLabel.font = kPOINT_BOLD_24
+        self.titleLabel.textAlignment = .center
+        self.titleLabel.numberOfLines = 0
+        self.titleLabel.text = "TOONI\nTOONI"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         self.initBackgroundView()
+        self.initLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {

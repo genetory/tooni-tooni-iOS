@@ -11,16 +11,21 @@ enum CustomFont {
     case bold
     case medium
     case regular
+    case point
     
     var name: String {
         switch self {
         case .bold: return "NotoSansKR-Bold"
         case .medium: return "NotoSansKR-Medium"
         case .regular: return "NotoSansKR-Regular"
+        case .point: return "Montserrat-Bold"
         }
     }
     
 }
+
+let kPOINT_BOLD_32 =                        UIFont(name: CustomFont.point.name, size: 32.0)
+let kPOINT_BOLD_24 =                        UIFont(name: CustomFont.point.name, size: 24.0)
 
 let kHEADING1_BOLD =                        UIFont(name: CustomFont.bold.name, size: 32.0)
 

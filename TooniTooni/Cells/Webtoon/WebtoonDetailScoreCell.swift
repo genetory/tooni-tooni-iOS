@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Cosmos
 
 let kWebtoonDetailScoreCellID =                                     "WebtoonDetailScoreCell"
 
@@ -18,6 +19,7 @@ class WebtoonDetailScoreCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var ratingView: CosmosView!
     
     // MARK: - Life Cycle
     
@@ -35,10 +37,10 @@ class WebtoonDetailScoreCell: UITableViewCell {
     func initLabels() {
         self.titleLabel.textColor = kWHITE
         self.titleLabel.font = kBODY2_MEDIUM
-        self.titleLabel.text = "투니 평점"
+        self.titleLabel.text = "평점"
 
         self.scoreLabel.textColor = kWHITE
-        self.scoreLabel.font = kHEADING1_BOLD
+        self.scoreLabel.font = kPOINT_BOLD_32
         self.scoreLabel.textAlignment = .center
         self.scoreLabel.text = nil
         
@@ -48,12 +50,17 @@ class WebtoonDetailScoreCell: UITableViewCell {
         self.infoLabel.text = "투니투니만의 평점이 곧 들어올 예정이에요!"
     }
     
+    func initRatingView() {
+        self.ratingView.settings.fillMode = .precise
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.initVars()
         self.initBackgroundView()
         self.initLabels()
+        self.initRatingView()
     }
     
 }
@@ -67,6 +74,8 @@ extension WebtoonDetailScoreCell {
         
         if let score = webtoon.score {
             self.scoreLabel.text = String.init(format: "%.2f", score)
+            
+            self.ratingView.rating = score / 2.0
         }
     }
     

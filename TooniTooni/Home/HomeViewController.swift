@@ -17,6 +17,7 @@ enum HomeViewType: Int, HomeViewSectionTitle {
     case popular
     case genre
     case binge
+    case author
     
     var title: String? {
         switch self {
@@ -30,10 +31,12 @@ enum HomeViewType: Int, HomeViewSectionTitle {
             return "장르별 추천 투니"
         case .binge:
             return "정주행하기 좋은 투니"
+        case .author:
+            return "투니 작가 추천"
         }
     }
     
-    static let count = 5
+    static let count = 6
 }
 
 let kHOME_HEADER_HEIGHT: CGFloat =                           386.0
@@ -124,6 +127,9 @@ class HomeViewController: BaseViewController {
         let driveCell = UINib.init(nibName: kHomeDriveCellID, bundle: nil)
         self.mainTableView.register(driveCell, forCellReuseIdentifier: kHomeDriveCellID)
                 
+        let authorCell = UINib.init(nibName: kHomeAuthorListCellID, bundle: nil)
+        self.mainTableView.register(authorCell, forCellReuseIdentifier: kHomeAuthorListCellID)
+        
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.separatorStyle = .none
@@ -237,6 +243,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             if let bingeList = self.home?.bingeList, bingeList.count > 0 {
                 return bingeList.count
             }
+        case HomeViewType.author.rawValue:
+            if let authorList = self.home?.authorList, authorList.count > 0 {
+                return 1
+            }
         default:
             return 0
         }
@@ -272,7 +282,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 12.0
+        if section == HomeViewType.popular.rawValue ||
+            section == HomeViewType.genre.rawValue {
+            return 24.0
+        }
+        
+        return .leastNonzeroMagnitude
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -308,7 +323,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
             return cell
         }
-        
+        else if indexPath.section == HomeViewType.author.rawValue,
+                let authorList = self.home?.authorList, authorList.count > 0,
+                let cell = tableView.dequeueReusableCell(withIdentifier: kHomeAuthorListCellID, for: indexPath) as? HomeAuthorListCell {
+            cell.bind(authorList)
+            cell.delegate = self
+            
+            return cell
+        }
+
         return .init()
     }
     
@@ -392,6 +415,16 @@ extension HomeViewController: HomeGenreListCellDelegate {
     
     func didWebtoonHomeGenreListCell(cell: HomeGenreListCell, webtoon: Webtoon) {
         self.openDetailVC(webtoon)
+    }
+    
+}
+
+// MARK: - HomeAuthorListCell
+
+extension HomeViewController: HomeAuthorListCellDelegate {
+    
+    func didAuthorHomeAuthorListCell(cell: HomeAuthorListCell, author: Author) {
+        
     }
     
 }

@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,6 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ3-N4-ldf">
+                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzp-2V-lTQ" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
                                 <rect key="frame" x="187" y="428" width="40" height="40"/>
                                 <constraints>
@@ -26,14 +32,17 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qo9-Of-E3G"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="kGRAY_90"/>
                         <constraints>
                             <constraint firstItem="Jzp-2V-lTQ" firstAttribute="centerX" secondItem="eqK-iD-GV5" secondAttribute="centerX" id="40w-vB-01r"/>
                             <constraint firstItem="Jzp-2V-lTQ" firstAttribute="centerY" secondItem="eqK-iD-GV5" secondAttribute="centerY" id="Icd-rr-whS"/>
+                            <constraint firstItem="WJ3-N4-ldf" firstAttribute="centerX" secondItem="eqK-iD-GV5" secondAttribute="centerX" id="Lpy-qb-egU"/>
+                            <constraint firstItem="WJ3-N4-ldf" firstAttribute="centerY" secondItem="eqK-iD-GV5" secondAttribute="centerY" id="VmW-mr-tBL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activity" destination="Jzp-2V-lTQ" id="Efc-K2-UWL"/>
+                        <outlet property="titleLabel" destination="WJ3-N4-ldf" id="fhJ-q0-2Pq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9c-bQ-IiX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -42,8 +51,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="kGRAY_90">
+            <color red="0.094117647058823528" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

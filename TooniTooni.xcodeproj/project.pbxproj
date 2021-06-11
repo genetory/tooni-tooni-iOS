@@ -13,6 +13,8 @@
 		19183143266FD1D900B5CCED /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19183142266FD1D900B5CCED /* SettingsHeaderView.xib */; };
 		19183146266FD4A700B5CCED /* SettingsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19183145266FD4A700B5CCED /* SettingsListCell.swift */; };
 		19183148266FD4AF00B5CCED /* SettingsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19183147266FD4AF00B5CCED /* SettingsListCell.xib */; };
+		1918317326724DAE00B5CCED /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1918317226724DAE00B5CCED /* Cosmos */; };
+		191831962673820B00B5CCED /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191831952673820B00B5CCED /* Montserrat-Bold.ttf */; };
 		194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194D7A35262543B400BEEF1C /* Splash.storyboard */; };
 		194D7A39262543BB00BEEF1C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A38262543BB00BEEF1C /* SplashViewController.swift */; };
 		194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A432625464300BEEF1C /* GeneralNavigationView.swift */; };
@@ -168,6 +170,7 @@
 		19183142266FD1D900B5CCED /* SettingsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
 		19183145266FD4A700B5CCED /* SettingsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCell.swift; sourceTree = "<group>"; };
 		19183147266FD4AF00B5CCED /* SettingsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListCell.xib; sourceTree = "<group>"; };
+		191831952673820B00B5CCED /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		194D7A35262543B400BEEF1C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		194D7A38262543BB00BEEF1C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		194D7A432625464300BEEF1C /* GeneralNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralNavigationView.swift; sourceTree = "<group>"; };
@@ -320,6 +323,7 @@
 			files = (
 				19CA711B265B69B90095BE24 /* Kingfisher in Frameworks */,
 				195AE4CA266B1A47001A5352 /* FirebaseAuth in Frameworks */,
+				1918317326724DAE00B5CCED /* Cosmos in Frameworks */,
 				19CA7118265B68D20095BE24 /* Moya in Frameworks */,
 				195AE4C8266B1A47001A5352 /* FirebaseMessaging in Frameworks */,
 				195AE4C6266B1A47001A5352 /* FirebaseAnalytics in Frameworks */,
@@ -642,6 +646,7 @@
 				19CA711D265B69CA0095BE24 /* NotoSansKR-Bold.otf */,
 				19CA711E265B69CA0095BE24 /* NotoSansKR-Medium.otf */,
 				19CA711F265B69CA0095BE24 /* NotoSansKR-Regular.otf */,
+				191831952673820B00B5CCED /* Montserrat-Bold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -804,6 +809,7 @@
 				195AE4C5266B1A47001A5352 /* FirebaseAnalytics */,
 				195AE4C7266B1A47001A5352 /* FirebaseMessaging */,
 				195AE4C9266B1A47001A5352 /* FirebaseAuth */,
+				1918317226724DAE00B5CCED /* Cosmos */,
 			);
 			productName = TooniTooni;
 			productReference = 19B1B466262425760016F195 /* TooniTooni.app */;
@@ -837,6 +843,7 @@
 				19CA7119265B69B90095BE24 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				19CA714B265B706B0095BE24 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				195AE4C4266B1A46001A5352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1918317126724DAE00B5CCED /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 19B1B467262425760016F195 /* Products */;
 			projectDirPath = "";
@@ -876,6 +883,7 @@
 				19183148266FD4AF00B5CCED /* SettingsListCell.xib in Resources */,
 				19B1B49D262428630016F195 /* Week.storyboard in Resources */,
 				19BFA578263804DF00C6B82E /* HomeWebtoonListCell.xib in Resources */,
+				191831962673820B00B5CCED /* Montserrat-Bold.ttf in Resources */,
 				195AE4EC266D0EF9001A5352 /* SearchHeaderView.xib in Resources */,
 				19CA7121265B69CA0095BE24 /* NotoSansKR-Medium.otf in Resources */,
 				19EA900A26620E1000F280A2 /* GeneralMenuView.xib in Resources */,
@@ -1213,6 +1221,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1918317126724DAE00B5CCED /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 		195AE4C4266B1A46001A5352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1248,6 +1264,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1918317226724DAE00B5CCED /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1918317126724DAE00B5CCED /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
 		195AE4C5266B1A47001A5352 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 195AE4C4266B1A46001A5352 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

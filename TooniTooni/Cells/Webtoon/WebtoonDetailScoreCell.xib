@@ -45,12 +45,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xC7-UX-Pfa" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="123" y="81.5" width="124" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="AgV-sP-i8p"/>
+                                    <constraint firstAttribute="height" constant="18" id="VUb-Kb-zKa"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="icon_rate_on"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="icon_rate_off"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="4Yh-hr-s5K" secondAttribute="trailing" constant="20" id="495-mr-vsR"/>
                             <constraint firstItem="4Yh-hr-s5K" firstAttribute="leading" secondItem="lsX-va-T0v" secondAttribute="leading" constant="20" id="FLX-57-hSA"/>
                             <constraint firstAttribute="bottom" secondItem="4Yh-hr-s5K" secondAttribute="bottom" constant="14" id="L7A-m0-zpe"/>
+                            <constraint firstItem="xC7-UX-Pfa" firstAttribute="centerX" secondItem="lsX-va-T0v" secondAttribute="centerX" id="OtW-tq-DGM"/>
+                            <constraint firstItem="xC7-UX-Pfa" firstAttribute="top" secondItem="t2u-Mf-yNw" secondAttribute="bottom" constant="6" id="Rej-Ki-n9a"/>
                             <constraint firstItem="91Y-mR-lp1" firstAttribute="top" secondItem="lsX-va-T0v" secondAttribute="top" constant="20" id="Vsx-dm-acg"/>
                             <constraint firstItem="IaN-su-8TN" firstAttribute="leading" secondItem="91Y-mR-lp1" secondAttribute="trailing" constant="8" id="Yu0-h6-Wol"/>
                             <constraint firstItem="IaN-su-8TN" firstAttribute="centerY" secondItem="91Y-mR-lp1" secondAttribute="centerY" id="bMV-ag-HO7"/>
@@ -73,6 +86,7 @@
                 <outlet property="badgeView" destination="91Y-mR-lp1" id="7eP-zT-A5m"/>
                 <outlet property="baseView" destination="lsX-va-T0v" id="ec9-Ul-Xpm"/>
                 <outlet property="infoLabel" destination="4Yh-hr-s5K" id="AfC-E3-BOk"/>
+                <outlet property="ratingView" destination="xC7-UX-Pfa" id="oVz-zL-6eS"/>
                 <outlet property="scoreLabel" destination="t2u-Mf-yNw" id="j1F-xX-vZt"/>
                 <outlet property="titleLabel" destination="IaN-su-8TN" id="Ib5-LU-Be8"/>
             </connections>
@@ -80,6 +94,8 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icon_rate_off" width="20" height="18"/>
+        <image name="icon_rate_on" width="20" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

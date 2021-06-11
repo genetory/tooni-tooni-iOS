@@ -31,6 +31,7 @@ struct Site: Codable {
 struct Author: Codable {
     var id: Int?
     var name: String?
+    var authorImage: String?
 }
 
 struct Webtoon: Codable {
