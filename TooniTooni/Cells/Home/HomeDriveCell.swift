@@ -15,6 +15,7 @@ class HomeDriveCell: UITableViewCell {
     
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var genreView: GeneralGenreView!
+    @IBOutlet weak var webtoonView: UIView!
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var colorImageView: UIImageView!
     @IBOutlet weak var thumbImageView: UIImageView!
@@ -38,9 +39,10 @@ class HomeDriveCell: UITableViewCell {
     }
     
     func initImageViews() {
-        self.bgImageView.clipsToBounds = true
+        self.webtoonView.layer.cornerRadius = 5.0
+        self.webtoonView.clipsToBounds = true
+        
         self.bgImageView.contentMode = .scaleAspectFill
-        self.bgImageView.layer.cornerRadius = 5.0
         self.bgImageView.alpha = 0.5
 
         self.colorImageView.contentMode = .scaleToFill

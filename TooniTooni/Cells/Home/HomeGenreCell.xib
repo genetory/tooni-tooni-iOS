@@ -64,7 +64,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfasd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5F-sA-SN2">
-                                <rect key="frame" x="8" y="147.5" width="121" height="14.5"/>
+                                <rect key="frame" x="8" y="143.5" width="121" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -82,7 +82,7 @@
                             <constraint firstItem="OlT-Xd-hXN" firstAttribute="leading" secondItem="JJ8-Ds-xqm" secondAttribute="leading" id="YaH-pS-xHp"/>
                             <constraint firstItem="JJ8-Ds-xqm" firstAttribute="leading" secondItem="bad-ik-DCA" secondAttribute="leading" constant="-8" id="jKv-kH-fnY"/>
                             <constraint firstAttribute="trailing" secondItem="2fK-Vu-TEA" secondAttribute="trailing" id="lsq-uS-78Q"/>
-                            <constraint firstItem="g5F-sA-SN2" firstAttribute="top" secondItem="2fK-Vu-TEA" secondAttribute="bottom" constant="4" id="ocL-FP-GEF"/>
+                            <constraint firstItem="g5F-sA-SN2" firstAttribute="top" secondItem="2fK-Vu-TEA" secondAttribute="bottom" id="ocL-FP-GEF"/>
                             <constraint firstAttribute="trailing" secondItem="g5F-sA-SN2" secondAttribute="trailing" id="riZ-ZI-Xe0"/>
                             <constraint firstAttribute="trailing" secondItem="bad-ik-DCA" secondAttribute="trailing" id="soX-L5-Zq2"/>
                         </constraints>

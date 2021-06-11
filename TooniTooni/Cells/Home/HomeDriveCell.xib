@@ -121,6 +121,7 @@
                 <outlet property="infoLabel" destination="bFS-0w-860" id="h60-aJ-SM1"/>
                 <outlet property="thumbImageView" destination="byG-wX-WGI" id="fVo-zj-Jvx"/>
                 <outlet property="titleLabel" destination="xBf-Hi-hrc" id="E0n-fc-rWb"/>
+                <outlet property="webtoonView" destination="jka-J5-ItU" id="Ij4-wz-WjW"/>
             </connections>
             <point key="canvasLocation" x="111.59420289855073" y="81.026785714285708"/>
         </tableViewCell>

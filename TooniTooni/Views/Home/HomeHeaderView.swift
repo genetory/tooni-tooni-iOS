@@ -20,7 +20,9 @@ class HomeHeaderView: BaseCustomView {
     @IBOutlet weak var navigationView: GeneralNavigationView!
     @IBOutlet weak var navigationViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    
+    @IBOutlet weak var pageControl: UIPageControl!
+
+    var currentPage = 0
     var topBanner: [HomeBanner]?
     
     weak var delegate: HomeHeaderViewDelegate?
@@ -103,6 +105,11 @@ extension HomeHeaderView {
 extension HomeHeaderView {
     
     func bind(_ topBanner: [HomeBanner]?) {
+        if let topBanner = topBanner {
+            self.pageControl.currentPage = 0
+            self.pageControl.numberOfPages = topBanner.count
+        }
+        
         self.topBanner = topBanner
         self.mainCollectionView.reloadData()
     }
@@ -146,4 +153,19 @@ extension HomeHeaderView: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
+}
+
+// MARK: - UIScrollView
+
+extension HomeHeaderView: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == self.mainCollectionView {
+            let pageNumber = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
+            
+            self.pageControl.currentPage = pageNumber
+            self.currentPage = pageNumber
+        }
+    }
+
 }

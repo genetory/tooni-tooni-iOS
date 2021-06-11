@@ -59,7 +59,7 @@ class HomeNoticeCell: UICollectionViewCell {
 
 extension HomeNoticeCell {
     
-    func bind(_ homeBanner: HomeBanner) {
+    func bind(_ homeBanner: HomeBanner) {        
         if let caption = homeBanner.caption {
             self.captionLabel.attributedText = caption.style(changeText: caption,
                                                    lineSpacing: 3.0)

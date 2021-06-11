@@ -43,6 +43,9 @@ class WebtoonDetailCommentView: BaseCustomView {
         let commentCell = UINib.init(nibName: kWebtoonDetailCommentCellID, bundle: nil)
         self.mainTableView.register(commentCell, forCellReuseIdentifier: kWebtoonDetailCommentCellID)
 
+        let nodataCell = UINib.init(nibName: kGeneralNodataCellID, bundle: nil)
+        self.mainTableView.register(nodataCell, forCellReuseIdentifier: kGeneralNodataCellID)
+
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.separatorStyle = .none
@@ -109,7 +112,7 @@ extension WebtoonDetailCommentView: UITableViewDelegate, UITableViewDataSource {
             return commentList.count
         }
         
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -128,6 +131,11 @@ extension WebtoonDetailCommentView: UITableViewDelegate, UITableViewDataSource {
             cell.divider(indexPath.row == commentList.count - 1 ? false : true)
             cell.delegate = self
             
+            return cell
+        }
+        else if let cell = tableView.dequeueReusableCell(withIdentifier: kGeneralNodataCellID, for: indexPath) as? GeneralNodataCell {
+            cell.bind("empty_comment", "아직 댓글이 없어요 😭")
+
             return cell
         }
         

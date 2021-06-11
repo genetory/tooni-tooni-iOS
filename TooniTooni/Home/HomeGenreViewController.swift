@@ -177,7 +177,7 @@ extension HomeGenreViewController: UIPageViewControllerDelegate, UIPageViewContr
         
         index += 1
         
-        if index == FavoriteListViewType.count {
+        if index == HomeGenreType.count {
             return nil
         }
         

@@ -98,6 +98,9 @@ class WebtoonDetailViewController: BaseViewController {
         let recommendCell = UINib.init(nibName: kHomeWebtoonListCellID, bundle: nil)
         self.mainTableView.register(recommendCell, forCellReuseIdentifier: kHomeWebtoonListCellID)
         
+        let nodataCell = UINib.init(nibName: kGeneralNodataCellID, bundle: nil)
+        self.mainTableView.register(nodataCell, forCellReuseIdentifier: kGeneralNodataCellID)
+
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.separatorStyle = .none
@@ -408,6 +411,9 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
             if let comments = self.webtoonDetailItem?.comments, comments.count > 0 {
                 return comments.count
             }
+            else {
+                return 1
+            }
         case WebtoonDetailViewType.recommend.rawValue:
             if let randomRecommendWebtoons = self.webtoonDetailItem?.randomRecommendWebtoons, randomRecommendWebtoons.count > 0 {
                 return 1
@@ -476,16 +482,23 @@ extension WebtoonDetailViewController: UITableViewDelegate, UITableViewDataSourc
             
             return cell
         }
-        else if indexPath.section == WebtoonDetailViewType.comments.rawValue,
-                let comments = self.webtoonDetailItem?.comments, comments.count > 0,
-                let cell = tableView.dequeueReusableCell(withIdentifier: kWebtoonDetailCommentCellID, for: indexPath) as? WebtoonDetailCommentCell {
-            let commentItem = comments[indexPath.row]
-            cell.bind(commentItem)
-            cell.delegate = self
-            cell.divider(indexPath.row == comments.count - 1 ? false : true)
-            
-            return cell
+        else if indexPath.section == WebtoonDetailViewType.comments.rawValue {
+            if let comments = self.webtoonDetailItem?.comments, comments.count > 0,
+               let cell = tableView.dequeueReusableCell(withIdentifier: kWebtoonDetailCommentCellID, for: indexPath) as? WebtoonDetailCommentCell {
+                let commentItem = comments[indexPath.row]
+                cell.bind(commentItem)
+                cell.delegate = self
+                cell.divider(indexPath.row == comments.count - 1 ? false : true)
+                
+                return cell
+            }
+            else if let cell = tableView.dequeueReusableCell(withIdentifier: kGeneralNodataCellID, for: indexPath) as? GeneralNodataCell {
+                cell.bind("empty_comment", "아직 댓글이 없어요 😭")
+
+                return cell
+            }
         }
+        
         else if indexPath.section == WebtoonDetailViewType.recommend.rawValue,
                 let randomRecommendWebtoons = self.webtoonDetailItem?.randomRecommendWebtoons, randomRecommendWebtoons.count > 0,
                 let cell = tableView.dequeueReusableCell(withIdentifier: kHomeWebtoonListCellID, for: indexPath) as? HomeWebtoonListCell {
