@@ -27,7 +27,7 @@ enum HomeViewType: Int, HomeViewSectionTitle {
         case .banner:
             return nil
         case .weekday:
-            return "불금 추천 투니"
+            return "오늘의 추천 투니"
         case .popular:
             return "인기 급상승 투니"
         case .genre:
