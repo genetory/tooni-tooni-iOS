@@ -15,6 +15,7 @@
 		19183148266FD4AF00B5CCED /* SettingsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19183147266FD4AF00B5CCED /* SettingsListCell.xib */; };
 		1918317326724DAE00B5CCED /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1918317226724DAE00B5CCED /* Cosmos */; };
 		191831962673820B00B5CCED /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191831952673820B00B5CCED /* Montserrat-Bold.ttf */; };
+		19183198267384F400B5CCED /* splash_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19183197267384F400B5CCED /* splash_animation.gif */; };
 		194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194D7A35262543B400BEEF1C /* Splash.storyboard */; };
 		194D7A39262543BB00BEEF1C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A38262543BB00BEEF1C /* SplashViewController.swift */; };
 		194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A432625464300BEEF1C /* GeneralNavigationView.swift */; };
@@ -171,6 +172,7 @@
 		19183145266FD4A700B5CCED /* SettingsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListCell.swift; sourceTree = "<group>"; };
 		19183147266FD4AF00B5CCED /* SettingsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListCell.xib; sourceTree = "<group>"; };
 		191831952673820B00B5CCED /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		19183197267384F400B5CCED /* splash_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_animation.gif; sourceTree = "<group>"; };
 		194D7A35262543B400BEEF1C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		194D7A38262543BB00BEEF1C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		194D7A432625464300BEEF1C /* GeneralNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralNavigationView.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				19B1B472262425770016F195 /* Assets.xcassets */,
 				19B1B474262425770016F195 /* LaunchScreen.storyboard */,
 				19B1B477262425770016F195 /* Info.plist */,
+				19183197267384F400B5CCED /* splash_animation.gif */,
 				195AE4C2266B1975001A5352 /* GoogleService-Info.plist */,
 				19CA7129265B6ACC0095BE24 /* Utilities */,
 				19B1B47E2624258D0016F195 /* Base */,
@@ -886,6 +889,7 @@
 				191831962673820B00B5CCED /* Montserrat-Bold.ttf in Resources */,
 				195AE4EC266D0EF9001A5352 /* SearchHeaderView.xib in Resources */,
 				19CA7121265B69CA0095BE24 /* NotoSansKR-Medium.otf in Resources */,
+				19183198267384F400B5CCED /* splash_animation.gif in Resources */,
 				19EA900A26620E1000F280A2 /* GeneralMenuView.xib in Resources */,
 				19BFA58A26380A3400C6B82E /* HomePopularCell.xib in Resources */,
 				19BFA5312637B62300C6B82E /* WeekMenuView.xib in Resources */,

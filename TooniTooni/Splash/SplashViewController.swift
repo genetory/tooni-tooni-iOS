@@ -7,18 +7,22 @@
 
 import UIKit
 import FirebaseAuth
+import Kingfisher
 
 class SplashViewController: BaseViewController {
     
     // MARK: - Vars
 
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var bigStarImageView: UIImageView!
+    @IBOutlet weak var smallStarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activity: GeneralActivity!
 
     // MARK: - Life Cycle
     
     func initBackgroundView() {
-        self.view.backgroundColor = kGRAY_90
+        self.view.backgroundColor = kBLACK
     }
     
     func initLabel() {
@@ -27,6 +31,13 @@ class SplashViewController: BaseViewController {
         self.titleLabel.textAlignment = .center
         self.titleLabel.numberOfLines = 0
         self.titleLabel.text = "TOONI\nTOONI"
+        
+        self.titleLabel.transform = .init(scaleX: 0.001, y: 0.001)
+    }
+    
+    func initImageViews() {
+        self.smallStarImageView.transform = CGAffineTransform.init(scaleX: 0.001, y: 0.001)
+        self.bigStarImageView.transform = CGAffineTransform.init(scaleX: 0.001, y: 0.001)
     }
     
     override func viewDidLoad() {
@@ -34,13 +45,42 @@ class SplashViewController: BaseViewController {
     
         self.initBackgroundView()
         self.initLabel()
+        self.initImageViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.startActivity()
-        self.sign()
+        self.startAnimation()
+    }
+    
+}
+
+// MARK: - Animation
+
+extension SplashViewController {
+    
+    func startAnimation() {
+        let path = Bundle.main.path(forResource:"splash_animation", ofType:"gif")
+        let url = URL(fileURLWithPath: path!)
+        let provider = LocalFileImageDataProvider(fileURL: url)
+        self.logoImageView.kf.setImage(with: provider,
+                                       placeholder: nil,
+                                       options: nil) { result in
+            self.perform(#selector(self.sign), with: nil, afterDelay: 0.5)
+        }
+
+        UIView.animate(withDuration: 0.7,
+                       delay: 0.0,
+                       usingSpringWithDamping: 0.6,
+                       initialSpringVelocity: 0.0,
+                       options: .curveEaseInOut) {
+            self.bigStarImageView.transform = .identity
+            self.smallStarImageView.transform = .identity
+            self.titleLabel.transform = .identity
+        } completion: { _ in
+
+        }
     }
     
 }
@@ -49,6 +89,7 @@ class SplashViewController: BaseViewController {
 
 extension SplashViewController {
     
+    @objc
     func sign() {
         Auth.auth().signInAnonymously() { (authResult, error) in
             if error == nil, let loginToken = authResult?.user.uid {
