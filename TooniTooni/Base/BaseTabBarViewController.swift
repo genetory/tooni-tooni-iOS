@@ -15,6 +15,8 @@ class BaseTabBarViewController: UITabBarController {
     // MARK: - Life Cycle
     
     func initVars() {
+        self.overrideUserInterfaceStyle = .light
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     

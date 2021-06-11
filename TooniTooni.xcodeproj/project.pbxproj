@@ -17,6 +17,7 @@
 		191831962673820B00B5CCED /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191831952673820B00B5CCED /* Montserrat-Bold.ttf */; };
 		19183198267384F400B5CCED /* splash_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19183197267384F400B5CCED /* splash_animation.gif */; };
 		1918319A26738B2E00B5CCED /* HomeAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918319926738B2E00B5CCED /* HomeAuthorViewController.swift */; };
+		1918319C2673AF2E00B5CCED /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918319B2673AF2E00B5CCED /* CustomPageControl.swift */; };
 		194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194D7A35262543B400BEEF1C /* Splash.storyboard */; };
 		194D7A39262543BB00BEEF1C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A38262543BB00BEEF1C /* SplashViewController.swift */; };
 		194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A432625464300BEEF1C /* GeneralNavigationView.swift */; };
@@ -175,6 +176,7 @@
 		191831952673820B00B5CCED /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		19183197267384F400B5CCED /* splash_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_animation.gif; sourceTree = "<group>"; };
 		1918319926738B2E00B5CCED /* HomeAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAuthorViewController.swift; sourceTree = "<group>"; };
+		1918319B2673AF2E00B5CCED /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
 		194D7A35262543B400BEEF1C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		194D7A38262543BB00BEEF1C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		194D7A432625464300BEEF1C /* GeneralNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralNavigationView.swift; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 			children = (
 				19EA900426620C8600F280A2 /* HomeHeaderView.swift */,
 				19EA900326620C8600F280A2 /* HomeHeaderView.xib */,
+				1918319B2673AF2E00B5CCED /* CustomPageControl.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				19B1B48A262425DB0016F195 /* TabItem.swift in Sources */,
 				19183146266FD4A700B5CCED /* SettingsListCell.swift in Sources */,
 				19BFA59326380F2C00C6B82E /* GeneralGenreView.swift in Sources */,
+				1918319C2673AF2E00B5CCED /* CustomPageControl.swift in Sources */,
 				19EA900626620C8600F280A2 /* HomeHeaderView.swift in Sources */,
 				194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */,
 				195AE4DD266BC47A001A5352 /* HomeGenreListViewController.swift in Sources */,

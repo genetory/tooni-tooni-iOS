@@ -12,7 +12,9 @@ protocol HomeHeaderViewDelegate: AnyObject {
     func didWebtoonHomeHeaderView(view: HomeHeaderView, webtoon: Webtoon)
 }
 
-class HomeHeaderView: BaseCustomView {
+let kHomeHeaderViewID =                                         "HomeHeaderView"
+
+class HomeHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Vars
     
@@ -20,7 +22,7 @@ class HomeHeaderView: BaseCustomView {
     @IBOutlet weak var navigationView: GeneralNavigationView!
     @IBOutlet weak var navigationViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var pageControl: CustomPageControl!
 
     var currentPage = 0
     var topBanner: [HomeBanner]?
@@ -54,7 +56,7 @@ class HomeHeaderView: BaseCustomView {
         
         let layout = UICollectionViewFlowLayout.init()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize.init(width: kDEVICE_WIDTH, height: self.frame.size.height)
+        layout.itemSize = CGSize.init(width: kDEVICE_WIDTH, height: kHOME_HEADER_HEIGHT)
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
         layout.headerReferenceSize = .zero
@@ -63,13 +65,18 @@ class HomeHeaderView: BaseCustomView {
         
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self
-        self.mainCollectionView.backgroundColor = kGRAY_90
+        self.mainCollectionView.backgroundColor = kBLACK
         self.mainCollectionView.showsVerticalScrollIndicator = false
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         self.mainCollectionView.alwaysBounceHorizontal = true
         self.mainCollectionView.alwaysBounceVertical = false
         self.mainCollectionView.isPagingEnabled = true
         self.mainCollectionView.collectionViewLayout = layout
+    }
+    
+    func initPageControl() {
+        self.pageControl.currentPageImage = UIImage.init(named: "page_control_on")
+        self.pageControl.otherPagesImage = UIImage.init(named: "page_control_off")
     }
     
     override func awakeFromNib() {
@@ -79,6 +86,7 @@ class HomeHeaderView: BaseCustomView {
         self.initBackgroundView()
         self.initNavigationView()
         self.initCollectionView()
+        self.initPageControl()
     }
     
     override func layoutSubviews() {

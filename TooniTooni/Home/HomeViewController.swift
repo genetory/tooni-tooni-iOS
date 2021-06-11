@@ -12,6 +12,7 @@ protocol HomeViewSectionTitle {
 }
 
 enum HomeViewType: Int, HomeViewSectionTitle {
+    case notice
     case banner
     case weekday
     case popular
@@ -21,6 +22,8 @@ enum HomeViewType: Int, HomeViewSectionTitle {
     
     var title: String? {
         switch self {
+        case .notice:
+            return nil
         case .banner:
             return nil
         case .weekday:
@@ -36,7 +39,7 @@ enum HomeViewType: Int, HomeViewSectionTitle {
         }
     }
     
-    static let count = 6
+    static let count = 7
 }
 
 let kHOME_HEADER_HEIGHT: CGFloat =                           386.0
@@ -48,24 +51,22 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var hideNavigationView: GeneralNavigationView!
     @IBOutlet weak var hideNavigationViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var hideNavigationViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var headerView: HomeHeaderView!
-    @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var headerView: HomeHeaderView!
+//    @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var activity: GeneralActivity!
 
+    var offsetY: CGFloat = 0.0
     var showHideNavigationView = false
     
     var home: Home? {
         didSet {
             DispatchQueue.main.async {
                 self.stopActivity()
-                
-                self.headerView.bind(self.home?.topBanner)
                 self.mainTableView.reloadData()
                 
                 UIView.animate(withDuration: 0.3) {
-                    self.headerView.alpha = 1.0
                     self.mainTableView.alpha = 1.0
                     self.hideNavigationView.alpha = 1.0
                 }
@@ -100,15 +101,18 @@ class HomeViewController: BaseViewController {
         self.hideNavigationViewTopConstraint.constant = -self.hideNavigationViewHeightConstraint.constant - kDEVICE_TOP_AREA
     }
 
-    func initHeaderView() {
-        self.view.layoutIfNeeded()
-        self.headerViewHeightConstraint.constant = kHOME_HEADER_HEIGHT
-        
-        self.headerView.delegate = self
-        self.headerView.alpha = 0.0
-    }
+//    func initHeaderView() {
+//        self.view.layoutIfNeeded()
+//        self.headerViewHeightConstraint.constant = kHOME_HEADER_HEIGHT
+//
+//        self.headerView.delegate = self
+//        self.headerView.alpha = 0.0
+//    }
     
     func initTableView() {
+        let noticeView = UINib.init(nibName: kHomeHeaderViewID, bundle: nil)
+        self.mainTableView.register(noticeView, forHeaderFooterViewReuseIdentifier: kHomeHeaderViewID)
+
         let headerView = UINib.init(nibName: kGeneralTitleHeaderViewID, bundle: nil)
         self.mainTableView.register(headerView, forHeaderFooterViewReuseIdentifier: kGeneralTitleHeaderViewID)
                 
@@ -138,9 +142,10 @@ class HomeViewController: BaseViewController {
         self.mainTableView.estimatedRowHeight = 200.0
         self.mainTableView.sectionHeaderHeight = UITableView.automaticDimension
         self.mainTableView.estimatedSectionHeaderHeight = 44.0
-        self.mainTableView.contentInset = UIEdgeInsets.init(top: kHOME_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0, left: 0.0, bottom: 24.0, right: 0.0)
+//        self.mainTableView.contentInset = UIEdgeInsets.init(top: kHOME_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0, left: 0.0, bottom: 24.0, right: 0.0)
+        self.mainTableView.contentInset = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 88.0, right: 0.0)
         self.mainTableView.showsVerticalScrollIndicator = false
-        self.mainTableView.insetsContentViewsToSafeArea = false
+        self.mainTableView.contentInsetAdjustmentBehavior = .never
         self.mainTableView.alpha = 0.0
     }
     
@@ -150,7 +155,7 @@ class HomeViewController: BaseViewController {
         self.initVars()
         self.initBackgroundView()
         self.initNavigationView()
-        self.initHeaderView()
+//        self.initHeaderView()
         self.initTableView()
         
         self.startActivity()
@@ -160,7 +165,7 @@ class HomeViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.headerView.bind(self.home?.topBanner)
+//        self.headerView.bind(self.home?.topBanner)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -227,6 +232,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        case HomeViewType.notice.rawValue:
+            return 0
         case HomeViewType.weekday.rawValue:
             if let weekdayList = self.home?.weekdayList, weekdayList.count > 0 {
                 return 1
@@ -255,7 +262,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: kGeneralTitleHeaderViewID) as? GeneralTitleHeaderView,
+        if section == HomeViewType.notice.rawValue,
+           let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: kHomeHeaderViewID) as? HomeHeaderView {
+            headerView.bind(self.home?.topBanner)
+            headerView.delegate = self
+            
+            return headerView
+        }
+        else if let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: kGeneralTitleHeaderViewID) as? GeneralTitleHeaderView,
            let type = HomeViewType.init(rawValue: section) {
             headerView.bind(type.title)
             headerView.more(false)
@@ -274,7 +288,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if let _ = HomeViewType.init(rawValue: section)?.title {
+        if section == HomeViewType.notice.rawValue {
+            return kHOME_HEADER_HEIGHT + self.offsetY
+        }
+        else if let _ = HomeViewType.init(rawValue: section)?.title {
             return UITableView.automaticDimension
         }
         
@@ -282,7 +299,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == HomeViewType.popular.rawValue ||
+        if section == HomeViewType.notice.rawValue ||
+            section == HomeViewType.popular.rawValue ||
             section == HomeViewType.genre.rawValue ||
             section == HomeViewType.binge.rawValue {
             return 24.0
@@ -453,17 +471,23 @@ extension HomeViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = -scrollView.contentOffset.y + kDEVICE_TOP_AREA - kHOME_HEADER_HEIGHT
+        let offsetY = -scrollView.contentOffset.y
+        if offsetY > 0 {
+            scrollView.contentOffset.y = 0.0
+        }
         
-        if offsetY >= -24.0 {
-            let height = kHOME_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0
-            scrollView.contentOffset.y = -height
-            
-            self.headerViewTopConstraint.constant = 0.0
-        }
-        else {
-            self.headerViewTopConstraint.constant = offsetY + 24.0
-        }
+        
+//        let offsetY = -scrollView.contentOffset.y + kDEVICE_TOP_AREA - kHOME_HEADER_HEIGHT
+//
+//        if offsetY >= -24.0 {
+//            let height = kHOME_HEADER_HEIGHT - kDEVICE_TOP_AREA - 24.0
+//            scrollView.contentOffset.y = -height
+//
+//            self.headerViewTopConstraint.constant = 0.0
+//        }
+//        else {
+//            self.headerViewTopConstraint.constant = offsetY + 24.0
+//        }
     }
     
     func showHideNavigationView(_ show: Bool) {

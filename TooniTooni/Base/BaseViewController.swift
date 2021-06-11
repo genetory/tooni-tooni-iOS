@@ -22,6 +22,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.overrideUserInterfaceStyle = .light
+
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.addObservers()
     }

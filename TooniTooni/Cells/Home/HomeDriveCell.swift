@@ -82,6 +82,11 @@ extension HomeDriveCell {
     func bind(_ webtoon: Webtoon) {
         self.titleLabel.text = webtoon.title
         
+        if let color = webtoon.backgroundColor {
+            self.colorImageView.image = UIImage.imageFromColor(UIColor.init(hex: color))
+            self.colorImageView.alpha = 0.9
+        }
+        
         if let image = webtoon.thumbnail { //}?.replacingOccurrences(of: "http://", with: "https://") {
             self.bgImageView.kf.setImage(with: URL.init(string: image),
                                            placeholder: nil,

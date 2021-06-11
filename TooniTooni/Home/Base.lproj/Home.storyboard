@@ -18,16 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="OFl-Pj-Fge">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQt-HT-olu" customClass="HomeHeaderView" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="386"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="386" id="Ymy-YK-UKB"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbG-Hy-2Pt">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <subviews>
@@ -58,15 +51,12 @@
                         <viewLayoutGuide key="safeArea" id="oOZ-gj-aFU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HQt-HT-olu" firstAttribute="top" secondItem="q6A-0j-ykM" secondAttribute="top" id="5Hv-uN-0eg"/>
-                            <constraint firstItem="oOZ-gj-aFU" firstAttribute="trailing" secondItem="HQt-HT-olu" secondAttribute="trailing" id="8JA-Gw-Cgq"/>
                             <constraint firstItem="lbG-Hy-2Pt" firstAttribute="leading" secondItem="oOZ-gj-aFU" secondAttribute="leading" id="DWB-ns-qWu"/>
                             <constraint firstItem="lbG-Hy-2Pt" firstAttribute="top" secondItem="q6A-0j-ykM" secondAttribute="top" id="FoM-RB-k40"/>
-                            <constraint firstItem="OFl-Pj-Fge" firstAttribute="top" secondItem="oOZ-gj-aFU" secondAttribute="top" id="ICZ-qo-3MQ"/>
+                            <constraint firstItem="OFl-Pj-Fge" firstAttribute="top" secondItem="q6A-0j-ykM" secondAttribute="top" id="Tyt-Ah-gVT"/>
                             <constraint firstAttribute="bottom" secondItem="OFl-Pj-Fge" secondAttribute="bottom" id="ire-Cq-dFW"/>
                             <constraint firstItem="Le2-SQ-Xf3" firstAttribute="centerX" secondItem="q6A-0j-ykM" secondAttribute="centerX" id="jWL-Lc-QXU"/>
                             <constraint firstItem="Le2-SQ-Xf3" firstAttribute="centerY" secondItem="q6A-0j-ykM" secondAttribute="centerY" id="qJu-fR-gff"/>
-                            <constraint firstItem="HQt-HT-olu" firstAttribute="leading" secondItem="oOZ-gj-aFU" secondAttribute="leading" id="rpN-uv-HEW"/>
                             <constraint firstItem="OFl-Pj-Fge" firstAttribute="leading" secondItem="oOZ-gj-aFU" secondAttribute="leading" id="sAa-Jx-Fv3"/>
                             <constraint firstItem="oOZ-gj-aFU" firstAttribute="trailing" secondItem="OFl-Pj-Fge" secondAttribute="trailing" id="tKO-p5-w0j"/>
                             <constraint firstItem="oOZ-gj-aFU" firstAttribute="trailing" secondItem="lbG-Hy-2Pt" secondAttribute="trailing" id="ziK-ZQ-rOl"/>
@@ -74,9 +64,6 @@
                     </view>
                     <connections>
                         <outlet property="activity" destination="Le2-SQ-Xf3" id="Vyc-0B-wef"/>
-                        <outlet property="headerView" destination="HQt-HT-olu" id="khS-dD-403"/>
-                        <outlet property="headerViewHeightConstraint" destination="Ymy-YK-UKB" id="Y5C-iL-bC6"/>
-                        <outlet property="headerViewTopConstraint" destination="5Hv-uN-0eg" id="Tm0-6o-IVw"/>
                         <outlet property="hideNavigationView" destination="Ae6-FK-16q" id="FFW-Cc-wZs"/>
                         <outlet property="hideNavigationViewHeightConstraint" destination="gRx-Of-65o" id="r2k-xN-ce7"/>
                         <outlet property="hideNavigationViewTopConstraint" destination="FoM-RB-k40" id="zg8-qO-rOA"/>

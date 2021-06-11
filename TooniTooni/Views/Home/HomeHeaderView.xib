@@ -9,67 +9,66 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeHeaderView" customModule="TooniTooni" customModuleProvider="target">
-            <connections>
-                <outlet property="baseView" destination="7N5-RF-nrW" id="pZd-1J-RO2"/>
-                <outlet property="mainCollectionView" destination="DLH-fe-rmK" id="cPN-1S-MX5"/>
-                <outlet property="navigationView" destination="n5V-NU-io9" id="NjQ-yC-o7M"/>
-                <outlet property="navigationViewTopConstraint" destination="IP6-Bs-IWr" id="p3L-g6-uqS"/>
-                <outlet property="pageControl" destination="6rv-Dq-Sv2" id="JyS-Hl-hTt"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="xLf-mT-jU9" customClass="HomeHeaderView" customModule="TooniTooni" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7N5-RF-nrW">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsL-dl-cBZ">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                     <subviews>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DLH-fe-rmK">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9wI-fm-sYL">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lkz-xu-04f">
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XsO-gt-1uX">
                                 <size key="itemSize" width="128" height="128"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5V-NU-io9" customClass="GeneralNavigationView" customModule="TooniTooni" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCX-rb-vpO" customClass="GeneralNavigationView" customModule="TooniTooni" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="wpN-m1-GGN"/>
+                                <constraint firstAttribute="height" constant="44" id="9Nt-tB-qtE"/>
                             </constraints>
                         </view>
-                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6rv-Dq-Sv2">
-                            <rect key="frame" x="0.0" y="341.66666666666669" width="414" height="26.333333333333314"/>
-                        </pageControl>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="n5V-NU-io9" firstAttribute="top" secondItem="7N5-RF-nrW" secondAttribute="top" id="IP6-Bs-IWr"/>
-                        <constraint firstAttribute="bottom" secondItem="DLH-fe-rmK" secondAttribute="bottom" id="JBR-yd-bXK"/>
-                        <constraint firstItem="6rv-Dq-Sv2" firstAttribute="leading" secondItem="7N5-RF-nrW" secondAttribute="leading" id="LE2-9u-4yZ"/>
-                        <constraint firstItem="DLH-fe-rmK" firstAttribute="top" secondItem="7N5-RF-nrW" secondAttribute="top" id="OkM-VU-0qi"/>
-                        <constraint firstAttribute="bottom" secondItem="6rv-Dq-Sv2" secondAttribute="bottom" id="PHB-sx-KLy"/>
-                        <constraint firstItem="DLH-fe-rmK" firstAttribute="leading" secondItem="7N5-RF-nrW" secondAttribute="leading" id="ZYa-Oh-Qjp"/>
-                        <constraint firstAttribute="trailing" secondItem="n5V-NU-io9" secondAttribute="trailing" id="cBf-We-hsG"/>
-                        <constraint firstItem="n5V-NU-io9" firstAttribute="leading" secondItem="7N5-RF-nrW" secondAttribute="leading" id="hyu-Hn-8x7"/>
-                        <constraint firstAttribute="trailing" secondItem="DLH-fe-rmK" secondAttribute="trailing" id="jgH-n1-QNc"/>
-                        <constraint firstAttribute="trailing" secondItem="6rv-Dq-Sv2" secondAttribute="trailing" id="zUh-zZ-lR9"/>
+                        <constraint firstItem="9wI-fm-sYL" firstAttribute="top" secondItem="lsL-dl-cBZ" secondAttribute="top" id="6AR-bG-6iH"/>
+                        <constraint firstAttribute="bottom" secondItem="9wI-fm-sYL" secondAttribute="bottom" id="6hB-Su-8XM"/>
+                        <constraint firstItem="zCX-rb-vpO" firstAttribute="leading" secondItem="lsL-dl-cBZ" secondAttribute="leading" id="Ui8-nS-bka"/>
+                        <constraint firstAttribute="trailing" secondItem="zCX-rb-vpO" secondAttribute="trailing" id="c5k-Qw-vTB"/>
+                        <constraint firstItem="zCX-rb-vpO" firstAttribute="top" secondItem="lsL-dl-cBZ" secondAttribute="top" id="e9t-4r-z4p"/>
+                        <constraint firstItem="9wI-fm-sYL" firstAttribute="leading" secondItem="lsL-dl-cBZ" secondAttribute="leading" id="l3x-GY-2Y3"/>
+                        <constraint firstAttribute="trailing" secondItem="9wI-fm-sYL" secondAttribute="trailing" id="mnl-Mv-Kcc"/>
                     </constraints>
                 </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="JRL-vV-sT5" customClass="CustomPageControl" customModule="TooniTooni" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="341.66666666666669" width="414" height="26.333333333333314"/>
+                </pageControl>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="mct-BT-oDj"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="7N5-RF-nrW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7XD-Hc-bIB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7N5-RF-nrW" secondAttribute="trailing" id="Om2-SL-Hwq"/>
-                <constraint firstItem="7N5-RF-nrW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jwI-EE-wG2"/>
-                <constraint firstAttribute="bottom" secondItem="7N5-RF-nrW" secondAttribute="bottom" id="qpY-YA-cA5"/>
+                <constraint firstAttribute="bottom" secondItem="lsL-dl-cBZ" secondAttribute="bottom" id="3K4-Nv-0sr"/>
+                <constraint firstItem="lsL-dl-cBZ" firstAttribute="top" secondItem="xLf-mT-jU9" secondAttribute="top" id="8nr-6J-rPf"/>
+                <constraint firstItem="JRL-vV-sT5" firstAttribute="trailing" secondItem="mct-BT-oDj" secondAttribute="trailing" id="A9R-3R-dUP"/>
+                <constraint firstItem="JRL-vV-sT5" firstAttribute="leading" secondItem="mct-BT-oDj" secondAttribute="leading" id="Ac6-8F-dxk"/>
+                <constraint firstItem="mct-BT-oDj" firstAttribute="bottom" secondItem="JRL-vV-sT5" secondAttribute="bottom" id="LVR-bX-wBh"/>
+                <constraint firstItem="lsL-dl-cBZ" firstAttribute="leading" secondItem="mct-BT-oDj" secondAttribute="leading" id="TzO-Dn-GGn"/>
+                <constraint firstItem="mct-BT-oDj" firstAttribute="trailing" secondItem="lsL-dl-cBZ" secondAttribute="trailing" id="y1p-gg-k2H"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="baseView" destination="lsL-dl-cBZ" id="RbU-Oo-gDi"/>
+                <outlet property="mainCollectionView" destination="9wI-fm-sYL" id="OIJ-uC-hoS"/>
+                <outlet property="navigationView" destination="zCX-rb-vpO" id="24v-rx-Bf4"/>
+                <outlet property="navigationViewTopConstraint" destination="e9t-4r-z4p" id="mcA-jO-emf"/>
+                <outlet property="pageControl" destination="JRL-vV-sT5" id="s7j-yv-TJG"/>
+            </connections>
             <point key="canvasLocation" x="139" y="86"/>
         </view>
     </objects>
