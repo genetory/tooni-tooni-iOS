@@ -15,6 +15,7 @@ class BaseTabBarViewController: UITabBarController {
     // MARK: - Life Cycle
     
     func initVars() {
+        self.delegate = self
         self.overrideUserInterfaceStyle = .light
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -78,3 +79,48 @@ class BaseTabBarViewController: UITabBarController {
      
 }
 
+extension BaseTabBarViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard let tabViewControllers = tabBarController.viewControllers, let toIndex = tabViewControllers.firstIndex(of: viewController) else {
+            return false
+        }
+        
+        self.animateToTab(toIndex: toIndex)
+        
+        return true
+    }
+    
+    func animateToTab(toIndex: Int) {
+        guard let tabViewControllers = viewControllers,
+            let selectedVC = selectedViewController else { return }
+        
+        guard let fromView = selectedVC.view,
+            let toView = tabViewControllers[toIndex].view,
+            let fromIndex = tabViewControllers.firstIndex(of: selectedVC),
+            fromIndex != toIndex else { return }
+        
+        fromView.superview?.addSubview(toView)
+        
+        let scrollRight = toIndex > fromIndex
+        let offset = (scrollRight ? kDEVICE_WIDTH : -kDEVICE_WIDTH)
+        toView.center = CGPoint(x: fromView.center.x + offset, y: toView.center.y)
+        
+        view.isUserInteractionEnabled = false
+        
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 0,
+                       options: .curveEaseOut,
+                       animations: {
+                        fromView.center = CGPoint(x: fromView.center.x - offset, y: fromView.center.y)
+                        toView.center = CGPoint(x: toView.center.x - offset, y: toView.center.y)
+        }, completion: { finished in
+            fromView.removeFromSuperview()
+            self.selectedIndex = toIndex
+            self.view.isUserInteractionEnabled = true
+        })
+    }
+
+}

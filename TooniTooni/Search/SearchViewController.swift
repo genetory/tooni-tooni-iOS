@@ -21,7 +21,7 @@ class SearchViewController: BaseViewController {
     @IBOutlet weak var headerView: SearchHeaderView!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainCollectionViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
 
     var type: SearchType = .none {
         didSet {

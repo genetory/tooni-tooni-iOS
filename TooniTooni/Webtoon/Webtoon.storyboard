@@ -76,11 +76,11 @@
                                     <constraint firstAttribute="trailing" secondItem="CO7-Qw-mre" secondAttribute="trailing" id="pdj-wE-ihG"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbZ-33-92d" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbZ-33-92d" customClass="CustomActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="171" y="412" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="3u1-jg-gjo"/>
-                                    <constraint firstAttribute="width" constant="40" id="gVg-7q-rSZ"/>
+                                    <constraint firstAttribute="height" constant="72" id="3u1-jg-gjo"/>
+                                    <constraint firstAttribute="width" constant="72" id="gVg-7q-rSZ"/>
                                 </constraints>
                             </view>
                         </subviews>

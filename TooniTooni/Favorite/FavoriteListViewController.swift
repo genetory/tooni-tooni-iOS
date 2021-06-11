@@ -30,7 +30,7 @@ class FavoriteListViewController: BaseViewController {
     // MARK: - Vars
     
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
 
     var type: FavoriteListViewType = .recents
 

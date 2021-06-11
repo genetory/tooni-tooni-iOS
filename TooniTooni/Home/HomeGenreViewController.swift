@@ -34,7 +34,7 @@ class HomeGenreViewController: BaseViewController {
     @IBOutlet weak var navigationView: GeneralNavigationView!
     @IBOutlet weak var menuView: GenreHeaderView!
     @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
 
     let titleList = ["일상", "판타지", "액션", "드라마", "순정"]
 

@@ -18,6 +18,8 @@
 		19183198267384F400B5CCED /* splash_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19183197267384F400B5CCED /* splash_animation.gif */; };
 		1918319A26738B2E00B5CCED /* HomeAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918319926738B2E00B5CCED /* HomeAuthorViewController.swift */; };
 		1918319C2673AF2E00B5CCED /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918319B2673AF2E00B5CCED /* CustomPageControl.swift */; };
+		191831A02673BF0B00B5CCED /* CustomActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918319F2673BF0B00B5CCED /* CustomActivity.swift */; };
+		191831A22673BF1100B5CCED /* CustomActivity.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191831A12673BF1100B5CCED /* CustomActivity.xib */; };
 		194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194D7A35262543B400BEEF1C /* Splash.storyboard */; };
 		194D7A39262543BB00BEEF1C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A38262543BB00BEEF1C /* SplashViewController.swift */; };
 		194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A432625464300BEEF1C /* GeneralNavigationView.swift */; };
@@ -177,6 +179,8 @@
 		19183197267384F400B5CCED /* splash_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_animation.gif; sourceTree = "<group>"; };
 		1918319926738B2E00B5CCED /* HomeAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAuthorViewController.swift; sourceTree = "<group>"; };
 		1918319B2673AF2E00B5CCED /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		1918319F2673BF0B00B5CCED /* CustomActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActivity.swift; sourceTree = "<group>"; };
+		191831A12673BF1100B5CCED /* CustomActivity.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomActivity.xib; sourceTree = "<group>"; };
 		194D7A35262543B400BEEF1C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		194D7A38262543BB00BEEF1C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		194D7A432625464300BEEF1C /* GeneralNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralNavigationView.swift; sourceTree = "<group>"; };
@@ -411,6 +415,8 @@
 				19EA90392662969E00F280A2 /* GeneralCloverView.xib */,
 				19EA904626634B1E00F280A2 /* GeneralConeView.swift */,
 				19EA904826634B2400F280A2 /* GeneralConeView.xib */,
+				1918319F2673BF0B00B5CCED /* CustomActivity.swift */,
+				191831A12673BF1100B5CCED /* CustomActivity.xib */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -887,6 +893,7 @@
 				19EA900126620C7600F280A2 /* HomeNoticeCell.xib in Resources */,
 				19B1B4A3262428710016F195 /* Favorite.storyboard in Resources */,
 				194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */,
+				191831A22673BF1100B5CCED /* CustomActivity.xib in Resources */,
 				195AE4E8266CF7C2001A5352 /* SearchNoneFooterView.xib in Resources */,
 				19CA5FB3264F78C300A5DC76 /* HomeGenreListCell.xib in Resources */,
 				19183148266FD4AF00B5CCED /* SettingsListCell.xib in Resources */,
@@ -956,6 +963,7 @@
 				19BFA53A2637CA3A00C6B82E /* WeekMenuCell.swift in Sources */,
 				19BFA58726380A2F00C6B82E /* HomePopularCell.swift in Sources */,
 				19CA5FB1264F78BE00A5DC76 /* HomeGenreListCell.swift in Sources */,
+				191831A02673BF0B00B5CCED /* CustomActivity.swift in Sources */,
 				19B1B46A262425760016F195 /* AppDelegate.swift in Sources */,
 				19CA713D265B6DAE0095BE24 /* NetworkLoggerPlugin.swift in Sources */,
 				19CA713F265B6DAE0095BE24 /* AlamofireSession.swift in Sources */,

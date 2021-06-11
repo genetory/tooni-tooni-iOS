@@ -37,7 +37,7 @@ class WebtoonDetailViewController: BaseViewController {
     @IBOutlet weak var portalLabel: UILabel!
     @IBOutlet weak var portalButtonHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var portalButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
 
     var selectedIdx = 0
     var showHideNavigationView = false

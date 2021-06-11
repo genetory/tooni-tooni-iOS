@@ -40,11 +40,11 @@
                                     <constraint firstItem="Ae6-FK-16q" firstAttribute="leading" secondItem="lbG-Hy-2Pt" secondAttribute="leading" id="mj3-EA-3H5"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-SQ-Xf3" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Le2-SQ-Xf3" customClass="CustomActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="171" y="412" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="F2G-T0-22N"/>
-                                    <constraint firstAttribute="width" constant="40" id="aZx-Jv-Q7E"/>
+                                    <constraint firstAttribute="height" constant="72" id="F2G-T0-22N"/>
+                                    <constraint firstAttribute="width" constant="72" id="aZx-Jv-Q7E"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -93,11 +93,11 @@
                                     <constraint firstAttribute="height" constant="44" id="ad0-ff-Ugw"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAC-Ht-xc6" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAC-Ht-xc6" customClass="CustomActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="171" y="412" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Leh-UA-eN6"/>
-                                    <constraint firstAttribute="width" constant="40" id="QMF-8o-0QC"/>
+                                    <constraint firstAttribute="height" constant="72" id="Leh-UA-eN6"/>
+                                    <constraint firstAttribute="width" constant="72" id="QMF-8o-0QC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T22-M6-Jhq">
@@ -173,11 +173,11 @@
                                 <rect key="frame" x="0.0" y="138" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-rR-cy3" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-rR-cy3" customClass="CustomActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="171" y="412" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="HW3-Yg-00g"/>
-                                    <constraint firstAttribute="width" constant="40" id="l6A-cq-Fu3"/>
+                                    <constraint firstAttribute="height" constant="72" id="HW3-Yg-00g"/>
+                                    <constraint firstAttribute="width" constant="72" id="l6A-cq-Fu3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -229,11 +229,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5T-6x-266" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5T-6x-266" customClass="CustomActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="171" y="412" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Ium-mZ-jaf"/>
-                                    <constraint firstAttribute="height" constant="40" id="YAG-s3-fvf"/>
+                                    <constraint firstAttribute="width" constant="72" id="Ium-mZ-jaf"/>
+                                    <constraint firstAttribute="height" constant="72" id="YAG-s3-fvf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -276,11 +276,11 @@
                                     <constraint firstAttribute="height" constant="44" id="keO-fH-Qfn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmk-WJ-1NB" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wmk-WJ-1NB" customClass="CustomActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="171" y="412" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Jr7-iu-tPm"/>
-                                    <constraint firstAttribute="width" constant="40" id="LEG-dx-fVS"/>
+                                    <constraint firstAttribute="height" constant="72" id="Jr7-iu-tPm"/>
+                                    <constraint firstAttribute="width" constant="72" id="LEG-dx-fVS"/>
                                 </constraints>
                             </view>
                         </subviews>

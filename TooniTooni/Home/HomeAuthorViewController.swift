@@ -13,7 +13,7 @@ class HomeAuthorViewController: BaseViewController {
     
     @IBOutlet weak var navigationView: GeneralNavigationView!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
 
     var authorItem: Author!
     

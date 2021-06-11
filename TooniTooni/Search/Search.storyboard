@@ -42,11 +42,11 @@
                                     <constraint firstAttribute="height" constant="44" id="lPH-3A-nyp"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFc-dh-FcH" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFc-dh-FcH" customClass="CustomActivity" customModule="TooniTooni" customModuleProvider="target">
+                                <rect key="frame" x="171" y="412" width="72" height="72"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="CJL-qX-AbW"/>
-                                    <constraint firstAttribute="width" constant="40" id="Mef-0R-1Kk"/>
+                                    <constraint firstAttribute="height" constant="72" id="CJL-qX-AbW"/>
+                                    <constraint firstAttribute="width" constant="72" id="Mef-0R-1Kk"/>
                                 </constraints>
                             </view>
                         </subviews>

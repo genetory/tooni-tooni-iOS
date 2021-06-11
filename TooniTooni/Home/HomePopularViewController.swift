@@ -14,7 +14,7 @@ class HomePopularViewController: BaseViewController {
     @IBOutlet weak var navigationView: GeneralNavigationView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
 
     var popularList: [Webtoon]? {
         didSet {

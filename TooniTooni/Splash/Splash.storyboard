@@ -44,21 +44,12 @@
                                     <constraint firstAttribute="width" constant="38" id="1zg-e1-hdh"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzp-2V-lTQ" customClass="GeneralActivity" customModule="TooniTooni" customModuleProvider="target">
-                                <rect key="frame" x="187" y="428" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="U0h-G9-mOm"/>
-                                    <constraint firstAttribute="height" constant="40" id="dhh-Lp-tjk"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qo9-Of-E3G"/>
                         <color key="backgroundColor" name="kGRAY_90"/>
                         <constraints>
                             <constraint firstItem="dcC-oC-z5r" firstAttribute="top" secondItem="VvZ-dK-YMB" secondAttribute="top" id="3Yf-vn-iHc"/>
-                            <constraint firstItem="Jzp-2V-lTQ" firstAttribute="centerX" secondItem="eqK-iD-GV5" secondAttribute="centerX" id="40w-vB-01r"/>
                             <constraint firstItem="WJ3-N4-ldf" firstAttribute="top" secondItem="VvZ-dK-YMB" secondAttribute="bottom" constant="-32" id="7pN-R2-hNr"/>
-                            <constraint firstItem="Jzp-2V-lTQ" firstAttribute="centerY" secondItem="eqK-iD-GV5" secondAttribute="centerY" id="Icd-rr-whS"/>
                             <constraint firstItem="VvZ-dK-YMB" firstAttribute="centerX" secondItem="eqK-iD-GV5" secondAttribute="centerX" id="LEv-TK-u4B"/>
                             <constraint firstItem="WJ3-N4-ldf" firstAttribute="centerX" secondItem="eqK-iD-GV5" secondAttribute="centerX" id="Lpy-qb-egU"/>
                             <constraint firstItem="WJ3-N4-ldf" firstAttribute="centerY" secondItem="eqK-iD-GV5" secondAttribute="centerY" constant="24" id="VmW-mr-tBL"/>
@@ -68,7 +59,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activity" destination="Jzp-2V-lTQ" id="Efc-K2-UWL"/>
                         <outlet property="bigStarImageView" destination="dcC-oC-z5r" id="AZt-uz-DmQ"/>
                         <outlet property="logoImageView" destination="VvZ-dK-YMB" id="W1r-Iq-SEF"/>
                         <outlet property="smallStarImageView" destination="BSY-TU-a1x" id="Ony-R8-bL4"/>

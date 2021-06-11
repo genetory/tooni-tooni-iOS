@@ -17,7 +17,6 @@ class SplashViewController: BaseViewController {
     @IBOutlet weak var bigStarImageView: UIImageView!
     @IBOutlet weak var smallStarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var activity: GeneralActivity!
 
     // MARK: - Life Cycle
     
@@ -104,14 +103,12 @@ extension SplashViewController {
     
     func successSign() {
         DispatchQueue.main.async {
-            self.stopActivity()
             self.startApp()
         }
     }
     
     func failedSign() {
         DispatchQueue.main.async {
-            self.stopActivity()
             self.retry()
         }
     }
@@ -120,7 +117,6 @@ extension SplashViewController {
         let alert = UIAlertController.init(title: "알림", message: "앱을 시작할 수 없어요\n잠시 후 다시 시도해주세요 😭", preferredStyle: .alert)
         
         let okAction = UIAlertAction.init(title: "확인", style: .default) { _  in
-            self.startActivity()
             self.sign()
         }
         
@@ -165,22 +161,6 @@ extension SplashViewController {
         }
 
         sceneDelegate.createTabVC()
-    }
-    
-}
-
-// MARK: - Activity
-
-extension SplashViewController {
-    
-    func startActivity() {
-        if self.activity.isAnimating() { return }
-        self.activity.start()
-    }
-    
-    func stopActivity() {
-        if !self.activity.isAnimating() { return }
-        self.activity.stop()
     }
     
 }

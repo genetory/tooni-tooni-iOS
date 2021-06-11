@@ -12,7 +12,7 @@ class HomeGenreListViewController: BaseViewController {
     // MARK: - Vars
     
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
     
     var type: HomeGenreType!
     var genreList: [Webtoon]? {

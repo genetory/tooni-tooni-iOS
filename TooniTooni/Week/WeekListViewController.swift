@@ -13,7 +13,7 @@ class WeekListViewController: BaseViewController {
     
     @IBOutlet weak var mainCollectionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
     
     var webtoonList: [Webtoon]? {
         didSet {

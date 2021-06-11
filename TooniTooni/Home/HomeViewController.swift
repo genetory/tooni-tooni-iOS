@@ -51,11 +51,8 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var hideNavigationView: GeneralNavigationView!
     @IBOutlet weak var hideNavigationViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var hideNavigationViewHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var headerView: HomeHeaderView!
-//    @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var activity: GeneralActivity!
+    @IBOutlet weak var activity: CustomActivity!
 
     var offsetY: CGFloat = 0.0
     var showHideNavigationView = false
