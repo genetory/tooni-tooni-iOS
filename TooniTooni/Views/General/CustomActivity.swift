@@ -17,6 +17,7 @@ class CustomActivity: BaseCustomView {
     // MARK: - Life Cycle
     
     func initVars() {
+        self.alpha = 0.0
         self.clipsToBounds = true
     }
     
@@ -28,7 +29,7 @@ class CustomActivity: BaseCustomView {
     }
     
     func initImageView() {
-        self.thumbImageView.animationImages = [
+        let imageList = [
             UIImage.init(named: "member_0")!,
             UIImage.init(named: "member_1")!,
             UIImage.init(named: "member_2")!,
@@ -41,6 +42,7 @@ class CustomActivity: BaseCustomView {
             UIImage.init(named: "member_9")!
         ]
         
+        self.thumbImageView.animationImages = imageList.shuffled()
         self.thumbImageView.animationDuration = 1.5
     }
     
