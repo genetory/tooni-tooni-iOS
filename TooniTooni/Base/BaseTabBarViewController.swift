@@ -28,7 +28,7 @@ class BaseTabBarViewController: UITabBarController {
         whiteView.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: kDEVICE_WIDTH, height: kDEVICE_HEIGHT))
         self.tabBar.addSubview(whiteView)
 
-//        UITabBar.appearance().tintColor = kGRAY_90
+        UITabBar.appearance().tintColor = kGRAY_90
 //        UITabBar.appearance().backgroundImage = UIImage.imageFromColor(kWHITE)
 //        UITabBar.appearance().shadowImage = UIImage.imageFromColor(kGRAY_90)
 //        UITabBar.appearance().selectionIndicatorImage = UIImage.imageFromColor(kGRAY_90)
