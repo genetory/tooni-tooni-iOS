@@ -16,6 +16,7 @@
 		1918317326724DAE00B5CCED /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1918317226724DAE00B5CCED /* Cosmos */; };
 		191831962673820B00B5CCED /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191831952673820B00B5CCED /* Montserrat-Bold.ttf */; };
 		19183198267384F400B5CCED /* splash_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19183197267384F400B5CCED /* splash_animation.gif */; };
+		1918319A26738B2E00B5CCED /* HomeAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1918319926738B2E00B5CCED /* HomeAuthorViewController.swift */; };
 		194D7A36262543B400BEEF1C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194D7A35262543B400BEEF1C /* Splash.storyboard */; };
 		194D7A39262543BB00BEEF1C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A38262543BB00BEEF1C /* SplashViewController.swift */; };
 		194D7A452625464300BEEF1C /* GeneralNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194D7A432625464300BEEF1C /* GeneralNavigationView.swift */; };
@@ -173,6 +174,7 @@
 		19183147266FD4AF00B5CCED /* SettingsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsListCell.xib; sourceTree = "<group>"; };
 		191831952673820B00B5CCED /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		19183197267384F400B5CCED /* splash_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash_animation.gif; sourceTree = "<group>"; };
+		1918319926738B2E00B5CCED /* HomeAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAuthorViewController.swift; sourceTree = "<group>"; };
 		194D7A35262543B400BEEF1C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		194D7A38262543BB00BEEF1C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		194D7A432625464300BEEF1C /* GeneralNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralNavigationView.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				19EA901D2662381B00F280A2 /* HomePopularViewController.swift */,
 				195AE4DA266BC1B3001A5352 /* HomeGenreViewController.swift */,
 				195AE4DC266BC47A001A5352 /* HomeGenreListViewController.swift */,
+				1918319926738B2E00B5CCED /* HomeAuthorViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -989,6 +992,7 @@
 				19EA90402662AA4C00F280A2 /* CommentItem.swift in Sources */,
 				19EA901A26622A4500F280A2 /* FavoriteNodataCell.swift in Sources */,
 				19EA900D26620EF400F280A2 /* GeneralMenuCell.swift in Sources */,
+				1918319A26738B2E00B5CCED /* HomeAuthorViewController.swift in Sources */,
 				19EA90322662461D00F280A2 /* GeneralGenreCell.swift in Sources */,
 				19BFA56F2637FF2200C6B82E /* HomeNewCell.swift in Sources */,
 				19CA7146265B6DC00095BE24 /* CommonResponse.swift in Sources */,

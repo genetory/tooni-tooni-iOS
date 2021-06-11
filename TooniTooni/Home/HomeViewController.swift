@@ -283,7 +283,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == HomeViewType.popular.rawValue ||
-            section == HomeViewType.genre.rawValue {
+            section == HomeViewType.genre.rawValue ||
+            section == HomeViewType.binge.rawValue {
             return 24.0
         }
         
@@ -424,7 +425,16 @@ extension HomeViewController: HomeGenreListCellDelegate {
 extension HomeViewController: HomeAuthorListCellDelegate {
     
     func didAuthorHomeAuthorListCell(cell: HomeAuthorListCell, author: Author) {
-        
+        self.openAuthorVC(author)
+    }
+    
+    func openAuthorVC(_ author: Author) {
+        if let vc = GeneralHelper.sharedInstance.makeVC("Home", "HomeAuthorViewController") as? HomeAuthorViewController {
+            vc.authorItem = author
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

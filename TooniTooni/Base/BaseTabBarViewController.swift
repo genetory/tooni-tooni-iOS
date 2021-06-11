@@ -37,6 +37,7 @@ class BaseTabBarViewController: UITabBarController {
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .disabled)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .selected)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .highlighted)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: kGRAY_90, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 8.0)], for: .focused)
 
         if let tabBarItems = self.tabBar.items {
             for (index, tabItem) in GeneralHelper.sharedInstance.tabList.enumerated() {
