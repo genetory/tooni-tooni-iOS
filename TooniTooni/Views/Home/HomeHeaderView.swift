@@ -19,8 +19,7 @@ class HomeHeaderView: UITableViewHeaderFooterView {
     // MARK: - Vars
     
     @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var navigationView: GeneralNavigationView!
-    @IBOutlet weak var navigationViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: CustomPageControl!
 
@@ -39,15 +38,10 @@ class HomeHeaderView: UITableViewHeaderFooterView {
         self.baseView.backgroundColor = kWHITE
     }
     
-    func initNavigationView() {        
-        self.navigationView.bgColor(kCLEAR)
-        self.navigationView.title(nil)
-        self.navigationView.bigTitle(false)
-        
-        self.navigationView.rightButton.isHidden = false
-        self.navigationView.rightButton.setImage(UIImage.init(named: "icon_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.navigationView.rightButton.tintColor = kWHITE
-        self.navigationView.rightButton.addTarget(self, action: #selector(doSearch), for: .touchUpInside)
+    func initNavigationView() {
+        self.searchButton.setImage(UIImage.init(named: "icon_search")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.searchButton.tintColor = kWHITE
+        self.searchButton.addTarget(self, action: #selector(doSearch), for: .touchUpInside)
     }
     
     func initCollectionView() {
@@ -92,7 +86,7 @@ class HomeHeaderView: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.navigationViewTopConstraint.constant = kDEVICE_TOP_AREA
+//        self.navigationViewTopConstraint.constant = kDEVICE_TOP_AREA
     }
     
 }
